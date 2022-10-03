@@ -21,7 +21,7 @@ cd ansiblewas
 ```
 
 !!! note
-    TECHNICAL SELLERS: You will need to manually create the *ansiblewas* directory yourself before continuing. This step was automatically performed for Sellers when they cloned the Git repository. You can do so by issuing the following command:
+    **TECHNICAL SELLERS**: You will need to manually create the *ansiblewas* directory yourself before continuing. This step was automatically performed for Sellers when they cloned the Git repository. You can do so by issuing the following command:
     ```
     mkdir ansiblewas
     ```
@@ -35,10 +35,10 @@ vi ansible.cfg
     Throughout this lab, you will make extensive use of the VI text editor. If you're not familiar with this editor, you can quickly get up to speed using the following cheat sheet: <a href="https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf" target="_blank">https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf</a> for reference.
 
 As a quick primer on how to use the **VI** editor:
-  - Navigate using the up/down and left/right arrows keys. Hover the blinking indicator over the point in the text you wish to modify.
-  - To start adding or deleting text, first press the I (as in "indigo") key. Then either start adding text as normal (you can also paste lines of code that you have copied to your clipboard using CTRL+V) or deleting text using backspace.
-  - Save your changes and exit a file by first pressing the ESC key, then typing :x (the full colon must come first) and hitting return. If you want to exit a file without saving changes, press ESC and type :quit! (with the exclamation point included at the end).
-  - Other shortcuts and commands are detailed in the cheat sheet linked above.
+    - Navigate using the up/down and left/right arrows keys. Hover the blinking indicator over the point in the text you wish to modify.
+    - To start adding or deleting text, first press the I (as in "indigo") key. Then either start adding text as normal (you can also paste lines of code that you have copied to your clipboard using CTRL+V) or deleting text using backspace.
+    - Save your changes and exit a file by first pressing the ESC key, then typing :x (the full colon must come first) and hitting return. If you want to exit a file without saving changes, press ESC and type :quit! (with the exclamation point included at the end).
+    - Other shortcuts and commands are detailed in the cheat sheet linked above.
 
 Within the configuration file, you will see three values of note: *inventory*, *remote_tmp*, and *host_key_checking*. Their respective purposes are as follows:
   - **inventory** will instruct Ansible on which directory the host file should be defined (we will be modifying this file shortly).
