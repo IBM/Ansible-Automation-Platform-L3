@@ -400,8 +400,8 @@
 <p>When satisfied, click the <strong>Check Availability</strong> button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking <strong>Submit</strong>.</p>
 <p>Reservations take approximately 10-15 minutes to complete from the time that you click submit. If you navigate to the <strong>My Reservations</strong> tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation. Wait until the environment tile describes the instance as "<em>Ready</em>" — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.</p>
 <p>You will also receive a pair of emails to your inbox once the environment has successfully deployed, as shown here.</p>
-<p><img alt="" src="docs/Part 1/_attachments/part1_figure2.png" /></p>
-<p><img alt="" src="docs/Part 1/_attachments/part1_figure3.png" /></p>
+<p><img alt="" src="../_attachments/part1_figure2.png" /></p>
+<p><img alt="" src="../_attachments/part1_figure3.png" /></p>
 <p>The <strong>"Demo Ready Notification"</strong> email contains an important link <strong>("Click Here")</strong> for accessing your <strong>Project Kit</strong>, which will be needed to obtain information about your PowerVC environment — hostname, address, login information, and so on. Click that link now to load the Project Kit in your browser window.</p>
 <p>The second <strong>"Demo VPN Ready Notification"</strong> email is our next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.</p>
 <div class="admonition warning">
@@ -414,13 +414,13 @@
 <p class="admonition-title">Note</p>
 <p>It is recommended that you use <strong>Tunnelblick</strong> if using running MacOS, but you have the option of using other OpenVPN clients if you prefer.</p>
 </div>
-<p><img alt="" src="docs/Part 1/_attachments/part1_figure4.png" /></p>
-<p><img alt="" src="docs/Part 1/_attachments/part1_figure5.png" /></p>
+<p><img alt="" src="../_attachments/part1_figure4.png" /></p>
+<p><img alt="" src="../_attachments/part1_figure5.png" /></p>
 <p>Once installed and setup, OpenVPN will allow you to establish a private VPN tunnel to your PowerVC environment. Click the <strong>"Connect"</strong> button (or similar — the screenshots provided here are for Tunnelblick on MacOS). You can disregard warnings or errors that the application may throw. After connecting, you will be able to access the PowerVC GUI and SSH remotely into your PowerVC environment, which we will cover next.</p>
 <p>After connecting to the VPN tunnel, return to the <strong>"Demo Ready Notification"</strong> email (or the <em>My Reservations</em> tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured here.</p>
-<p><img alt="" src="docs/Part 1/_attachments/part1_figure6.png" /></p>
+<p><img alt="" src="../_attachments/part1_figure6.png" /></p>
 <p>The Project Kit summarizes all of the relevant connection information you will need to access your PowerVC and Ansible environment. Scroll down the page until you reach the <strong>Usage Instructions</strong> table near the bottom of the page.</p>
-<p><img alt="" src="docs/Part 1/_attachments/part1_figure7.png" /></p>
+<p><img alt="" src="../_attachments/part1_figure7.png" /></p>
 <p>The table contains two relevant rows: the first row <strong>"PowerVC GUI"</strong> contains information on how to connect to the PowerVC infrastructure; the second row <strong>"Ansible ssh console"</strong> details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the <em>userID</em> and <em>password</em> values (they are identical across both environments).</p>
 <p>Let's try connecting remotely over SSH to the Ansible environment. Make sure that your OpenVPN connection is active, otherwise the connection attempt will timeout. To connect via SSH, it is recommended that you use Terminal (MacOS) or <a href="https://www.putty.org" target="_blank">PuTTY</a> (Windows).</p>
 <div class="admonition note">
