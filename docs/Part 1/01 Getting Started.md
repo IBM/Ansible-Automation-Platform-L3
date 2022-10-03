@@ -8,7 +8,9 @@ The hands-on environment can be provisioned free-of-charge using the reservation
 
 Alternatively, you can provision the environment by navigating to the following ITZ Collection (<a href="https://techzone.ibm.com/collection/ansible-hands-on-power" target="_blank">https://techzone.ibm.com/collection/ansible-hands-on-power</a>) and scrolling down until you locate the **Environments — "Click here to get your hands on lab"** tab. Clicking the blue "Reserve" tile will navigate your browser window to the same reservation panel as the link above.
 
-![](docs/Part 1/_attachments/part1-figure1.png)
+![](docs/Part 1/_attachments/part1_figure1.png)
+
+![](_attachments/part1_step1.png)
 
 In order to complete your reservation of the PowerVC infrastructure with AAP pre-installed, you must fill out the following information:
 - **Name**: Give your reservation a unique name.
@@ -17,7 +19,7 @@ In order to complete your reservation of the PowerVC infrastructure with AAP pre
 - **Preferred Geography**: *Montpellier, France*
 - **Start Date & Time**: Select the time and date for when you plan to complete the hands-on material.
 - **End Date & Time**: Select a time and date no more than 4 hours later than the Start Time. The environment has been capped at 4 hours, after which it will expire and automatically de-provision.
-!!! note 
+!!! note
     Four hours is more than enough time to complete the hands-on portion of the course work. Make sure you reserve for a period where you can give the lab 4 uninterrupted hours of your time — should you require additional time, you can reserve the lab again, but your progress from the previous attempt will be reset.
 
 When satisfied, click the **Check Availability** button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking **Submit**.
