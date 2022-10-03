@@ -26,9 +26,9 @@ Reservations take approximately 10-15 minutes to complete from the time that you
 
 You will also receive a pair of emails to your inbox once the environment has successfully deployed, as shown here.
 
-![](docs/Part 1/_attachments/part1_figure2.png)
+![](_attachments/part1_figure2.png)
 
-![](docs/Part 1/_attachments/part1_figure3.png)
+![](_attachments/part1_figure3.png)
 
 The **"Demo Ready Notification"** email contains an important link **("Click Here")** for accessing your **Project Kit**, which will be needed to obtain information about your PowerVC environment — hostname, address, login information, and so on. Click that link now to load the Project Kit in your browser window.
 
@@ -42,19 +42,19 @@ Further down in the email are three links for setting up OpenVPN, for each of th
 !!! note
     It is recommended that you use **Tunnelblick** if using running MacOS, but you have the option of using other OpenVPN clients if you prefer.
 
-![](docs/Part 1/_attachments/part1_figure4.png)
+![](_attachments/part1_figure4.png)
 
-![](docs/Part 1/_attachments/part1_figure5.png)
+![](_attachments/part1_figure5.png)
 
 Once installed and setup, OpenVPN will allow you to establish a private VPN tunnel to your PowerVC environment. Click the **"Connect"** button (or similar — the screenshots provided here are for Tunnelblick on MacOS). You can disregard warnings or errors that the application may throw. After connecting, you will be able to access the PowerVC GUI and SSH remotely into your PowerVC environment, which we will cover next.
 
 After connecting to the VPN tunnel, return to the **"Demo Ready Notification"** email (or the *My Reservations* tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured here.
 
-![](docs/Part 1/_attachments/part1_figure6.png)
+![](_attachments/part1_figure6.png)
 
 The Project Kit summarizes all of the relevant connection information you will need to access your PowerVC and Ansible environment. Scroll down the page until you reach the **Usage Instructions** table near the bottom of the page.
 
-![](docs/Part 1/_attachments/part1_figure7.png)
+![](_attachments/part1_figure7.png)
 
 The table contains two relevant rows: the first row **"PowerVC GUI"** contains information on how to connect to the PowerVC infrastructure; the second row **"Ansible ssh console"** details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the *userID* and *password* values (they are identical across both environments).
 
