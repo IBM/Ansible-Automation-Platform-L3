@@ -8,9 +8,7 @@ The hands-on environment can be provisioned free-of-charge using the reservation
 
 Alternatively, you can provision the environment by navigating to the following ITZ Collection (<a href="https://techzone.ibm.com/collection/ansible-hands-on-power" target="_blank">https://techzone.ibm.com/collection/ansible-hands-on-power</a>) and scrolling down until you locate the **Environments — "Click here to get your hands on lab"** tab. Clicking the blue "Reserve" tile will navigate your browser window to the same reservation panel as the link above.
 
-![](docs/Part 1/_attachments/part1_figure1.png)
-
-![](_attachments/part1_step1.png)
+![](_attachments/part1_figure1.png)
 
 In order to complete your reservation of the PowerVC infrastructure with AAP pre-installed, you must fill out the following information:
 - **Name**: Give your reservation a unique name.
