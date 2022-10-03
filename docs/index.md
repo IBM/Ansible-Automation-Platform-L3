@@ -20,6 +20,7 @@ Essentially, this is configuration management applied to the management of IT es
 
 Together, these qualities have two profound implications for Ansible clients. First, it removes any ambiguity from the automation process (Ansible will execute your instructions in exactly the order you’ve assigned). Second, it places the burden of deciding how to achieve the end states of tasks A and B on the automation engine itself, rather than requiring the user to explicitly define all the gory details themselves.
 
+#
 # When automation is made available to everyone, it becomes possible to automate everything.
 
 The series of hands-on tutorials and learning modules embedded in this Level 3 course are designed to provide IBM Sellers, IBM Technical Sellers, and Business Partners with the fluency to gain trusted advisor status with clients and the expertise to tailor live technological demonstrations for customers.
