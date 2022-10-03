@@ -38,9 +38,11 @@ The second **"Demo VPN Ready Notification"** email is our next order of business
 
 From the **"Demo VPN Ready Notification"** email, locate the **"Click Here"** hyperlink to download your **OpenVPN certificate**, which is unique to your account and environment. This certificate will only need to be downloaded and set up once; in the event that you need to re-provision a new environment at a later time, it won't be necessary to repeat these steps.
 
-Further down in the email are three links for setting up OpenVPN, for each of the major operating systems: Windows, Linux, and MacOS. Select the option that matches your machine's operating system. Follow the instructions to install OpenVPN on your machine and use the OpenVPN certificate (linked from the same email) to establish the connection.
+Further down in the email are three links for setting up OpenVPN, for each of the major operating systems: Windows, Linux, and MacOS.
 !!! note
     It is recommended that you use **Tunnelblick** if using running MacOS, but you have the option of using other OpenVPN clients if you prefer.
+
+Select the option that matches your machine's operating system. Follow the instructions to install OpenVPN on your machine and use the OpenVPN certificate (linked from the same email) to establish the connection.
 
 ![](_attachments/part1_figure4.png)
 

@@ -15,10 +15,8 @@ nav:
   - Introduction: 'index.md'
   - Part 1 - Prerequisites and Provisioning:
     - 'Getting Started': 'Part 1/01 Getting Started.md'
-  - Part 2 - Provisioning a PowerVS service:
-    - 'Introduction': 'Part 2/01 Introduction.md'
-    - 'Watch a service being provisioned': 'Part 2/02 Watch-service.md'
-    - 'Click through demonstration of a service being provisioned': 'Part 2/03 Clickthru-service.md'
+  - Part 2 - Deploying a Virtual Machine via Ansible Automation Platform:
+    - '01 Deploy a Virtual Machine (VM)': 'Part 2/01 Deploy a VM.md'
 
 theme:
   name: material
