@@ -1,6 +1,6 @@
-#![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
-#!!! tip "Ways to Watch"
-#    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
+![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
+!!! tip "Ways to Watch"
+    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
 You will require access to the **IBM Technology Zone (ITZ)** in order to reserve your environment and complete the hands-on training. If you do not yet have access or an account with the ITZ, you may register for one by visiting the following page: <a href="https://techzone.ibm.com" target="_blank">https://techzone.ibm.com</a>
 
