@@ -6,7 +6,7 @@ Ansible, and in particular **YAML** (Yet Another Markup Language), is very parti
 
 To streamline the lab as much as possible, a Git repository was created ahead of time with large portions of the Ansible scripts and constructs prepared ahead of time. You will still need to edit elements in each of these files, and the instructions to follow will guide you step by step (as though you were creating these documents from scratch yourself), but it's worth noting that by cloning the Git repository you will be saving yourself a lot of extra typing (and potential debugging). Everything is documented for you— so you can go about creating all of these documents and scripts from scratch, if you wish.
 
-!!! warnings
+!!! warning
     If you are a **SELLER**, it is strongly recommend that you clone the Git repository, as it will save you time and keystrokes.
     If you are a **TECHNICAL SELLER**, it is recommended that you take the time to craft these files from scratch yourself and that you *do not* clone the Git repository (skip the next two steps).
 
