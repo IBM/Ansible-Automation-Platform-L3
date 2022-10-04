@@ -16,7 +16,7 @@ nav:
   - Part 1 - Prerequisites and Provisioning:
     - 'Getting Started': 'Part 1/01 Getting Started.md'
   - Part 2 - Deploying a Virtual Machine via Ansible Automation Platform:
-    - 'Deploy a Virtual Machine (VM)': 'Part 2/01 Deploy a VM.md'
+    - 'Deploy a Virtual Machine': 'Part 2/01 Deploy a VM.md'
     - 'Deploy an AIX Partition using PowerVC': 'Part 2/02 Deploy an AIX Partition.md'
 
 theme:
