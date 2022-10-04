@@ -7,7 +7,7 @@ Automation of nearly any infrastructure endpoint with minimal amounts of code ha
 Likewise, as environments change and operating systems advance over time, the automation jobs underway can be easily modified in lockstep as well. Adaptability and extensibility are key ingredients in the longevity of any technology — and fortunately the automation tooling for the hybrid multicloud era has those in abundance.
 
 #
-#**Red Hat Ansible Automation Platform (AAP)** aims to commodify the automation of everything else that applications, services, and containers need to run upon.
+#**Red Hat Ansible Automation Platform (AAP)** commodifies the automation of everything else that applications, services, and containers need to run upon.
 
 That may include infrastructure provisioning, server deployments, IoT edge devices, script execution, and lots of other things that operations teams spend their time doing to “keep the lights on.” It makes automation available to everyone with the lightest touch of human-readable snippets of code. More importantly to us, it makes automation of nearly everything needed to deliver the capabilities of the cloud possible, regardless of the destination.
 

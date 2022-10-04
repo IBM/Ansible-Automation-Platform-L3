@@ -22,7 +22,7 @@ In order to complete your reservation of the PowerVC infrastructure with AAP pre
 
 - **Start Date & Time**: Select the time and date for when you plan to complete the hands-on material.
 
-- **End Date & Time**: Select a time and date no more than 4 hours later than the Start Time. The environment has been capped at 4 hours, after which it will expire and automatically de-provision.
+- **End Date & Time**: Select a time and date no more than 4 hours later than the Start Time. The environment has been capped at 4 hours, after which it will expire and de-provision.
 
 !!! note
     Four hours is more than enough time to complete the hands-on portion of the course work. Make sure you reserve for a period where you can give the lab 4 uninterrupted hours of your time — should you require additional time, you can reserve the lab again, but your progress from the previous attempt will be reset.
