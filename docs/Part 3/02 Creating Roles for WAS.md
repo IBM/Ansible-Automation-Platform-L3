@@ -44,7 +44,7 @@ The final version of the Playbook should mirror the following template:
 Press *ESC* and then *:x* and *Return* to save and exit the **was.yml** file.
 
 !!! warning "ATTENTION"
-    In the instructions to follow, you will be asked to gradually add more automation jobs to the was Roles that you just defined. You have two options for how to proceed here:
+    In the instructions to follow, you will be asked to gradually add more automation jobs to the **was** Roles that you just defined. You have two options for how to proceed here:
 
     1. Take advantage of the Git-cloned repository, which contains the fully-completed YAML definition, ready for immediate execution. This is the recommended path for those with **Seller** responsibilities.
 
