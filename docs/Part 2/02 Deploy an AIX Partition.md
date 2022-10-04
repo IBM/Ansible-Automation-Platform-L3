@@ -135,9 +135,3 @@ ansible-playbook mkvm.yaml -v
 ```
 
 If everything goes smoothly, a virtual machine will be deployed to PowerVC in a matter of minutes. If you encounter errors or things don't go as planned — don't panic. Ansible, as warned about previously, is quite particular about things like indentation. A misplaced whitespace or a slipped finger on the keyboard can create a typo that will throw the script into disarray (after all, Ansible will try to execute your instructions exactly as you have written.) Go back into the scripts mentioned previously and verify that everything is correct and that all necessary substitutions have been made, then try executing the **ansible-playbook** instruction (above) a second time.
-
-While execution of the Playbook is underway, return to the PowerVC dashboard and click the VM List button from the taskbar on the left. Previously this tab would have displayed as empty. As the execution of the Playbook gets underway, a new virtual machine will be listed with the status of "*Building*;" once the virtual machine has been deployed, the status will be adjusted to "*Active*."
-
-![](_attachments/part2_figure5.png)
-
-After the build task has finished and the status has changed to "Active", the IP field of the table will be populated with the virtual machine's address, as shown in the screenshot below. Record this information for reference later.

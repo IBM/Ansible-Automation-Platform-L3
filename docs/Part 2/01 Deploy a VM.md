@@ -14,17 +14,16 @@ To streamline the lab as much as possible, a Git repository was created ahead of
 ```
 git clone --branch hybridcloudevent https://github.com/stephannavarro/ansiblewas.git
 ```
-
-After the clone action has been completed, navigate to the newly-created ansiblewas directory.
-```
-cd ansiblewas
-```
-
 !!! note
     **TECHNICAL SELLERS**: You will need to manually create the *ansiblewas* directory yourself before continuing. This step was automatically performed for Sellers when they cloned the Git repository. You can do so by issuing the following:
     ```
     mkdir ansiblewas
     ```
+
+After the clone action has been completed, navigate to the newly-created ansiblewas directory.
+```
+cd ansiblewas
+```
 
 The next order of business is configuring the Ansible controller node (to which you are currently connected) with details about our PowerVC environment and how our project directories are organized. This can be done by modifying the **ansible.cfg** configuration file:
 ```
