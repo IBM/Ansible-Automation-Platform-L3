@@ -67,6 +67,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#macro-rendering-error" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -315,6 +320,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Deploy an AIX Partition using PowerVC
@@ -348,6 +355,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -361,101 +370,20 @@
                 
 
 
-  <h1>Deploy an AIX Partition using PowerVC</h1>
-
-<p><img alt="type:video" src="./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4" /></p>
-<div class="admonition tip">
-<p class="admonition-title">Ways to Watch</p>
-<p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
-</div>
-<p>The deployment of an AIX operating system partition on to the PowerVC infrastructure will be automated entirely via the Ansible control (master) node. Ansible will make use of the inventory we've defined, a Playbook that we will modify to paint the broad strokes for what automation is to be performed, and built-in Modules that are part of Ansible's engine to carry out those instructions. Ansible OpenStack Modules— downloaded in the previous step —will allow Ansible to create an LPAR (logical partition) on the PowerVC infrastructure where the AIX operating system can reside.</p>
-<p>Begin modification of the OpenStack configuration file (located within your home directory on the Ansible control node) using the following instruction:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi clouds.yaml
-</code></pre></div></p>
-<p>If you cloned the Git repository earlier, a template has already been crafted for you; otherwise, you will need to recreate it using the sample code below.</p>
-<p>Regardless of the route you take, you will need to modify the template to the specifications of your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the Project Kit page.</p>
-<p>The same holds true for other variables or fields that have been bolded below in the sample script: if it is highlighted in red text within the screenshot, you must modify the clouds.yaml script for those fields to your own specifications and then save the changes before moving on.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Remember: <strong>ESC</strong> and then <strong>:x</strong> followed by the <strong>Return</strong> key to save your work and exit the VI editor.</p>
-</div>
-<p>The <em>clouds.yaml</em> template should look like the following screenshot. Modify as necessary to match the specifications of your unique ITZ environment. Update the userID, password, project name (<em>ansiblewas</em>), and the host address (this address should match the PowerVC GUI address from the Project Kit).</p>
-<p><img alt="" src="../_attachments/part2_figure1.png" /></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>clouds:
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  idXXXXXXXX:
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    auth:
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>      auth_url: https://10.3.44.65:5000/v3/
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>      domain_name: Default
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>      username: idXXXXXXXX
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>      password: Provided_password
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>      project_name: ansiblewas
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    verify: false
+<h1 id="macro-rendering-error"><em>Macro Rendering Error</em></h1>
+<p><strong>UndefinedError</strong>: 'vm' is undefined</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Traceback (most recent call last):
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  File &quot;/opt/homebrew/lib/python3.9/site-packages/mkdocs_macros/plugin.py&quot;, line 480, in render
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    return md_template.render(**page_variables)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  File &quot;/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py&quot;, line 1301, in render
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    self.environment.handle_exception()
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  File &quot;/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py&quot;, line 936, in handle_exception
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    raise rewrite_traceback_stack(source=source)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  File &quot;&lt;template&gt;&quot;, line 96, in top-level template code
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  File &quot;/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py&quot;, line 485, in getattr
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    return getattr(obj, attribute)
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>jinja2.exceptions.UndefinedError: &#39;vm&#39; is undefined
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Be careful about indentation</p>
-<p>Ansible is very particular about indentation and nesting rules. In this example, every indentation level is denoted by two whitespaces. Also be sure to preserve the empty newline at the end of this example (the empty final line must be present within your YAML manifest.)</p>
-</div>
-<p>After modifying and saving the <em>clouds.yaml</em> manifest file, we need to define the Playbook which Ansible will execute against. Modify (or create) the Playbook for generating a virtual machine via the following:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vi mkvm.yaml
-</code></pre></div></p>
-<p>As before, adjust the template as necessary: you will need to substitute your own values for:</p>
-<ul>
-<li>
-<p>user</p>
-</li>
-<li>
-<p>gather_facts</p>
-</li>
-<li>
-<p>cloud</p>
-</li>
-<li>
-<p>public_key_file</p>
-</li>
-<li>
-<p>cloud</p>
-</li>
-<li>
-<p>name</p>
-</li>
-<li>
-<p>key_name</p>
-</li>
-<li>
-<p>net-name</p>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Keys automatically generated ahead of time</p>
-<p>The <strong>ansible_key_idXXXXXXXX</strong> and the <strong>public_key_file</strong> were created automatically for you by the IBM Technology Zone as part of your environment reservation. You do not need to generate or locate these files yourself — simply modify the <em>idXXXXXXXX</em> value to match your <em>userID</em>.</p>
-</div>
-<p><img alt="" src="../_attachments/part2_figure2.png" /></p>
-<p>The code template is available below for ease of copying and modifying your own variant:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>---
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>- hosts: localhost
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  gather_facts: false
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  vars:
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>     ansible_connection: local
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  tasks:
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  - name: adding ssh key to powervc
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    os_keypair:
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>      cloud: idXXXXXXXX
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>      state: present
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>      name: ansible_key_idXXXXXXXX
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>      public_key_file: /home/idXXXXXXXX/.ssh/id_rsa.pub
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  - name: Create a new VM instance
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    os_server:
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>      cloud: idXXXXXXXX
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>      timeout: 900
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>      state: present
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>      name: vmidXXXXXXXX
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>      image: AIX721_7022_300G_DEMO
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>      flavor: was
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>      key_name: ansible_key_idXXXXXXXX
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>      nics:
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>        - net-name: VLAN344
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    register: vm
-</code></pre></div></p>
 
 
 
