@@ -10,13 +10,13 @@ To streamline the lab as much as possible, a Git repository was created ahead of
 # If you are a **SELLER**, it is strongly recommend that you clone the Git repository, as it will save you time and keystrokes.
 # If you are a **TECHNICAL SELLER**, it is recommended that you take the time to craft these files from scratch yourself and that you *do not* clone the Git repository (skip the next two steps).
 
-!!! tip SELLERS
+!!! tip "SELLERS"
     Submit the following instruction to clone the prepared Git repository into your Ansible controller node:
     ```
     git clone --branch hybridcloudevent https://github.com/stephannavarro/ansiblewas.git
     ```
 
-!!! warning TECHNICAL SELLERS
+!!! warning "TECHNICAL SELLERS"
     You will need to manually create the *ansiblewas* directory yourself before continuing. This step was automatically performed for Sellers when they cloned the Git repository. You can do so by issuing the following:
     ```
     mkdir ansiblewas

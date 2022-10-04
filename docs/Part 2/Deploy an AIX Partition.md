@@ -106,7 +106,7 @@ The code template is available below for ease of copying and modifying your own 
 ```
 
 !!! warning
-    For the 'name' field (line 11) you must include both **vm** + *idXXXXXXXXX* ( do not forget to prefix with **vm**) in your manifest. The 'name' variable will appear as BLANK when working from the Git repository clone — both sellers and technical sellers must complete this variable definition regardless of whether they are working from the Git repository clone or not.
+    For the 'name' field (line 11) you must include both *vm* + *idXXXXXXXXX* ( do not forget to prefix with *vm*) in your manifest. The 'name' variable will appear as BLANK when working from the Git repository clone — both sellers and technical sellers must complete this variable definition regardless of whether they are working from the Git repository clone or not.
 
 !!! note
     The 'net-name' field (line 16) must be set equal to **VLAN344**, if it hasn't already been by default.
@@ -139,5 +139,3 @@ If everything goes smoothly, a virtual machine will be deployed to PowerVC in a 
 While execution of the Playbook is underway, return to the PowerVC dashboard and click the VM List button from the taskbar on the left. Previously this tab would have displayed as empty. As the execution of the Playbook gets underway, a new virtual machine will be listed with the status of "*Building*;" once the virtual machine has been deployed, the status will be adjusted to "*Active*."
 
 ![](_attachments/part2_figure5.png)
-
-After the build task has finished and the status has changed to "Active", the IP field of the table will be populated with the virtual machine's address, as shown in the screenshot below. Record this information for reference later.
