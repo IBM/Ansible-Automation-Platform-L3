@@ -8,7 +8,7 @@ To streamline the lab as much as possible, a Git repository was created ahead of
 
 #
 # If you are a **SELLER**, it is strongly recommend that you clone the Git repository, as it will save you time and keystrokes.
-# If you are a **TECHNICAL SELLER**, it is recommended that you take the time to craft these files from scratch yourself and that you *do not* clone the Git repository (skip the next two steps).
+# If you are a **TECHNICAL SELLER**, it is recommended that you take the time to craft these files from scratch yourself and that you *do not* clone the Git repository.
 
 !!! tip "SELLERS"
     Submit the following instruction to clone the prepared Git repository into your Ansible controller node:
