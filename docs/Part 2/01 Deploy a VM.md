@@ -21,7 +21,7 @@ cd ansiblewas
 ```
 
 !!! note
-    **TECHNICAL SELLERS**: You will need to manually create the *ansiblewas* directory yourself before continuing. This step was automatically performed for Sellers when they cloned the Git repository. You can do so by issuing the following command:
+    **TECHNICAL SELLERS**: You will need to manually create the *ansiblewas* directory yourself before continuing. This step was automatically performed for Sellers when they cloned the Git repository. You can do so by issuing the following:
     ```
     mkdir ansiblewas
     ```
