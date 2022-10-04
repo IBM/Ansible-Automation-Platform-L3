@@ -84,7 +84,7 @@ The directory structure you are to define in the steps ahead will look similar t
 
 Execute the following instructions via your SSH console, either one at a time or all as a single statement, to create the directory structure needed for the Roles.
 !!! warning "Navigate to the correct directory first"
-    Make sure you sitting in the */ansiblewas* directory before creating the following subdirectories!
+    Make sure you are sitting in the */ansiblewas* directory before creating the following subdirectories!
 
 ```
 mkdir -p roles/aix/tasks
