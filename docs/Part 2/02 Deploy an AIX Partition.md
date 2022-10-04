@@ -66,7 +66,8 @@ As before, adjust the template as necessary: you will need to substitute your ow
 ![](_attachments/part2_figure2.png)
 
 The code template is available below for ease of copying and modifying your own variant:
-````markdown
+
+{% raw %}
 ```
 ---
 - hosts: localhost
@@ -104,4 +105,4 @@ The code template is available below for ease of copying and modifying your own 
       sleep: 10
       timeout: 900
 ```
-````
+{% endraw %}
