@@ -170,7 +170,7 @@ was:
 
 ```
 
-!!! note What is *was*?
+!!! note "What is *was*?"
     The *was* variable is in reference to the Compute Template used by our PowerVC virtual machine deployment; it was defined ahead of time for the ITZ environment specifically to meet the resource requirements for WebSphere Application Server (*was*). You can drill down into the Compute Template tab from the PowerVC dashboard if you wish to inspect further details about it.
 
 In the following section, we'll set the stage for a full deployment of WebSphere Application Server atop of the AIX VM that is now running on PowerVC infrastructure.
