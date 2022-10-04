@@ -365,7 +365,7 @@
 
 <p><img alt="type:video" src="./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4" /></p>
 <div class="admonition tip">
-<p class="admonition-title">Ways to Watch</p>
+<p class="admonition-title">Ways to watch</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
 </div>
 <p>The deployment of an AIX operating system partition on to the PowerVC infrastructure will be automated entirely via the Ansible control (master) node. Ansible will make use of the inventory we've defined, a Playbook that we will modify to paint the broad strokes for what automation is to be performed, and built-in Modules that are part of Ansible's engine to carry out those instructions. Ansible OpenStack Modules— downloaded in the previous step —will allow Ansible to create an LPAR (logical partition) on the PowerVC infrastructure where the AIX operating system can reside.</p>
@@ -376,7 +376,7 @@
 <p>Regardless of the route you take, you will need to modify the template to the specifications of your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the Project Kit page.</p>
 <p>The same holds true for other variables or fields that have been bolded below in the sample script: if it is highlighted in red text within the screenshot, you must modify the clouds.yaml script for those fields to your own specifications and then save the changes before moving on.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">Tips for the VI editor</p>
 <p>Remember: <strong>ESC</strong> and then <strong>:x</strong> followed by the <strong>Return</strong> key to save your work and exit the VI editor.</p>
 </div>
 <p>The <em>clouds.yaml</em> template should look like the following screenshot. Modify as necessary to match the specifications of your unique ITZ environment. Update the userID, password, project name (<em>ansiblewas</em>), and the host address (this address should match the PowerVC GUI address from the Project Kit).</p>
@@ -426,7 +426,7 @@
 </li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Keys automatically generated ahead of time</p>
+<p class="admonition-title">Keys are automatically generated ahead of time</p>
 <p>The <strong>ansible_key_idXXXXXXXX</strong> and the <strong>public_key_file</strong> were created automatically for you by the IBM Technology Zone as part of your environment reservation. You do not need to generate or locate these files yourself — simply modify the <em>idXXXXXXXX</em> value to match your <em>userID</em>.</p>
 </div>
 <p><img alt="" src="../_attachments/part2_figure2.png" /></p>
