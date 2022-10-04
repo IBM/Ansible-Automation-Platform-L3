@@ -368,6 +368,63 @@
 <p class="admonition-title">Ways to Watch</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
 </div>
+<p>The deployment of an AIX operating system partition on to the PowerVC infrastructure will be automated entirely via the Ansible control (master) node. Ansible will make use of the inventory we've defined, a Playbook that we will modify to paint the broad strokes for what automation is to be performed, and built-in Modules that are part of Ansible's engine to carry out those instructions. Ansible OpenStack Modules— downloaded in the previous step —will allow Ansible to create an LPAR (logical partition) on the PowerVC infrastructure where the AIX operating system can reside.</p>
+<p>Begin modification of the OpenStack configuration file (located within your home directory on the Ansible control node) using the following instruction:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi clouds.yaml
+</code></pre></div></p>
+<p>If you cloned the Git repository earlier, a template has already been crafted for you; otherwise, you will need to recreate it using the sample code below.</p>
+<p>Regardless of the route you take, you will need to modify the template to the specifications of your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the Project Kit page.</p>
+<p>The same holds true for other variables or fields that have been bolded below in the sample script: if it is highlighted in red text within the screenshot, you must modify the clouds.yaml script for those fields to your own specifications and then save the changes before moving on.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember: <strong>ESC</strong> and then <strong>:x</strong> followed by the <strong>Return</strong> key to save your work and exit the VI editor.</p>
+</div>
+<p>The <em>clouds.yaml</em> template should look like the following screenshot. Modify as necessary to match the specifications of your unique ITZ environment. Update the userID, password, project name (<em>ansiblewas</em>), and the host address (this address should match the PowerVC GUI address from the Project Kit).</p>
+<p><img alt="" src="../_attachments/part2_figure1.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>clouds:
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  idXXXXXXXX:
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    auth:
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>      auth_url: https://10.3.44.65:5000/v3/
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>      domain_name: Default
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>      username: idXXXXXXXX
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>      password: Provided_password
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>      project_name: ansiblewas
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    verify: false
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ansible is very particular about indentation and nesting rules. In this example, every indentation level is denoted by two whitespaces. Also be sure to preserve the empty newline at the end of this example (the empty final line must be present within your YAML manifest.)</p>
+</div>
+<p>After modifying and saving the <em>clouds.yaml</em> manifest file, we need to define the Playbook which Ansible will execute against. Modify (or create) the Playbook for generating a virtual machine via the following:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vi mkvm.yaml
+</code></pre></div></p>
+<p>As before, adjust the template as necessary: you will need to substitute your own values for:</p>
+<ul>
+<li>
+<p>user</p>
+</li>
+<li>
+<p>gather_facts</p>
+</li>
+<li>
+<p>cloud</p>
+</li>
+<li>
+<p>public_key_file</p>
+</li>
+<li>
+<p>cloud</p>
+</li>
+<li>
+<p>name</p>
+</li>
+<li>
+<p>key_name</p>
+</li>
+<li>
+<p>net-name</p>
+</li>
+</ul>
 
 
 
