@@ -18,6 +18,8 @@ nav:
   - Part 2 - Deploying a Virtual Machine via Ansible Automation Platform:
     - 'Deploy a Virtual Machine': 'Part 2/01 Deploy a VM.md'
     - 'Deploy an AIX Partition using PowerVC': 'Part 2/02 Deploy an AIX Partition.md'
+  - Part 3 - Deploy a WebSphere Application Server using Ansible Automation Platform:
+    - 'Laying the Groundwork': 'Part 3/01 Laying the Groundwork.md'
 
 theme:
   name: material
