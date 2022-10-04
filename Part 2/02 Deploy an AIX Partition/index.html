@@ -443,6 +443,18 @@
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>      state: present
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>      name: ansible_key_idXXXXXXXX
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>      public_key_file: /home/idXXXXXXXX/.ssh/id_rsa.pub
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  - name: Create a new VM instance
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    os_server:
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>      cloud: idXXXXXXXX
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>      timeout: 900
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>      state: present
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>      name: vmidXXXXXXXX
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>      image: AIX721_7022_300G_DEMO
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>      flavor: was
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>      key_name: ansible_key_idXXXXXXXX
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>      nics:
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>        - net-name: VLAN344
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    register: vm
 </code></pre></div></p>
 
 
