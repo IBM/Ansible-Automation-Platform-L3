@@ -91,13 +91,13 @@ The code template is available below for ease of copying and modifying your own 
       key_name: ansible_key_idXXXXXXXX
       nics:
         - net-name: VLAN344
-    register: vm
+
   - name: Showing newly assigned IP address
     debug:
       msg: the IP address is "{{ vm.server.public_v4 }}"
   - name: Waits for SSH port 22 to open
     wait_for:
-
+      host: "{{ vm.server.public_v4 }}"
       delay: 5
       port: 22
       sleep: 10
