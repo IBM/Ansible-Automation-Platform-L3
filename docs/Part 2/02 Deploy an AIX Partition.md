@@ -34,7 +34,7 @@ clouds:
 
 ```
 
-!!! warning
+!!! warning "Be careful about indentation"
     Ansible is very particular about indentation and nesting rules. In this example, every indentation level is denoted by two whitespaces. Also be sure to preserve the empty newline at the end of this example (the empty final line must be present within your YAML manifest.)
 
 After modifying and saving the *clouds.yaml* manifest file, we need to define the Playbook which Ansible will execute against. Modify (or create) the Playbook for generating a virtual machine via the following:
@@ -59,3 +59,48 @@ As before, adjust the template as necessary: you will need to substitute your ow
 - key_name
 
 - net-name
+
+!!! note "Keys automatically generated ahead of time"
+    The **ansible_key_idXXXXXXXX** and the **public_key_file** were created automatically for you by the IBM Technology Zone as part of your environment reservation. You do not need to generate or locate these files yourself — simply modify the *idXXXXXXXX* value to match your *userID*.
+
+![](_attachments/part2_figure2.png)
+
+The code template is available below for ease of copying and modifying your own variant:
+```
+---
+- hosts: localhost
+  gather_facts: false
+  vars:
+     ansible_connection: local
+  tasks:
+  - name: adding ssh key to powervc
+    os_keypair:
+      cloud: idXXXXXXXX
+      state: present
+      name: ansible_key_idXXXXXXXX
+      public_key_file: /home/idXXXXXXXX/.ssh/id_rsa.pub
+
+  - name: Create a new VM instance
+    os_server:
+      cloud: idXXXXXXXX
+      timeout: 900
+      state: present
+      name: vmidXXXXXXXX
+      image: AIX721_7022_300G_DEMO
+      flavor: was
+      key_name: ansible_key_idXXXXXXXX
+      nics:
+        - net-name: VLAN344
+    register: vm
+  - name: Showing newly assigned IP address
+    debug:
+      msg: the IP address is "{{ vm.server.public_v4 }}"
+  - name: Waits for SSH port 22 to open
+    wait_for:
+      host: "{{ vm.server.public_v4 }}"
+      delay: 5
+      port: 22
+      sleep: 10
+      timeout: 900
+
+```
