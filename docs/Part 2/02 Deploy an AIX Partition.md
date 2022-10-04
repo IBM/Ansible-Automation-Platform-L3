@@ -66,7 +66,7 @@ As before, adjust the template as necessary: you will need to substitute your ow
 ![](_attachments/part2_figure2.png)
 
 The code template is available below for ease of copying and modifying your own variant:
-```
+`````markdown
 ---
 - hosts: localhost
   gather_facts: false
@@ -94,13 +94,13 @@ The code template is available below for ease of copying and modifying your own 
     register: vm
   - name: Showing newly assigned IP address
     debug:
-      msg: the IP address is "\{\{ vm.server.public_v4 \}\}"
+      msg: the IP address is "{{ vm.server.public_v4 }}"
   - name: Waits for SSH port 22 to open
     wait_for:
-      host: "\{\{ vm.server.public_v4 \}\}"
+      host: "{{ vm.server.public_v4 }}"
       delay: 5
       port: 22
       sleep: 10
       timeout: 900
 
-```
+````
