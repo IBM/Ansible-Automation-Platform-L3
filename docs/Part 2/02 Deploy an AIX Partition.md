@@ -79,6 +79,7 @@ The code template is available below for ease of copying and modifying your own 
       state: present
       name: ansible_key_idXXXXXXXX
       public_key_file: /home/idXXXXXXXX/.ssh/id_rsa.pub
+
   - name: Create a new VM instance
     os_server:
       cloud: idXXXXXXXX
@@ -96,9 +97,10 @@ The code template is available below for ease of copying and modifying your own 
       msg: the IP address is "{{ vm.server.public_v4 }}"
   - name: Waits for SSH port 22 to open
     wait_for:
-      host: "{{ vm.server.public_v4 }}"
+
       delay: 5
       port: 22
       sleep: 10
       timeout: 900
+
 ```
