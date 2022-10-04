@@ -499,28 +499,28 @@
 <p>The directory structure is still something that we have yet to "predefine", so let's do that next. The directory structure of a Role contains directories such as defaults, vars, tasks, files, templates, meta, and handlers — these are all "expected" directories (we can make use of all of them or only a subset) that Ansible Roles must be patterned against. Each directory must contain a <strong>main.yml</strong> file which provides the relevant content needed by Ansible to execute a Playbook. Let's examine the purpose of each directory type, in turn:</p>
 <ul>
 <li>
-<p>defaults: Contains default variables for the Role; variables by default have the lowest priority, so they are easy to override.</p>
+<p><strong>defaults</strong>: Contains default variables for the Role; variables by default have the lowest priority, so they are easy to override.</p>
 </li>
 <li>
-<p>vars: Contains variables for the Role; variables in vars have a higher priority than 'default' variables.</p>
+<p><strong>vars</strong>: Contains variables for the Role; variables in vars have a higher priority than 'default' variables.</p>
 </li>
 <li>
-<p>tasks: Contains the main list of steps to be executed by the Role.</p>
+<p><strong>tasks</strong>: Contains the main list of steps to be executed by the Role.</p>
 </li>
 <li>
-<p>files: Contains files which must be copied over to the remote host.</p>
+<p><strong>files</strong>: Contains files which must be copied over to the remote host.</p>
 </li>
 <li>
-<p>templates: Contains file templates that support modifications from the Role; in our example, we will use the Jinja2 templating language for creating templates.</p>
+<p><strong>templates</strong>: Contains file templates that support modifications from the Role; in our example, we will use the Jinja2 templating language for creating templates.</p>
 </li>
 <li>
-<p>meta: Contains metadata for the Role, including the author, supported platforms, and dependencies.</p>
+<p><strong>meta</strong>: Contains metadata for the Role, including the author, supported platforms, and dependencies.</p>
 </li>
 <li>
-<p>handlers: Contains handlers which can be invoked by "notify" directives; these are associated with the service.</p>
+<p><strong>handlers</strong>: Contains handlers which can be invoked by "notify" directives; these are associated with the service.</p>
 </li>
 </ul>
-<p>Ansible supports variables that can be used to store values that can then be reused throughout files in an Ansible project. This can simplify the creation and maintenance of a project and reduce the number of errors. Variables provide a convenient way to manage dynamic values for a given environment in your Ansible project. Examples of values that variables might contain include:</p>
+<p>Ansible supports <strong>variables</strong> that can be used to store values that can then be reused throughout files in an Ansible project. This can simplify the creation and maintenance of a project and reduce the number of errors. Variables provide a convenient way to manage dynamic values for a given environment in your Ansible project. Examples of values that variables might contain include:</p>
 <ul>
 <li>
 <p>Users to create</p>
