@@ -6,13 +6,13 @@ As with the **aix** Roles previously, you will need to craft a workflow of autom
 
 The following Ansible Modules will be invoked as part of the sequence of jobs and tasks that the automation engine performs:
 
-- unarchive: Uploads files (tar, zip, tgz, ...) and decompresses them on a target system.
+- **unarchive**: Uploads files (tar, zip, tgz, ...) and decompresses them on a target system.
 
-- shell: Allows the execution of commands on a target system.
+- **shell**: Allows the execution of commands on a target system.
 
-- template: Processed by the Jinja2 templating language and used for generating dynamic files.
+- **template**: Processed by the Jinja2 templating language and used for generating dynamic files.
 
-- copy: Uploads files to a target system.
+- **copy**: Uploads files to a target system.
 
 First, return to the *was.yml* Playbook that was defined earlier:
 ```
@@ -21,7 +21,7 @@ vi was.yml
 
 Recall that Git-cloned template had a commented-out line towards the end of the YAML definition: this line **"- role: was"** will link the new was Role (which you will define momentarily) to the litany of operations that the Ansible Playbook will perform and interact with.
 
-!!! note "If working from the cloned Git repository..."
+!!! note "If working from a cloned Git repository..."
     If you cloned the Git template previously, un-comment the line by deleting the # symbol. Otherwise, if you crafted the YAML file from scratch, add the instruction to the end of your Playbook.
 
 The final version of the Playbook should mirror the following template:
@@ -45,7 +45,9 @@ Press *ESC* and then *:x* and *Return* to save and exit the **was.yml** file.
 
 !!! warning "ATTENTION"
     In the instructions to follow, you will be asked to gradually add more automation jobs to the was Roles that you just defined. You have two options for how to proceed here:
-    1. Take advantage of the Git-cloned repository, which contains the fully-completed YAML definition, ready for immediate execution. This is the recommended path for those with Seller responsibilities.
-    2. Go through and add the following jobs one at a time, in sequence, testing execution of the Playbook at each stage. This route will allow you to incrementally make changes to the Roles, test the results with the Playbook, and see for yourself the gradual progression of the installation and deployment of WebSphere Application Server. This is the recommended path for those with Technical Seller responsibilities.
+
+    1. Take advantage of the Git-cloned repository, which contains the fully-completed YAML definition, ready for immediate execution. This is the recommended path for those with **Seller** responsibilities.
+
+    2. Go through and add the following jobs one at a time, in sequence, testing execution of the Playbook at each stage. This route will allow you to incrementally make changes to the Roles, test the results with the Playbook, and see for yourself the gradual progression of the installation and deployment of WebSphere Application Server. This is the recommended path for those with **Technical Seller** responsibilities.
 
 Either path is appropriate, so tailor it to your needs or interests. Good luck!
