@@ -67,6 +67,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -301,6 +306,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Deploy a Virtual Machine
@@ -348,6 +355,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -361,8 +370,6 @@
                 
 
 
-  <h1>Deploy a Virtual Machine</h1>
-
 <p><img alt="type:video" src="./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Ways to Watch</p>
@@ -370,11 +377,9 @@
 </div>
 <p>Ansible, and in particular <strong>YAML</strong> (Yet Another Markup Language), is very particular about indentation and formatting — something as trivial as an extra whitespace or an incorrectly-indented line of code can cause the interpreter to parse the instructions differently, resulting in outcomes you may not desire.</p>
 <p>To streamline the lab as much as possible, a Git repository was created ahead of time with large portions of the Ansible scripts and constructs prepared ahead of time. You will still need to edit elements in each of these files, and the instructions to follow will guide you step by step (as though you were creating these documents from scratch yourself), but it's worth noting that by cloning the Git repository you will be saving yourself a lot of extra typing (and potential debugging). Everything is documented for you— so you can go about creating all of these documents and scripts from scratch, if you wish.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If you are a <strong>SELLER</strong>, it is strongly recommend that you clone the Git repository, as it will save you time and keystrokes.
-If you are a <strong>TECHNICAL SELLER</strong>, it is recommended that you take the time to craft these files from scratch yourself and that you <em>do not</em> clone the Git repository (skip the next two steps).</p>
-</div>
+<h1 id="_1"></h1>
+<h1 id="if-you-are-a-seller-it-is-strongly-recommend-that-you-clone-the-git-repository-as-it-will-save-you-time-and-keystrokes">If you are a <strong>SELLER</strong>, it is strongly recommend that you clone the Git repository, as it will save you time and keystrokes.</h1>
+<h1 id="if-you-are-a-technical-seller-it-is-recommended-that-you-take-the-time-to-craft-these-files-from-scratch-yourself-and-that-you-do-not-clone-the-git-repository-skip-the-next-two-steps">If you are a <strong>TECHNICAL SELLER</strong>, it is recommended that you take the time to craft these files from scratch yourself and that you <em>do not</em> clone the Git repository (skip the next two steps).</h1>
 <p><strong>SELLERS</strong>: Submit the following instruction to clone the prepared Git repository into your Ansible controller node:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone --branch hybridcloudevent https://github.com/stephannavarro/ansiblewas.git
 </code></pre></div></p>
