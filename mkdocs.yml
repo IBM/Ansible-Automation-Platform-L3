@@ -20,6 +20,7 @@ nav:
     - 'Deploy an AIX Partition using PowerVC': 'Part 2/02 Deploy an AIX Partition.md'
   - Part 3 - Deploy a WebSphere Application Server using Ansible Automation Platform:
     - 'Laying the Groundwork': 'Part 3/01 Laying the Groundwork.md'
+    - 'Creating Roles for WAS': 'Part 3/02 Creating Roles for WAS.md'
 
 theme:
   name: material
