@@ -14,7 +14,7 @@ To streamline the lab as much as possible, a Git repository was created ahead of
 ```
 git clone --branch hybridcloudevent https://github.com/stephannavarro/ansiblewas.git
 ```
-!!! note
+!!! warning
     **TECHNICAL SELLERS**: You will need to manually create the *ansiblewas* directory yourself before continuing. This step was automatically performed for Sellers when they cloned the Git repository. You can do so by issuing the following:
     ```
     mkdir ansiblewas
