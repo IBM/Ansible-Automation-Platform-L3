@@ -1,5 +1,5 @@
 ![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
-!!! tip "Ways to Watch"
+!!! tip "Ways to watch"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
 You will require access to the **IBM Technology Zone (ITZ)** in order to reserve your environment and complete the hands-on training. If you do not yet have access or an account with the ITZ, you may register for one by visiting the following page: <a href="https://techzone.ibm.com" target="_blank">https://techzone.ibm.com</a>
@@ -24,7 +24,7 @@ In order to complete your reservation of the PowerVC infrastructure with AAP pre
 
 - **End Date & Time**: Select a time and date no more than 4 hours later than the Start Time. The environment has been capped at 4 hours, after which it will expire and de-provision.
 
-!!! note
+!!! note "Completion times"
     Four hours is more than enough time to complete the hands-on portion of the course work. Make sure you reserve for a period where you can give the lab 4 uninterrupted hours of your time — should you require additional time, you can reserve the lab again, but your progress from the previous attempt will be reset.
 
 When satisfied, click the **Check Availability** button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking **Submit**.
@@ -40,13 +40,13 @@ You will also receive a pair of emails to your inbox once the environment has su
 The **"Demo Ready Notification"** email contains an important link **("Click Here")** for accessing your **Project Kit**, which will be needed to obtain information about your PowerVC environment — hostname, address, login information, and so on. Click that link now to load the Project Kit in your browser window.
 
 The second **"Demo VPN Ready Notification"** email is our next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.
-!!! warning
+!!! warning "VPN access"
     This is different from the VPN access you may be using to connect to the IBM intranet and network. All participants must follow the instructions outlined below in order to connect to the environment. Without the correct VPN setup, you will be unable to SSH or remotely connect to the PowerVC instance.
 
 From the **"Demo VPN Ready Notification"** email, locate the **"Click Here"** hyperlink to download your **OpenVPN certificate**, which is unique to your account and environment. This certificate will only need to be downloaded and set up once; in the event that you need to re-provision a new environment at a later time, it won't be necessary to repeat these steps.
 
 Further down in the email are three links for setting up OpenVPN, for each of the major operating systems: Windows, Linux, and MacOS.
-!!! note
+!!! note "Selecting an OpenVPN client"
     It is recommended that you use **Tunnelblick** if using running MacOS, but you have the option of using other OpenVPN clients if you prefer.
 
 Select the option that matches your machine's operating system. Follow the instructions to install OpenVPN on your machine and use the OpenVPN certificate (linked from the same email) to establish the connection.
@@ -68,7 +68,7 @@ The Project Kit summarizes all of the relevant connection information you will n
 The table contains two relevant rows: the first row **"PowerVC GUI"** contains information on how to connect to the PowerVC infrastructure; the second row **"Ansible ssh console"** details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the *userID* and *password* values (they are identical across both environments).
 
 Let's try connecting remotely over SSH to the Ansible environment. Make sure that your OpenVPN connection is active, otherwise the connection attempt will timeout. To connect via SSH, it is recommended that you use Terminal (MacOS) or <a href="https://www.putty.org" target="_blank">PuTTY</a> (Windows).
-!!! note
+!!! note "SSH and PuTTY for Windows users"
     For detailed instructions on how to connect with PuTTY on Windows, <a href="https://ibm.box.com/s/d71tn63hutdxrjwh21qdzralrsxlcspe" target="_blank">reference the linked material.</a>
 
 Connect via SSH using the following command:
