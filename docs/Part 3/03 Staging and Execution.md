@@ -16,6 +16,7 @@ Once the temporary directory has been created, the Installation Manager source f
 
 !!! tip "main.yml"
     **Technical Sellers**: As you are defining the file from scratch, your YML file will mirror the template provided below.
+
     **Sellers**: Since you are working from a Git-cloned repository, there will be additional tasks and lines of code beyond what is shown below — ignore those for now.
 
 {% raw %}
