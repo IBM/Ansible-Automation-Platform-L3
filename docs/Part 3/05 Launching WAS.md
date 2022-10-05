@@ -64,7 +64,7 @@ The finalized Playbook should exactly mirror the following template:
 ```
 {% endraw %}
 
-When satisfied, press ESC and :x to save and exit the YAML file.
+When satisfied, press *ESC* and *:x* and *Return* to save and exit the YAML file.
 
 Finally, execute the completed Playbook.
 !!! note "Sellers and Technical Sellers"
