@@ -12,7 +12,7 @@ The quiz consists of multiple choice questions, with four possible responses (an
 The WAS environment and dashboard will be available to you after you have successfully concluded the lab work — remaining online until your ITZ reservation has expired.
 
 !!! note "Expiring environments"
-    Note that the ITZ environment can only be reserved for 4 hours at a time. After this period, the instance will automatically be retired and deprovisioned. It is strongly recommended that you complete your investigations for the quiz questions (below) _before_ that time has expired. If not, you will need to run through the lab work another time to bring the WAS environment back online.
+    Note that the ITZ environment can only be reserved for 4 hours at a time. After this period, the instance will automatically be retired and decommissioned. It is strongly recommended that you complete your investigations for the quiz questions (below) _before_ that time has expired. If not, you will need to run through the lab work another time to bring the WAS environment back online.
 
     Record your answers *now* so that you can quickly answer the accreditation quiz questions *later*.
 
