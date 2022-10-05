@@ -64,3 +64,4 @@ markdown_extensions:
   - pymdownx.keys
   - attr_list
   - md_in_html
+  - def_list
