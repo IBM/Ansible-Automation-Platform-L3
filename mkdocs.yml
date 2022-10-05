@@ -21,6 +21,7 @@ nav:
   - Part 3 - Deploy a WebSphere Application Server using Ansible Automation Platform:
     - 'Laying the Groundwork': 'Part 3/01 Laying the Groundwork.md'
     - 'Creating Roles for WAS': 'Part 3/02 Creating Roles for WAS.md'
+    - 'Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer': 'Part 3/3 Staging and Execution.md'
 
 theme:
   name: material

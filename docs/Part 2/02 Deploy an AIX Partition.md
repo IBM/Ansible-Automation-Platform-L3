@@ -109,10 +109,10 @@ The code template is available below for ease of copying and modifying your own 
 
 
 !!! warning "Line 11"
-    For the 'name' field (line 11) you must include both *vm* + *idXXXXXXXXX* ( do not forget to prefix with *vm*) in your manifest. The 'name' variable will appear as BLANK when working from the Git repository clone — both sellers and technical sellers must complete this variable definition regardless of whether they are working from the Git repository clone or not.
+    For the '*name*' field (line 11) you must include both *vm* + *idXXXXXXXXX* ( do not forget to prefix with *vm*) in your manifest. The '*name*' variable will appear as BLANK when working from the Git repository clone — both sellers and technical sellers **must complete** this variable definition regardless of whether they are working from the Git repository clone or not.
 
 !!! note "Line 16"
-    The 'net-name' field (line 16) must be set equal to **VLAN344**, if it hasn't already been by default.
+    The '*net-name*' field (line 16) must be set equal to **VLAN344**, if it hasn't already been by default.
 
 Save and exit the *mkvm.yaml* Playbook once satisfied. Let's take a moment, before moving on, to parse out what some of these fields and modifications have done.
 
