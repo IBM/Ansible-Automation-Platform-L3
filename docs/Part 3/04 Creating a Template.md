@@ -70,6 +70,7 @@ vi roles/was/tasks/main.yml
 
 !!! warning "main.yml"
     **Technical Sellers**: Extend the Playbook to resemble the following template.
+
     **Sellers**: Leave the completed Playbook unmodified.
 
 {% raw %}

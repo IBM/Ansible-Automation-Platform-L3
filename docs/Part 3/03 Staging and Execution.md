@@ -38,7 +38,7 @@ Once the temporary directory has been created, the Installation Manager source f
 ```
 {% endraw %}
 
-!!! warning "Notice to Technical Sellers"
+!!! warning "Technical Sellers"
     If you wish, you can test the Roles defined so far by executing the Playbook. You can repeat this step following every modification to the *main.yml* manifest. Ansible will take note of the additions made to the job sequence, repeating steps if necessary but avoiding redundant work (if a job has previously been executed). By the conclusion of this lab, all of the jobs necessary to fully install and deploy WebSphere Application Server will be in place and have been executed. If you are a SELLER (or are working with the Git-cloned template), execution of the Playbook will result in the full end-to-end deployment of WAS.
     The Playbook can be executed at any time using the following instruction:
     ```
