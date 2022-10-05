@@ -1,5 +1,5 @@
 ![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
-!!! tip "Ways to watch"
+!!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
 Further modifications to the primary Playbook are required to complete the installation of WAS, generate the necessary profiles, and fully launch the software.
@@ -67,7 +67,7 @@ The finalized Playbook should exactly mirror the following template:
 When satisfied, press *ESC* and *:x* and *Return* to save and exit the YAML file.
 
 Finally, execute the completed Playbook.
-!!! note "Sellers and Technical Sellers"
+!!! note "SELLERS AND TECHNICAL SELLERS"
     This step must be performed by *both* **Sellers** and **Technical Sellers**.
 ```
 ansible-playbook was.yml -v
@@ -85,7 +85,7 @@ http://10.3.XX.XX:9060/ibm/console
 ```
 {% endraw %}
 
-!!! tip "Host Address"
+!!! tip "HOST ADDRESS"
     Substitute the missing variables with the IP address of your AIX LPAR (this is the address summarized just below the PLAY RECAP in the screenshot above) — remember to use the address unique to *your* environment. Ensure that you are connected to OpenVPN tunnel used earlier before attempting to access the WAS service.
 
 ![](_attachments/part3_figure8.png)
@@ -95,8 +95,8 @@ You may input any *userID* that you wish and then click *Log In* (remember that 
 #
 # **Congratulations** — you have successfully installed and deployed a WebSphere Application Server environment on PowerVC entirely using Red Hat Ansible Automation Platform!
 
-!!! note "Business Partners"
+!!! note "BUSINESS PARTNERS"
     Keep your browser window open to the WAS dashboard. The following series of questions will be repeated on your **L3 accreditation quiz**. Use this time to investigate the various areas of the WAS dashboard so that you can prepare for the quiz and quickly certify your completion of this hands-on material.
 
-!!! warning "IBM Sellers and Technical Sellers"
+!!! warning "IBM SELLERS AND TECHNICAL SELLERS"
     Begin planning how you wish to present and record your **Stand & Deliver**. Replicate the steps and lessons learned throughout this hands-on material and ensure that your recording meets all of the evaluation criteria outlined in the Stand & Deliver requirements.

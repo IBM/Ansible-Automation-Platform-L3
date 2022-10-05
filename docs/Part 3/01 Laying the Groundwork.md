@@ -1,5 +1,5 @@
 ![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
-!!! tip "Ways to watch"
+!!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
 The preparations are complete and the groundwork has been set for a fully-automated installation and deployment of **WebSphere Application Server (WAS)** via AAP. At this stage, you have already used Ansible to deploy a virtual machine with an AIX partition atop of PowerVC infrastructure. Additional configurations will need to be made to that partition to prepare it for hosting a WAS deployment within it. These types of configuration changes are precisely the type of operational work that can be easily automated by Ansible, and a prime example of how businesses today are offloading administrative burdens through automation.
@@ -83,7 +83,7 @@ The directory structure you are to define in the steps ahead will look similar t
 ![](_attachments/part3_figure1.png)
 
 Execute the following instructions via your SSH console, either one at a time or all as a single statement, to create the directory structure needed for the Roles.
-!!! warning "Navigate to the correct directory first"
+!!! warning "NAVIGATE TO THE CORRECT DIRECTORY FIRST"
     Make sure you are sitting in the */ansiblewas* directory before creating the following subdirectories!
 
 ```

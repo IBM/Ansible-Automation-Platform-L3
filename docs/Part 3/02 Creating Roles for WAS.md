@@ -1,5 +1,5 @@
 ![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
-!!! tip "Ways to watch"
+!!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
 As with the **aix** Roles previously, you will need to craft a workflow of automation tasks that WebSphere Application Server (WAS) will require for a full deployment, covering a variety of tasks: uploading and decompressing the WAS binaries, preparing the Installation Manager, the generation of WAS binaries, the installation of WAS itself, the creation of a WAS profile, and starting up the WAS services. All of these tasks will be defined once, and made repeatable and fully automated for the future, using the was Role that you will now define.
@@ -21,7 +21,7 @@ vi was.yml
 
 Recall that Git-cloned template had a commented-out line towards the end of the YAML definition: this line **"- role: was"** will link the new was Role (which you will define momentarily) to the litany of operations that the Ansible Playbook will perform and interact with.
 
-!!! note "If working from a cloned Git repository..."
+!!! note "IF WORKING FROM A CLONED GIT REPOSITORY"
     If you cloned the Git template previously, un-comment the line by deleting the # symbol. Otherwise, if you crafted the YAML file from scratch, add the instruction to the end of your Playbook.
 
 The final version of the Playbook should mirror the following template:

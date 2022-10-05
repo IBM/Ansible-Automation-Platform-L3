@@ -1,5 +1,5 @@
 ![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
-!!! tip "Ways to watch"
+!!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
 **WebSphere Installation Manager** requires an XML file (known as a **response file**) to detail where the installation should take place, the version of WAS to be installed, the versions of Java and other dependencies, and so on. The file must be located inside of the *roles/was/templates* directory and titled **was90501.sdk8035.xml** for the purposes of this lab.
@@ -117,7 +117,7 @@ Press *ESC* and then *:x* and *Return* to save and exit the Playbook.
 
 Using **loops** saves administrators from having to write multiple tasks (repetitively and redundantly) to make use of the same module(s). For example, instead of writing five tasks to ensure five users exist, you can write one task that iterates over a list of five users to ensure they all exist. Ansible supports iterating a task over a set of items using the loop keyword. You can configure loops to repeat a task using each item in a list, the contents of each of the files in a list, a generated sequence of numbers, or using more complicated structures.
 
-!!! warning "Technical Sellers"
+!!! warning "TECHNICAL SELLERS"
     As before, you can execute the Playbook at this stage to carry out the new modifications that have been added since the last execution.
     ```
     ansible-playbook was.yml -v

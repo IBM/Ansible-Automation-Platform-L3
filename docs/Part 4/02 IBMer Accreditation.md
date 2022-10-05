@@ -1,8 +1,8 @@
 ![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
-!!! tip "Ways to watch"
+!!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
-!!! warning
+!!! warning "ACCREDITATION"
     To receive Level 3 accreditation, IBMers and Business Partners must demonstrate mastery of the skills learned throughout the various modules of these hands-on labs and coursework. Level 3 accreditation requirements— and the way participants will be evaluated before receiving accreditation —differs depending on job role.
 
 #
@@ -25,5 +25,5 @@ The evaluation criteria that your FLM will weigh your performance against are as
 
 6. Seller closed the demo with a **call to action** for the client that could include: a workshop, a deeper dive into theproduct meeting, MVP engagements, and so on.
 
-!!! note "Keys to success"
+!!! note "KEYS TO SUCCESS"
     Be sure to incorporate each of these themes and topics into your Stand & Deliver recording, touching on each of them as you run through an end-to-end delivery of the full lab. Good luck!
