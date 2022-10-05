@@ -12,19 +12,19 @@
         <meta name="author" content="Christopher Bienko (cdbienko@us.ibm.com)">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
     
     
       
-        <title>Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales</title>
+        <title>Installation of WAS, Creation of a Profile, and Launching the Software - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.69437709.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
@@ -40,7 +40,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales" class="md-header__button md-logo" aria-label="Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales" data-md-component="logo">
+    <a href="../.." title="Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales" class="md-header__button md-logo" aria-label="Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Installation of WAS, Creation of a Profile, and Launching the Software
             
           </span>
         </div>
@@ -190,7 +190,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales" class="md-nav__button md-logo" aria-label="Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales" data-md-component="logo">
+    <a href="../.." title="Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales" class="md-nav__button md-logo" aria-label="Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -207,21 +207,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         Introduction
       </a>
-      
     </li>
   
 
@@ -260,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Part%201/01%20Getting%20Started/" class="md-nav__link">
+      <a href="../../Part%201/01%20Getting%20Started/" class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -308,7 +298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Part%202/01%20Deploy%20a%20VM/" class="md-nav__link">
+      <a href="../../Part%202/01%20Deploy%20a%20VM/" class="md-nav__link">
         Deploy a Virtual Machine
       </a>
     </li>
@@ -322,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Part%202/02%20Deploy%20an%20AIX%20Partition/" class="md-nav__link">
+      <a href="../../Part%202/02%20Deploy%20an%20AIX%20Partition/" class="md-nav__link">
         Deploy an AIX Partition using PowerVC
       </a>
     </li>
@@ -342,12 +332,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -370,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Part%203/01%20Laying%20the%20Groundwork/" class="md-nav__link">
+      <a href="../01%20Laying%20the%20Groundwork/" class="md-nav__link">
         Laying the Groundwork
       </a>
     </li>
@@ -384,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Part%203/02%20Creating%20Roles%20for%20WAS/" class="md-nav__link">
+      <a href="../02%20Creating%20Roles%20for%20WAS/" class="md-nav__link">
         Creating Roles for WAS
       </a>
     </li>
@@ -398,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Part%203/03%20Staging%20and%20Execution/" class="md-nav__link">
+      <a href="../03%20Staging%20and%20Execution/" class="md-nav__link">
         Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer
       </a>
     </li>
@@ -412,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Part%203/04%20Creating%20a%20Template/" class="md-nav__link">
+      <a href="../04%20Creating%20a%20Template/" class="md-nav__link">
         Creation of a Template
       </a>
     </li>
@@ -424,11 +416,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="Part%203/05%20Launching%20WAS/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Installation of WAS, Creation of a Profile, and Launching the Software
       </a>
+      
     </li>
   
 
@@ -474,40 +476,93 @@
 
 <p><img alt="type:video" src="./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4" /></p>
 <div class="admonition tip">
-<p class="admonition-title">Acknowledgements</p>
-<p>Special thanks to <strong>Stephan Navarro</strong> for authoring the original version of this hands-on lab, "Deploying WebSphere Application Server on AIX using Ansible Automation" for IBM Client Engineering for Systems (Montpellier). In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
+<p class="admonition-title">Ways to watch</p>
+<p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
 </div>
-<p>Automation of nearly any infrastructure endpoint with minimal amounts of code has immense practical value to a world increasingly dependent on clouds operated by different vendors, in varying countries, across multiple premises. Furthermore, these automation capabilities translate to a number of benefits for you and your business: reduced storage and resource burden placed on the machines to be automated; a much smaller footprint on these endpoints that could be hacked or exploited by malicious users; and most importantly, a greatly simplified approach to automation.</p>
-<p>Likewise, as environments change and operating systems advance over time, the automation jobs underway can be easily modified in lockstep as well. Adaptability and extensibility are key ingredients in the longevity of any technology — and fortunately the automation tooling for the hybrid multicloud era has those in abundance.</p>
-<h1 id="_1"></h1>
-<h1 id="red-hat-ansible-automation-platform-aap-commodifies-the-automation-of-everything-else-that-applications-services-and-containers-need-to-run-upon"><strong>Red Hat Ansible Automation Platform (AAP)</strong> commodifies the automation of everything else that applications, services, and containers need to run upon.</h1>
-<p>That may include infrastructure provisioning, server deployments, IoT edge devices, script execution, and lots of other things that operations teams spend their time doing to “keep the lights on.” It makes automation available to everyone with the lightest touch of human-readable snippets of code. More importantly to us, it makes automation of nearly everything needed to deliver the capabilities of the cloud possible, regardless of the destination.</p>
-<p>Who uses AAP today? Many different and potentially siloed personas:</p>
-<ol>
-<li>
-<p><strong>IT Operators</strong>: These include automation administrators responsible for ensuring that  the automation platform is available to developers and implementors upstream within the organization. These individuals are generally concerned with the uptime of the automation platform, as any interruptions to service availability can directly impact upstream users.</p>
-</li>
-<li>
-<p><strong>Platform Developers</strong>: These individuals are the automation "plumbers" who ensure that endpoints are viable for automation. Tasks and responsibilities include maintaining the AAP modules, plugins, and the Roles (content) to be used by platform users. They are the domain experts that are coding up collections which can later be extended or consumed by the end-users of the automation jobs.</p>
-</li>
-<li>
-<p><strong>Platform Users</strong>: These are the automation "writers," stitching together each automation task— Play by Play, task by task —using content generated by the Platform Developers within their Playbooks.</p>
-</li>
-</ol>
-<p>Essentially, this is configuration management applied to the management of IT estates. Instead of having a hardcoded script that instructs exactly how to move from task A to task B, you’re creating a Playbook that lays out the expected end state and asks Ansible to figure out the delta between the current and end state. But critically, Ansible will not move on to task B until all of the conditions required by task A have been satisfied. This is not only invaluable for debugging purposes; it also guarantees a consistency and predictability in how Ansible's automation tasks will be performed — something that you will come to keenly appreciate throughout the course of this hands-on material, as we incrementally add more tasks and automation jobs to Ansible Playbooks for execution.</p>
-<p>Together, these qualities have two profound implications for Ansible clients. First, it removes any ambiguity from the automation process (Ansible will execute your instructions in exactly the order you’ve assigned). Second, it places the burden of deciding how to achieve the end states of tasks A and B on the automation engine itself, rather than requiring the user to explicitly define all the gory details themselves.</p>
-<h1 id="_2"></h1>
-<h1 id="when-automation-is-made-available-to-everyone-it-becomes-possible-to-automate-everything">When automation is made available to everyone, it becomes possible to automate everything.</h1>
-<p>The series of hands-on tutorials and learning modules embedded in this Level 3 course are designed to provide IBM Sellers, IBM Technical Sellers, and Business Partners with the fluency to gain trusted advisor status with clients and the expertise to tailor live technological demonstrations for customers.</p>
-<p>Throughout <strong>Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales</strong>, you will utilize AAP in conjunction with IBM Power Systems infrastructure (PowerVC) to generate an IBM AIX-based virtual machine; subsequently, Ansible automation will be used to install and deploy a live WebSphere Application Server instance inside of the virtual machine. The various ways in which Ansible's automation can also be applied to operational and administrative tasks— such as modifying root user characteristics, setting filesystem sizes, installing pre-requisites drivers and libraries, as well as software deployments —will also be explored.</p>
-<p>All modules are accompanied by recordings and narrated instructions, delivered by your team of authors. Be sure to watch these for a visual demonstration of how to perform the hands-on lab components. In particular, it is <strong>strongly recommended</strong> that IBM Sellers and Technical Sellers watch these recordings — they will be useful for you as you go about creating and recording your own Stand &amp; Deliver presentations for Level 3 accreditation.</p>
+<p>Further modifications to the primary Playbook are required to complete the installation of WAS, generate the necessary profiles, and fully launch the software.</p>
+<p>Once again, edit the Playbook YAML manifest.</p>
+<div class="admonition warning">
+<p class="admonition-title">main.yml</p>
+<p><strong>Technical Sellers</strong>: Extend the YAML file as you have done previously so that the final version matches the template documented below.</p>
+<p><strong>Sellers</strong>: As you are working from a completed YAML file that was cloned from the Git repository, you do not need to make any modifications to the file.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi roles/was/defaults/main.yml
+</code></pre></div>
+<p>The finalized Playbook should exactly mirror the following template:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>---
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>- name: Creating staging directory
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  file:
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    path: /tmp/im
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    state: directory
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>- name: copying IM source files
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  unarchive:
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    src: /files/aix/websphere/InstallationManager/1.8.9.4/aix.gtk.ppc_1.8.9004.20190423_2015.zip
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    dest: /tmp/im
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    creates: /tmp/im/userinstc.ini
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>- name: installing installation manager
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  shell: /tmp/im/installc -log /tmp/im.lof -acceptLicense
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>- name: uploading was installation response file
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>  template:
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    src: templates/was90501.sdk8035.xml
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    dest: /tmp/was90501.sdk8035.xml
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>- name: Creating wasrepo directory
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>  file:
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    path: &quot;{{was_repo}}&quot;
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    state: directory
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>- name: copying binaries to wasrepo
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>  copy:
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    src: &quot;{{item}}&quot;
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    dest: &quot;{{was_repo}}&quot;
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>  loop:
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    - &quot;{{was_90501_source_dir}}{{was_90501_file}}&quot;
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    - &quot;{{sdk_8035_source_dir}}{{sdk_8035_file}}&quot;
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>- name: installing was using Installation manager
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>  shell: /opt/IBM/InstallationManager/eclipse/tools/imcl input /tmp/was90501.sdk8035.xml -acceptlicense
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>  tags: template
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>- name: creating was profile
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>  shell: /usr/IBM/WebSphere/AppServer/bin/manageprofiles.sh -create -templatePath /usr/IBM/WebSphere/AppServer/profileTemplates/default
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>  tags: template
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>- name: starting application server
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>  shell: /usr/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>  tags: template
+</code></pre></div>
+<p>When satisfied, press ESC and :x to save and exit the YAML file.</p>
+<p>Finally, execute the completed Playbook.</p>
 <div class="admonition note">
-<p class="admonition-title">Level 3 Accreditation</p>
-<p>To receive Level 3 accreditation, IBMers and Business Partners must demonstrate mastery of the skills learned throughout the various modules of these hands-on labs and coursework. Level 3 accreditation requirements— and the way participants will be evaluated before receiving accreditation —differs depending on job role.</p>
+<p class="admonition-title">Sellers and Technical Sellers</p>
+<p>This step must be performed by <em>both</em> <strong>Sellers</strong> and <strong>Technical Sellers</strong>.</p>
 </div>
-<p><strong>Business Partners</strong> must pass an accreditation quiz after completing the hands-on portion of the course. The quiz consists of multiple choice questions, with four possible responses (and only one correct answer) for each question.</p>
-<p><strong>IBM Sales and Technical Sales</strong> must develop and record a Stand &amp; Deliver presentation. This video is intended to simulate your delivery of a “live” demo in front of a client — on camera. IBMers will have flexibility in defining a hypothetical client, the pain points that customer has, and the goals they aspire to achieve. The recording will then cover the seller’s hands-on demonstration and pitch to the client of the value of the IBM solution using the environments and techniques of this lab.</p>
-<p>Specific criteria that must be demonstrated as part of the Stand &amp; Deliver recordings is provided within the documentation that accompanies the Level 3 course.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ansible-playbook was.yml -v
+</code></pre></div>
+<p>Wait until the Playbook has finished executing and the "<em>PLAY RECAP</em>" has been printed to screen within the Terminal console. Successful execution of the full Playbook may take several minutes to complete. If all jobs have successfully been executed (with status as "<em>OK</em>"), then WebSphere Application Server should now be successfully installed on the AIX LPAR and the services now live for you to interact with!</p>
+<p><img alt="" src="../_attachments/part3_figure7.png" /></p>
+<p>Test that WebSphere Application Server is now online by visiting the following address with your Web browser:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>http://10.3.XX.XX:9060/ibm/console
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Host Address</p>
+<p>Substitute the missing variables with the IP address of your AIX LPAR (this is the address summarized just below the PLAY RECAP in the screenshot above) — remember to use the address unique to <em>your</em> environment. Ensure that you are connected to OpenVPN tunnel used earlier before attempting to access the WAS service.</p>
+</div>
+<p><img alt="" src="../_attachments/part3_figure8.png" /></p>
+<p>You may input any <em>userID</em> that you wish and then click <em>Log In</em> (remember that we disabled authentication in an earlier step) to access the WAS dashboard.</p>
+<h1 id="_1"></h1>
+<h1 id="congratulations-you-have-successfully-installed-and-deployed-a-websphere-application-server-environment-on-powervc-entirely-using-red-hat-ansible-automation-platform"><strong>Congratulations</strong> — you have successfully installed and deployed a WebSphere Application Server environment on PowerVC entirely using Red Hat Ansible Automation Platform!</h1>
+<div class="admonition note">
+<p class="admonition-title">Business Partners</p>
+<p>Keep your browser window open to the WAS dashboard. The following series of questions will be repeated on your <strong>L3 accreditation quiz</strong>. Use this time to investigate the various areas of the WAS dashboard so that you can prepare for the quiz and quickly certify your completion of this hands-on material.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">IBM Sellers and Technical Sellers</p>
+<p>Begin planning how you wish to present and record your <strong>Stand &amp; Deliver</strong>. Replicate the steps and lessons learned throughout this hands-on material and ensure that your recording meets all of the evaluation criteria outlined in the Stand &amp; Deliver requirements.</p>
+</div>
 
 
 
@@ -525,21 +580,21 @@
     
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
-      
         
-        <a href="Part%201/01%20Getting%20Started/" class="md-footer__link md-footer__link--next" aria-label="Next: Getting Started" rel="next">
+        <a href="../04%20Creating%20a%20Template/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Creation of a Template" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
-                Next
+                Previous
               </span>
-              Getting Started
+              Creation of a Template
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   
@@ -568,10 +623,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking", "content.code.annotate"], "search": "assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
     
   </body>
