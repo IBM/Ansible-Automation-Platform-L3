@@ -17,7 +17,7 @@
     
     
       
-        <title>Deploy a Virtual Machine - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales</title>
+        <title>02 IBMer Accreditation - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales</title>
       
     
     
@@ -67,11 +67,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#_1" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deploy a Virtual Machine
+              02 IBMer Accreditation
             
           </span>
         </div>
@@ -270,14 +265,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -298,21 +291,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Part%202/01%20Deploy%20a%20VM/" class="md-nav__link">
         Deploy a Virtual Machine
       </a>
-      
     </li>
   
 
@@ -324,7 +307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02%20Deploy%20an%20AIX%20Partition/" class="md-nav__link">
+      <a href="../../Part%202/02%20Deploy%20an%20AIX%20Partition/" class="md-nav__link">
         Deploy an AIX Partition using PowerVC
       </a>
     </li>
@@ -476,7 +459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Part%204/01%20Business%20Partner%20Accreditation/" class="md-nav__link">
+      <a href="../01%20Business%20Partner%20Accreditation/" class="md-nav__link">
         Business Partner Accreditation
       </a>
     </li>
@@ -507,8 +490,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -522,76 +503,9 @@
                 
 
 
-<p><img alt="type:video" src="./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4" /></p>
-<div class="admonition tip">
-<p class="admonition-title">Ways to watch</p>
-<p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
-</div>
-<p>Ansible, and in particular <strong>YAML</strong> (Yet Another Markup Language), is very particular about indentation and formatting — something as trivial as an extra whitespace or an incorrectly-indented line of code can cause the interpreter to parse the instructions differently, resulting in outcomes you may not desire.</p>
-<p>To streamline the lab as much as possible, a Git repository was created ahead of time with large portions of the Ansible scripts and constructs prepared ahead of time. You will still need to edit elements in each of these files, and the instructions to follow will guide you step by step (as though you were creating these documents from scratch yourself), but it's worth noting that by cloning the Git repository you will be saving yourself a lot of extra typing (and potential debugging). Everything is documented for you— so you can go about creating all of these documents and scripts from scratch, if you wish.</p>
-<h1 id="_1"></h1>
-<h1 id="if-you-are-a-seller-it-is-strongly-recommend-that-you-clone-the-git-repository-as-it-will-save-you-time-and-keystrokes">If you are a <strong>SELLER</strong>, it is strongly recommend that you clone the Git repository, as it will save you time and keystrokes.</h1>
-<h1 id="if-you-are-a-technical-seller-it-is-recommended-that-you-take-the-time-to-craft-these-files-from-scratch-yourself-and-that-you-do-not-clone-the-git-repository">If you are a <strong>TECHNICAL SELLER</strong>, it is recommended that you take the time to craft these files from scratch yourself and that you <em>do not</em> clone the Git repository.</h1>
-<div class="admonition tip">
-<p class="admonition-title">SELLERS</p>
-<p>Submit the following instruction to clone the prepared Git repository into your Ansible controller node:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone --branch hybridcloudevent https://github.com/stephannavarro/ansiblewas.git
-</code></pre></div></p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">TECHNICAL SELLERS</p>
-<p>You will need to manually create the <em>ansiblewas</em> directory yourself before continuing. This step was automatically performed for Sellers when they cloned the Git repository. You can do so by issuing the following instruction:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir ansiblewas
-</code></pre></div></p>
-</div>
-<p>Continue through the remainder of the instructions regardless of your job role.</p>
-<p>After the clone action has been completed, navigate to the newly-created <em>ansiblewas</em> directory.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cd ansiblewas
-</code></pre></div></p>
-<p>The next order of business is configuring the Ansible controller node (to which you are currently connected) with details about our PowerVC environment and how our project directories are organized. This can be done by modifying the <strong>ansible.cfg</strong> configuration file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vi ansible.cfg
-</code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">VI cheat sheet</p>
-<p>Throughout this lab, you will make extensive use of the VI text editor. If you're not familiar with this editor, you can quickly get up to speed using the following cheat sheet: <a href="https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf" target="_blank">https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf</a> for reference.</p>
-</div>
-<p>As a quick primer on how to use the <strong>VI</strong> editor:</p>
-<ul>
-<li>
-<p>Navigate using the up/down and left/right arrows keys. Hover the blinking indicator over the point in the text you wish to modify.</p>
-</li>
-<li>
-<p>To start adding or deleting text, first press the I (as in "indigo") key. Then either start adding text as normal (you can also paste lines of code that you have copied to your clipboard using CTRL+V) or deleting text using backspace.</p>
-</li>
-<li>
-<p>Save your changes and exit a file by first pressing the ESC key, then typing :x (the full colon must come first) and hitting return. If you want to exit a file without saving changes, press ESC and type :quit! (with the exclamation point included at the end).</p>
-</li>
-<li>
-<p>Other shortcuts and commands are detailed in the cheat sheet linked above.</p>
-</li>
-</ul>
-<p>Within the configuration file, you will see three values of note: <em>inventory</em>, <em>remote_tmp</em>, and <em>host_key_checking</em>. Their respective purposes are as follows:</p>
-<ul>
-<li>
-<p><strong>inventory</strong> will instruct Ansible on which directory the host file should be defined (we will be modifying this file shortly).</p>
-</li>
-<li>
-<p><strong>remote_tmp</strong> instructs which directory to use on the remote system (needed by the AIX operating system).</p>
-</li>
-<li>
-<p><strong>host_key_checking</strong> tells SSH to accept remote keys (which will streamline the lab for us later).</p>
-</li>
-</ul>
-<p>The <em>ansible.cfg</em> definition is provided below for those who are crafting these files from scratch (instead of using the cloned Git repository). You <strong>do not</strong> need to make any modification to the <em>ansible.cfg</em> file. Use the <em>ESC + :quit!</em> command in the VI editor to exit the file without making changes.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[defaults]
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>inventory       = ./hosts
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>remote_tmp = /tmp
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>host_key_checking = False
-</code></pre></div>
-<p>We are now ready to install the Ansible OpenStack Python modules on to the Ansible controller node. The <strong>openstacksdk</strong> library is required in order for Ansible to be able to interact with the PowerVC infrastructure provisioned via the ITZ. The following command will take care of installing all of the necessary drivers and dependencies:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip3 install --user &quot;openstacksdk==0.51.0&quot; &quot;python-openstackclient==5.4.0&quot; dnspython dig
-</code></pre></div></p>
-<p>With the dependencies taken care of, we're now ready to begin deployment of an AIX operating system partition atop of the PowerVC infrastructure provisioned earlier.</p>
+  <h1>02 IBMer Accreditation</h1>
+
+
 
 
 
@@ -605,42 +519,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../../Part%201/01%20Getting%20Started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Getting Started
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../02%20Deploy%20an%20AIX%20Partition/" class="md-footer__link md-footer__link--next" aria-label="Next: Deploy an AIX Partition using PowerVC" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Deploy an AIX Partition using PowerVC
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
