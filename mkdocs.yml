@@ -26,6 +26,8 @@ nav:
     - 'Installation of WAS, Creation of a Profile, and Launching the Software': 'Part 3/05 Launching WAS.md'
   - Part 4 - Level 3 Accreditation:
     - 'Business Partner Accreditation': 'Part 4/01 Business Partner Accreditation.md'
+    - 'IBM Seller and Technical Seller Accreditation': 'Part 4/02 IBMer Accreditation.md'
+
 
 theme:
   name: material
