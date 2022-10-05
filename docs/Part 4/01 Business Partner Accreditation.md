@@ -9,15 +9,15 @@
 # Business Partners must pass an **accreditation quiz** after completing the hands-on work.
 The quiz consists of multiple choice questions, with four possible responses (and only one correct answer) for each question.The quiz questions are based on elements of the WebSphere Application Server (WAS) web dashboard, which you will be asked to investigate and record specific details about.
 
-!!! tip "HINT!"
-    The screenshots below have been modified to obscure the relevant fields, but the orange boxes give you a good idea for where to find the answers on the WAS dashboard.
-
 The WAS environment and dashboard will be available to you after you have successfully concluded the lab work — remaining online until your ITZ reservation has expired.
 
 !!! note "Expiring environments"
     Note that the ITZ environment can only be reserved for 4 hours at a time. After this period, the instance will automatically be retired and deprovisioned. It is strongly recommended that you complete your investigations for the quiz questions (below) _before_ that time has expired. If not, you will need to run through the lab work another time to bring the WAS environment back online.
 
     Record your answers *now* so that you can quickly answer the accreditation quiz questions *later*.
+
+!!! tip "HINT!"
+    The screenshots below have been modified to obscure the relevant fields, but the orange boxes give you a good idea for where to find the answers on the WAS dashboard.
 
 1. On the Welcome screen presented after logging into the WebSphere Application Server dashboard, a Suite Name and Version of the environment are presented center-screen. What is the version number of the environment that Ansible deployed?
 
