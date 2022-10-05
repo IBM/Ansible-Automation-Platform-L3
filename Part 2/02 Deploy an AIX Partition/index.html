@@ -531,7 +531,7 @@
 
 <p><img alt="type:video" src="./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4" /></p>
 <div class="admonition tip">
-<p class="admonition-title">Ways to watch</p>
+<p class="admonition-title">WAYS TO WATCH</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
 </div>
 <p>The deployment of an AIX operating system partition on to the PowerVC infrastructure will be automated entirely via the Ansible control (master) node. Ansible will make use of the inventory we've defined, a Playbook that we will modify to paint the broad strokes for what automation is to be performed, and built-in Modules that are part of Ansible's engine to carry out those instructions. Ansible OpenStack Modules— downloaded in the previous step —will allow Ansible to create an LPAR (logical partition) on the PowerVC infrastructure where the AIX operating system can reside.</p>
@@ -542,7 +542,7 @@
 <p>Regardless of the route you take, you will need to modify the template to the specifications of your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the Project Kit page.</p>
 <p>The same holds true for other variables or fields that have been bolded below in the sample script: if it is highlighted in red text within the screenshot, you must modify the clouds.yaml script for those fields to your own specifications and then save the changes before moving on.</p>
 <div class="admonition note">
-<p class="admonition-title">Tips for the VI editor</p>
+<p class="admonition-title">VI EDITOR TIPS</p>
 <p>Remember: <strong>ESC</strong> and then <strong>:x</strong> followed by the <strong>Return</strong> key to save your work and exit the VI editor.</p>
 </div>
 <p>The <em>clouds.yaml</em> template should look like the following screenshot. Modify as necessary to match the specifications of your unique ITZ environment. Update the userID, password, project name (<em>ansiblewas</em>), and the host address (this address should match the PowerVC GUI address from the Project Kit).</p>
@@ -558,7 +558,7 @@
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    verify: false
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Be careful about indentation</p>
+<p class="admonition-title">BE CAREFUL WITH INDENTATION</p>
 <p>Ansible is very particular about indentation and nesting rules. In this example, every indentation level is denoted by two whitespaces. Also be sure to preserve the empty newline at the end of this example (the empty final line must be present within your YAML manifest.)</p>
 </div>
 <p>After modifying and saving the <em>clouds.yaml</em> manifest file, we need to define the Playbook which Ansible will execute against. Modify (or create) the Playbook for generating a virtual machine via the following:
@@ -592,7 +592,7 @@
 </li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Keys are automatically generated ahead of time</p>
+<p class="admonition-title">KEYS ARE AUTOMATICALLY GENERATED</p>
 <p>The <strong>ansible_key_idXXXXXXXX</strong> and the <strong>public_key_file</strong> were created automatically for you by the IBM Technology Zone as part of your environment reservation. You do not need to generate or locate these files yourself — simply modify the <em>idXXXXXXXX</em> value to match your <em>userID</em>.</p>
 </div>
 <p><img alt="" src="../_attachments/part2_figure2.png" /></p>
@@ -634,11 +634,11 @@
 <a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>      timeout: 900
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Line 11</p>
+<p class="admonition-title">LINE 11</p>
 <p>For the '<em>name</em>' field (line 11) you must include both <em>vm</em> + <em>idXXXXXXXXX</em> ( do not forget to prefix with <em>vm</em>) in your manifest. The '<em>name</em>' variable will appear as BLANK when working from the Git repository clone — both sellers and technical sellers <strong>must complete</strong> this variable definition regardless of whether they are working from the Git repository clone or not.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Line 16</p>
+<p class="admonition-title">LINE 16</p>
 <p>The '<em>net-name</em>' field (line 16) must be set equal to <strong>VLAN344</strong>, if it hasn't already been by default.</p>
 </div>
 <p>Save and exit the <em>mkvm.yaml</em> Playbook once satisfied. Let's take a moment, before moving on, to parse out what some of these fields and modifications have done.</p>
@@ -682,7 +682,7 @@
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>      remote_tmp: /tmp/
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">What is <em>was</em>?</p>
+<p class="admonition-title">WHAT IS <em>WAS</em>?</p>
 <p>The <em>was</em> variable is in reference to the Compute Template used by our PowerVC virtual machine deployment; it was defined ahead of time for the ITZ environment specifically to meet the resource requirements for WebSphere Application Server (<em>was</em>). You can drill down into the Compute Template tab from the PowerVC dashboard if you wish to inspect further details about it.</p>
 </div>
 <p>In the following section, we'll set the stage for a full deployment of WebSphere Application Server atop of the AIX VM that is now running on PowerVC infrastructure.</p>

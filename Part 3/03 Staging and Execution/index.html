@@ -531,7 +531,7 @@
 
 <p><img alt="type:video" src="./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4" /></p>
 <div class="admonition tip">
-<p class="admonition-title">Ways to watch</p>
+<p class="admonition-title">WAYS TO WATCH</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
 </div>
 <p>The first task that Ansible's automation will need to tackle is creation of a staging directory, where the <strong>WAS Installation Manager binaries</strong> can be downloaded and unpackaged. Begin by using the VI editor to create (or modify/examine) the <em>main.yml</em> Roles via the following command:</p>
@@ -539,7 +539,7 @@
 </code></pre></div>
 <p>The <em>/tmp/im</em> directory will be the path designated for this purpose.</p>
 <div class="admonition note">
-<p class="admonition-title">6 GB Scaling</p>
+<p class="admonition-title">6 GB SCALING</p>
 <p>In an earlier section of this lab, you'll recall that we increased the size of this directory to 6 GB in anticipation of the added capacity needs.</p>
 </div>
 <p>Once the temporary directory has been created, the Installation Manager source files will be replicated to that endpoint. The <strong>"creates:"</strong> statement instructs Ansible to ignore the file upload request if the data is already replicated (this will be useful on repeat executions of the Playbook, it Ansible will not attempt to duplicate the download on subsequent runs). The third job will execute the Installation Manager and accept the end-user license for use of the product.</p>
@@ -564,7 +564,7 @@
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  shell: /tmp/im/installc -log /tmp/im.lof -acceptLicense
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Technical Sellers</p>
+<p class="admonition-title">TECHNICAL SELLERS</p>
 <p>If you wish, you can test the Roles defined so far by executing the Playbook. You can repeat this step following every modification to the <em>main.yml</em> manifest. Ansible will take note of the additions made to the job sequence, repeating steps if necessary but avoiding redundant work (if a job has previously been executed). By the conclusion of this lab, all of the jobs necessary to fully install and deploy WebSphere Application Server will be in place and have been executed. If you are a SELLER (or are working with the Git-cloned template), execution of the Playbook will result in the full end-to-end deployment of WAS.
 The Playbook can be executed at any time using the following instruction:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ansible-playbook was.yml -v
