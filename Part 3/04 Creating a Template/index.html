@@ -17,7 +17,7 @@
     
     
       
-        <title>Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales</title>
+        <title>Creation of a Template - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales</title>
       
     
     
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer
+              Creation of a Template
             
           </span>
         </div>
@@ -383,6 +383,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../03%20Staging%20and%20Execution/" class="md-nav__link">
+        Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -393,23 +407,9 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer
-      </a>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04%20Creating%20a%20Template/" class="md-nav__link">
         Creation of a Template
       </a>
+      
     </li>
   
 
@@ -451,50 +451,103 @@
                 
 
 
-  <h1>Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer</h1>
+  <h1>Creation of a Template</h1>
 
 <p><img alt="type:video" src="./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Ways to watch</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.</p>
 </div>
-<p>The first task that Ansible's automation will need to tackle is creation of a staging directory, where the <strong>WAS Installation Manager binaries</strong> can be downloaded and unpackaged. Begin by using the VI editor to create (or modify/examine) the <em>main.yml</em> Roles via the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi roles/was/tasks/main.yml
+<p><strong>WebSphere Installation Manager</strong> requires an XML file (known as a <strong>response file</strong>) to detail where the installation should take place, the version of WAS to be installed, the versions of Java and other dependencies, and so on. The file must be located inside of the <em>roles/was/templates</em> directory and titled <strong>was90501.sdk8035.xml</strong> for the purposes of this lab.</p>
+<p>The directory structure will look like the following:</p>
+<p><img alt="" src="../_attachments/part3_figure5.png" /></p>
+<p>AAP has a number of modules that can be used to modify existing files. These include <strong>lineinfile</strong> and <strong>blockinfile</strong>, among others. However, they are not always easy to use effectively and correctly. A much more powerful way to manage files is to template them. With this method, you can write a template configuration file that is automatically customized for the managed host when the file is deployed, using Ansible <strong>variables</strong> and <strong>facts</strong>. This can be easier to control and is less error-prone.</p>
+<p>Ansible uses the <strong>Jinja2</strong> templating system for template files. Ansible also uses Jinja2 syntax to reference variables in Playbooks, and as such it will look structurally similar to what you have seen previously with YAML-based Playbooks. A Jinja2 template is composed of multiple elements: data, variables, and expressions. Those variables and expressions are replaced with their values when the Jinja2 template is rendered. You will see an example of this shortly after we execute the Playbook and compare how the variables defined within the XML file are changed.</p>
+<p>Edit (or create) the XML response file by executing this command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi roles/was/templates/was90501.sdk8035.xml
 </code></pre></div>
-<p>The <em>/tmp/im</em> directory will be the path designated for this purpose.</p>
-<div class="admonition note">
-<p class="admonition-title">6 GB Scaling</p>
-<p>In an earlier section of this lab, you'll recall that we increased the size of this directory to 6 GB in anticipation of the added capacity needs.</p>
-</div>
-<p>Once the temporary directory has been created, the Installation Manager source files will be replicated to that endpoint. The <strong>"creates:"</strong> statement instructs Ansible to ignore the file upload request if the data is already replicated (this will be useful on repeat executions of the Playbook, it Ansible will not attempt to duplicate the download on subsequent runs). The third job will execute the Installation Manager and accept the end-user license for use of the product.</p>
-<div class="admonition tip">
-<p class="admonition-title">main.yml</p>
-<p><strong>Technical Sellers</strong>: As you are defining the file from scratch, your YML file will mirror the template provided below.
-<strong>Sellers</strong>: Since you are working from a Git-cloned repository, there will be additional tasks and lines of code beyond what is shown below — ignore those for now.</p>
-</div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>---
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>- name: Creating staging directory
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  file:
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    path: /tmp/im
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    state: directory
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>- name: copying IM source files
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  unarchive:
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    src: /files/aix/websphere/InstallationManager/1.8.9.4/aix.gtk.ppc_1.8.9004.20190423_2015.zip
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    dest: /tmp/im
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    creates: /tmp/im/userinstc.ini
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>- name: installing installation manager
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  shell: /tmp/im/installc -log /tmp/im.lof -acceptLicense
+<p>The variables of note, specific to this environment, are highlighted in red text. You do not need to modify this template from how it is written — these variables are highlighted only to showcase what is different from the standard Installation Manager boilerplate. Your XML file must mirror the following template before continuing with the hands-on material.</p>
+<p><img alt="" src="../_attachments/part3_figure6.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt; &lt;agent-input&gt;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&lt;variables&gt;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>&lt;variable name=&#39;sharedLocation&#39; value=&#39;/usr/IBM/IMShared&#39;/&gt;
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  &lt;/variables&gt;
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  &lt;server&gt;
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>&lt;repository location=&#39;{{was_repo}}{{was_90501_file}}&#39;/&gt;
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>&lt;repository location=&#39;{{was_repo}}{{sdk_8035_file}}&#39;/&gt; &lt;/server&gt;
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>&lt;profile id=&#39;IBM WebSphere Application Server V9.0&#39;
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>installLocation=&#39;/usr/IBM/WebSphere/AppServer&#39;&gt; &lt;data key=&#39;cic.selector.arch&#39; value=&#39;ppc64&#39;/&gt; &lt;data key=&#39;cic.selector.ws&#39; value=&#39;gtk&#39;/&gt;
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  &lt;/profile&gt;
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  &lt;install&gt;
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>&lt;!-- IBM WebSphere Application Server 9.0.5.1 --&gt;
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>&lt;offering profile=&#39;IBM WebSphere Application Server V9.0&#39; id=&#39;com.ibm.websphere.BASE.v90&#39; version=&#39;9.0.5001.20190828_0616&#39; features=&#39;core.feature,ejbdeploy,thinclient,embeddablecontainer&#39;/&gt;
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>&lt;!-- IBM SDK, Java Technology Edition, Version 8 8.0.5.35 --&gt;
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>&lt;offering profile=&#39;IBM WebSphere Application Server V9.0&#39; id=&#39;com.ibm.java.jdk.v8&#39; version=&#39;8.0.5035.20190422_0948&#39; features=&#39;com.ibm.sdk.8&#39;/&gt;
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>&lt;/install&gt;
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>&lt;preference name=&#39;com.ibm.cic.common.core.preferences.eclipseCache&#39; value=&#39;${sharedLocation}&#39;/&gt;
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>&lt;/agent-input&gt;
 </code></pre></div>
+<p>When satisfied, press <em>ESC</em> followed by <em>:x</em> and <em>Return</em> to save and edit the file.</p>
+<p>Now you must set default variables for the WAS Roles, which will be used later when generating the response file for the Installation Manager. Edit (or create) the following YMAL template file:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vi roles/was/defaults/main.yml
+</code></pre></div></p>
+<p>The YAML file definition should mirror the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>was_repo: /tmp/wasrepo/
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>was_90501_file: was.repo.90501.base.zip
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sdk_8035_file: sdk.repo.8035.java8.aix.zip
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>was_90501_source_dir: /files/aix/websphere/was/was9051/
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sdk_8035_source_dir: /files/aix/websphere/sdk/sdk8035/
+</code></pre></div>
+<p>You are now ready to make additional modifications to the primary Playbook, instructing Ansible to generate and upload the template for WAS. Instruct the VI editor to open the Playbook with the same command used before:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vi roles/was/tasks/main.yml
+</code></pre></div></p>
 <div class="admonition warning">
-<p class="admonition-title">Notice to Technical Sellers</p>
-<p>If you wish, you can test the Roles defined so far by executing the Playbook. You can repeat this step following every modification to the <em>main.yml</em> manifest. Ansible will take note of the additions made to the job sequence, repeating steps if necessary but avoiding redundant work (if a job has previously been executed). By the conclusion of this lab, all of the jobs necessary to fully install and deploy WebSphere Application Server will be in place and have been executed. If you are a SELLER (or are working with the Git-cloned template), execution of the Playbook will result in the full end-to-end deployment of WAS.
-The Playbook can be executed at any time using the following instruction:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ansible-playbook was.yml -v
+<p class="admonition-title">main.yml</p>
+<p><strong>Technical Sellers</strong>: Extend the Playbook to resemble the following template.
+<strong>Sellers</strong>: Leave the completed Playbook unmodified.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>---
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>- name: Creating staging directory
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  file:
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    path: /tmp/im
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    state: directory
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>- name: copying IM source files
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  unarchive:
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    src: /files/aix/websphere/InstallationManager/1.8.9.4/aix.gtk.ppc_1.8.9004.20190423_2015.zip
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    dest: /tmp/im
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    creates: /tmp/im/userinstc.ini
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>- name: installing installation manager
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>  shell: /tmp/im/installc -log /tmp/im.lof -acceptLicense
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>- name: uploading was installation response file
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>  template:
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    src: templates/was90501.sdk8035.xml
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    dest: /tmp/was90501.sdk8035.xml
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>- name: Creating wasrepo directory
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>  file:
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    path: &quot;{{was_repo}}&quot;
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    state: directory
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>- name: copying binaries to wasrepo
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>  copy:
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>    src: &quot;{{item}}&quot;
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>    dest: &quot;{{was_repo}}&quot;
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>  loop:
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>    - &quot;{{was_90501_source_dir}}{{was_90501_file}}&quot;
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>    - &quot;{{sdk_8035_source_dir}}{{sdk_8035_file}}&quot;
+</code></pre></div>
+<p>The extensions to the Playbook will create a directory <strong>was_repo: /tmp/wasrepo/</strong> and then instruct Ansible to upload WAS binaries to the target system.</p>
+<p>Press <em>ESC</em> and then <em>:x</em> and <em>Return</em> to save and exit the Playbook.</p>
+<p>Using <strong>loops</strong> saves administrators from having to write multiple tasks (repetitively and redundantly) to make use of the same module(s). For example, instead of writing five tasks to ensure five users exist, you can write one task that iterates over a list of five users to ensure they all exist. Ansible supports iterating a task over a set of items using the loop keyword. You can configure loops to repeat a task using each item in a list, the contents of each of the files in a list, a generated sequence of numbers, or using more complicated structures.</p>
+<div class="admonition warning">
+<p class="admonition-title">Technical Sellers</p>
+<p>As before, you can execute the Playbook at this stage to carry out the new modifications that have been added since the last execution.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ansible-playbook was.yml -v
 </code></pre></div></p>
 </div>
-<p>When satisfied, press <em>ESC</em> and then <em>:x</em> and <em>Return</em> to save and exit.</p>
 
 
 
@@ -513,7 +566,7 @@ The Playbook can be executed at any time using the following instruction:
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../02%20Creating%20Roles%20for%20WAS/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Creating Roles for WAS" rel="prev">
+        <a href="../03%20Staging%20and%20Execution/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -522,26 +575,11 @@ The Playbook can be executed at any time using the following instruction:
               <span class="md-footer__direction">
                 Previous
               </span>
-              Creating Roles for WAS
+              Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../04%20Creating%20a%20Template/" class="md-footer__link md-footer__link--next" aria-label="Next: Creation of a Template" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Creation of a Template
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
