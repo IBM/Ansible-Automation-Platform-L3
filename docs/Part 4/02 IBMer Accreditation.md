@@ -13,17 +13,17 @@ IBMers will be evaluated by First Line Manager (FLM). Instructions on how to sub
 
 The evaluation criteria that your FLM will weigh your performance against are as follows:
 
-    1. Seller articulated client's **pain point**(s) and the **value proposition** of using Ansible Automation Platform.
+  1. Seller articulated client's **pain point**(s) and the **value proposition** of using Ansible Automation Platform.
 
-    2. Seller highlighted **use cases** for Ansible Automation Platform.
+  2. Seller highlighted **use cases** for Ansible Automation Platform.
 
-    3. Seller demonstrated and discussed several of the key **differentiated capabilities** of Ansible Automation Platform that deliver on thevalue proposition on point one.
+  3. Seller demonstrated and discussed several of the key **differentiated capabilities** of Ansible Automation Platform that deliver on thevalue proposition on point one.
 
-    4. Seller highlighted **benefits to the client** (this is the *why the client can’t live without these benefits* section).
+  4. Seller highlighted **benefits to the client** (this is the *why the client can’t live without these benefits* section).
 
-    5. Seller highlighted **benefits to the client's customers** (what will the client be able to deliver to their customers thatthey could not without this product).
+  5. Seller highlighted **benefits to the client's customers** (what will the client be able to deliver to their customers thatthey could not without this product).
 
-    6. Seller closed the demo with a **call to action** for the client that could include: a workshop, a deeper dive into theproduct meeting, MVP engagements, and so on.
+  6. Seller closed the demo with a **call to action** for the client that could include: a workshop, a deeper dive into theproduct meeting, MVP engagements, and so on.
 
 !!! note "Keys to success"
     Be sure to incorporate each of these themes and topics into your Stand & Deliver recording, touching on each of them as you run through an end-to-end delivery of the full lab. Good luck!
