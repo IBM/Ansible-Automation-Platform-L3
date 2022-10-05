@@ -83,7 +83,7 @@ The directory structure you are to define in the steps ahead will look similar t
 ![](_attachments/part3_figure1.png)
 
 Execute the following instructions via your SSH console, either one at a time or all as a single statement, to create the directory structure needed for the Roles.
-!!! warning "NAVIGATE TO THE CORRECT DIRECTORY FIRST"
+!!! warning "NAVIGATE TO THE CORRECT DIRECTORY *FIRST*"
     Make sure you are sitting in the */ansiblewas* directory before creating the following subdirectories!
 
 ```
