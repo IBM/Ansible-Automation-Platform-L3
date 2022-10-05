@@ -24,6 +24,8 @@ nav:
     - 'Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer': 'Part 3/03 Staging and Execution.md'
     - 'Creation of a Template': 'Part 3/04 Creating a Template.md'
     - 'Installation of WAS, Creation of a Profile, and Launching the Software': 'Part 3/05 Launching WAS.md'
+  - Part 4 - Level 3 Accreditation:
+    - 'Business Partner Accreditation': 'Part 4/01 Business Partner Accreditation.md'
 
 theme:
   name: material
