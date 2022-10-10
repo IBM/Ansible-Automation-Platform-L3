@@ -1,4 +1,4 @@
-![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
+![type:video](./_videos/Introduction - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales.mp4)
 !!! tip "ACKNOWLEDGEMENTS"
     Special thanks to **Stephan Navarro** for authoring the original version of this hands-on lab, "Deploying WebSphere Application Server on AIX using Ansible Automation" for IBM Client Engineering for Systems (Montpellier). In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
