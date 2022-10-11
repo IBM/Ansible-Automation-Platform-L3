@@ -55,7 +55,7 @@ Further down in the email are three links for setting up OpenVPN, for each of th
 !!! note "CLIENT SELECTION"
     It is recommended that you use **Tunnelblick** if using running MacOS, but you have the option of using other OpenVPN clients if you prefer.
 
-Download the latest Tunnelblick client (*v3.8.7a* or later) to your local machine and run the installer. Click **Continue** when prompted to do so, as shown below.
+Download the <a href="https://tunnelblick.net" target="_blank">latest Tunnelblick client</a> (*v3.8.7a* or later) to your local machine and run the installer. Click **Continue** when prompted to do so, as shown below.
 
 ![](_attachments/part1_figure8.png)
 
@@ -69,7 +69,7 @@ Along the taskbar at the top of your desktop, an icon for Tunnelblick will now b
 
 ![](_attachments/part1_figure11.png)
 
-The full Tunnelblick interface will open. Locate the **OpenVPN certificate** you downloaded earlier (it will have a filename similar to ```VPN_DcUser13097_20221011201513.psscopenvpn.ovpn```) and **DRAG** the certificate over the Tunnelblick interface (as shown). Alternatively, you can also drag it directly on top of the Tunnelblick icon located in the desktop taskbar. Release the certificate on top of the Tunnelblick app to add the OpenVPN certificate to configure Tunnelblick to use the connection certificate.
+The full Tunnelblick interface will open. Locate the **OpenVPN certificate** you downloaded earlier (it will have a filename similar to ```VPN_DcUser13097_20221011201513.psscopenvpn.ovpn```) and **DRAG** the certificate over the Tunnelblick interface (as shown). Alternatively, you can also drag it directly on top of the Tunnelblick icon located in the desktop taskbar. Release the certificate on top of the Tunnelblick app to add the OpenVPN certificate to configure Tunnelblick to use the connection.
 
 ![](_attachments/part1_figure12.png)
 
