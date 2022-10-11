@@ -541,10 +541,10 @@
 <p class="admonition-title">WAYS TO WATCH</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DC3cV2Vm8jFgV8227jV8M3BcGgCV" target="_blank">download the recording from Seismic</a>.</p>
 </div>
-<p>Ansible, and in particular <strong>YAML</strong> (Yet Another Markup Language), is very particular about indentation and formatting — something as trivial as an extra whitespace or an incorrectly-indented line of code can cause the interpreter to parse the instructions differently, resulting in outcomes you may not desire.</p>
+<p>Ansible, and in particular <strong>YAML</strong> (Yet Another Markup Language), is very particular about indentation and formatting — something as trivial as an extra whitespace or an incorrectly-indented line of code can cause the interpreter to parse the instructions differently, resulting in outcomes you may not have intended.</p>
 <p>To streamline the lab as much as possible, a Git repository was created ahead of time with large portions of the Ansible scripts and constructs prepared ahead of time. You will still need to edit elements in each of these files, and the instructions to follow will guide you step by step (as though you were creating these documents from scratch yourself), but it's worth noting that by cloning the Git repository you will be saving yourself a lot of extra typing (and potential debugging). Everything is documented for you— so you can go about creating all of these documents and scripts from scratch, if you wish.</p>
 <h1 id="_1"></h1>
-<h1 id="if-you-are-a-seller-it-is-strongly-recommend-that-you-clone-the-git-repository-as-it-will-save-you-time-and-keystrokes">If you are a <strong>SELLER</strong>, it is strongly recommend that you clone the Git repository, as it will save you time and keystrokes.</h1>
+<h1 id="if-you-are-a-seller-it-is-strongly-recommended-that-you-clone-the-git-repository-as-it-will-save-you-time-and-keystrokes">If you are a <strong>SELLER</strong>, it is strongly recommended that you clone the Git repository, as it will save you time and keystrokes.</h1>
 <h1 id="if-you-are-a-technical-seller-it-is-recommended-that-you-take-the-time-to-craft-these-files-from-scratch-yourself-and-that-you-do-not-clone-the-git-repository">If you are a <strong>TECHNICAL SELLER</strong>, it is recommended that you take the time to craft these files from scratch yourself and that you <em>do not</em> clone the Git repository.</h1>
 <div class="admonition tip">
 <p class="admonition-title">SELLERS</p>
@@ -558,12 +558,8 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir ansiblewas
 </code></pre></div></p>
 </div>
-<p>Continue through the remainder of the instructions regardless of your job role.</p>
-<p>After the clone action has been completed, navigate to the newly-created <em>ansiblewas</em> directory.
+<p>ALL USERS: After the clone action has been completed, navigate to the newly-created <em>ansiblewas</em> directory.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cd ansiblewas
-</code></pre></div></p>
-<p>The next order of business is configuring the Ansible controller node (to which you are currently connected) with details about our PowerVC environment and how our project directories are organized. This can be done by modifying the <strong>ansible.cfg</strong> configuration file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vi ansible.cfg
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">VI CHEAT SHEET</p>
@@ -575,10 +571,10 @@
 <p>Navigate using the up/down and left/right arrows keys. Hover the blinking indicator over the point in the text you wish to modify.</p>
 </li>
 <li>
-<p>To start adding or deleting text, first press the I (as in "indigo") key. Then either start adding text as normal (you can also paste lines of code that you have copied to your clipboard using CTRL+V) or deleting text using backspace.</p>
+<p>To start adding or deleting text, first press the <em>I</em> (as in "indigo") key and then begin adding text as normal. You can also paste lines of code that you have copied to your clipboard using CTRL+V (useful for the code blocks peppered throughout this documentation) or delete text using <em>Backspace</em>.</p>
 </li>
 <li>
-<p>Save your changes and exit a file by first pressing the ESC key, then typing :x (the full colon must come first) and hitting return. If you want to exit a file without saving changes, press ESC and type :quit! (with the exclamation point included at the end).</p>
+<p>Save your changes and exit a file by first pressing the <em>ESC</em> key, then typing <em>:x</em> (the full colon must come first) and hitting <em>Return</em>. If you want to exit a file without saving changes, press <em>ESC</em> and type <em>:quit!</em> (with the exclamation point included at the end) followed by <em>Return</em>.</p>
 </li>
 <li>
 <p>Other shortcuts and commands are detailed in the cheat sheet linked above.</p>
@@ -596,12 +592,23 @@
 <p><strong>host_key_checking</strong> tells SSH to accept remote keys (which will streamline the lab for us later).</p>
 </li>
 </ul>
-<p>The <em>ansible.cfg</em> definition is provided below for those who are crafting these files from scratch (instead of using the cloned Git repository). You <strong>do not</strong> need to make any modification to the <em>ansible.cfg</em> file. Use the <em>ESC + :quit!</em> command in the VI editor to exit the file without making changes.</p>
+<p>The next order of business is configuring the Ansible controller node (to which you are currently connected) with details about our PowerVC environment and how our project directories are organized. This can be done by modifying the <strong>ansible.cfg</strong> configuration file:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vi ansible.cfg
+</code></pre></div></p>
+<p>The <em>ansible.cfg</em> definition is provided below. for Technical Sellers who are crafting these files from scratch (instead of using the cloned Git repository). Sellers <strong>do not</strong> need to make any modification to the <em>ansible.cfg</em> file. Use the <em>ESC + :quit!</em> command in the VI editor to exit the file without making changes.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[defaults]
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>inventory       = ./hosts
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>remote_tmp = /tmp
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>host_key_checking = False
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">TECHNICAL SELLERS</p>
+<p>As you are crafting these files from scratch, you will need to copy the code <em>ansible.cfg</em> code block referenced above and save it by pressing <em>ESC</em> followed by <em>:x</em> and <em>Return</em>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">SELLERS</p>
+<p>As you are working from a cloned Git repository, the <em>ansible.cfg</em> file is already defined within your directory. You can inspect it using the <code>vi ansible.cfg</code> command mentioned above, but you do not need to modify or adjust the values inside the configuration file. Exit the VI editor without saving changes by pressing <em>ESC</em> followed by <em>:quit!</em> and <em>Return</em>.</p>
+</div>
 <p>We are now ready to install the Ansible OpenStack Python modules on to the Ansible controller node. The <strong>openstacksdk</strong> library is required in order for Ansible to be able to interact with the PowerVC infrastructure provisioned via the ITZ. The following command will take care of installing all of the necessary drivers and dependencies:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip3 install --user &quot;openstacksdk==0.51.0&quot; &quot;python-openstackclient==5.4.0&quot; dnspython dig
 </code></pre></div></p>
