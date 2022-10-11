@@ -2,11 +2,11 @@
 !!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCffVRBC9CP6m8WP8TCg8X76CJqd" target="_blank">download the recording from Seismic</a>.
 
-The preparations are complete and the groundwork has been set for a fully-automated installation and deployment of **WebSphere Application Server (WAS)** via AAP. At this stage, you have already used Ansible to deploy a virtual machine with an AIX partition atop of PowerVC infrastructure. Additional configurations will need to be made to that partition to prepare it for hosting a WAS deployment within it. These types of configuration changes are precisely the type of operational work that can be easily automated by Ansible, and a prime example of how businesses today are offloading administrative burdens through automation.
+Preparations are complete and the groundwork has been set for a fully-automated installation and deployment of **WebSphere Application Server (WAS)** via AAP. At this stage, you have already used Ansible to deploy a virtual machine with an AIX partition atop of PowerVC infrastructure. Additional configurations will need to be made to that partition to prepare it for hosting a WAS deployment within it. These types of configuration changes are precisely the type of operational work that can be easily automated by Ansible, and a prime example of how businesses today are offloading administrative burdens through automation.
 
 In the following steps, you will instruct Ansible to perform the following operations:
 
-- Change root user characteristics using the *power_aix* Ansible modules, downloaded via Ansible Galaxy.
+- Change *root* user characteristics using the **power_aix Ansible modules**, downloaded via Ansible Galaxy.
 
 - Change the */tmp* filesystem size to 6GB
 
@@ -38,11 +38,13 @@ Installation of the drivers should take only a moment to complete.
 #
 #Another handy feature of AAP is its ability to simplify how code is shared amongst teams, which traditionally becomes challenging and cumbersome at scale in the absence of automation.
 
-Ansible employs a feature known as "**Roles**" which in essence allows a developer to define a common set of configuration steps that can then be re-used repeatedly across multiple environments. Instead of having to coordinate across teams and share duplicate instructions with different groups, the developer can take the "write once, run anywhere" approach of defining an automation job a single time and then making repeated use of that code (consistently) across multiple environments. In our case, we will define an Ansible Role comprised of a set of tasks needed to configure a host (our AIX partition) for a service (WebSphere Application Server). Roles, like many other aspects of Ansible, are defined using YAML files with a predefined directory structure.
+Ansible employs a feature known as "**Roles**" which in essence allows a developer to define a common set of configuration steps that can then be re-used repeatedly across multiple environments. Instead of having to coordinate across teams and share duplicate instructions with different groups, the developer can take the "write once, run anywhere" approach of defining an automation job a single time and then making repeated use of that code (consistently) across multiple environments.
 
-Roles provide a way for you to make it easier to reuse Ansible code generically. You can package, in a standardized directory structure, all the tasks, variables, files, templates, and other resources needed to provision infrastructure or deploy applications. Copy that role from project to project simply by copying the directory. You can then simply call that role from a play to execute it. Roles carry the following benefits for developers and administrators:
+In our case, we will define an Ansible Role comprised of a set of tasks needed to configure a host (our AIX partition) for a service (WebSphere Application Server). Roles, like many other aspects of Ansible, are defined using YAML files with a predefined directory structure.
 
-- Roles group content, allowing easy sharing of code with others
+Roles provide a way for you to make it easier to reuse Ansible code generically. You can package, in a standardized directory structure, all the tasks, variables, files, templates, and other resources needed to provision infrastructure or deploy applications. Administrators may copy that role from project to project simply by replicating the directory. They can then simply *call* (invoke) that role from a Play to execute it. Roles convey a number of other benefits to developers and administrators:
+
+- Roles help to group content, allowing easy sharing of code with others
 
 - Roles can be written that define the essential elements of a system type: web server, database server, Git repository, or other purpose
 
@@ -50,23 +52,23 @@ Roles provide a way for you to make it easier to reuse Ansible code generically.
 
 - Roles can be developed in parallel by different administrators
 
-The directory structure is still something that we have yet to "predefine", so let's do that next. The directory structure of a Role contains directories such as defaults, vars, tasks, files, templates, meta, and handlers — these are all "expected" directories (we can make use of all of them or only a subset) that Ansible Roles must be patterned against. Each directory must contain a **main.yml** file which provides the relevant content needed by Ansible to execute a Playbook. Let's examine the purpose of each directory type, in turn:
+The directory structure of a Role contains directories such as defaults, vars, tasks, files, templates, meta, and handlers — these are all "expected" directories (we can make use of all of them or only a subset) that Ansible Roles must be patterned against. Each directory must contain a **main.yml** file which provides the relevant content needed by Ansible to execute a Playbook. Let's examine the purpose of each directory type, in turn:
 
 - **defaults**: Contains default variables for the Role; variables by default have the lowest priority, so they are easy to override.
 
-- **vars**: Contains variables for the Role; variables in vars have a higher priority than 'default' variables.
+- **vars**: Contains variables for the Role; variables in *vars* have a higher priority than *default* variables.
 
 - **tasks**: Contains the main list of steps to be executed by the Role.
 
 - **files**: Contains files which must be copied over to the remote host.
 
-- **templates**: Contains file templates that support modifications from the Role; in our example, we will use the Jinja2 templating language for creating templates.
+- **templates**: Contains file templates that support modifications from the Role; in our lab work, we will use the *Jinja2 templating language* for creating templates.
 
 - **meta**: Contains metadata for the Role, including the author, supported platforms, and dependencies.
 
 - **handlers**: Contains handlers which can be invoked by "notify" directives; these are associated with the service.
 
-Ansible supports **variables** that can be used to store values that can then be reused throughout files in an Ansible project. This can simplify the creation and maintenance of a project and reduce the number of errors. Variables provide a convenient way to manage dynamic values for a given environment in your Ansible project. Examples of values that variables might contain include:
+Ansible supports **variables** that can be used to store values that can then be reused throughout files in an Ansible project. Variables provide a convenient way to manage dynamic values for a given environment in your Ansible project. This can simplify the creation and maintenance of a project, as well as mitigate the risk of errors introduced through typos or mislabeled items in your code. Variables might include:
 
 - Users to create
 
@@ -78,7 +80,7 @@ Ansible supports **variables** that can be used to store values that can then be
 
 - Archives to retrieve from the internet
 
-The directory structure you are to define in the steps ahead will look similar to the following diagram, with two distinct Roles names (*aix* and *was*), and subdirectories nestled within those parents.
+We have yet to define the directory structures needed by Ansible Roles for our project, so let's tackle that step next. The directory structure you are to define in the steps ahead will look similar to the following diagram, with two distinct Roles names (*aix* and *was*), and subdirectories nestled within those parents.
 
 ![](_attachments/part3_figure1.png)
 
@@ -101,7 +103,7 @@ With AIX installed on the PowerVC LPAR (logical partition), you next need to mod
 vi roles/aix/tasks/main.yml
 ```
 
-As before, you can either view the contents of the manifest (if you cloned the Github repository earlier) or craft a new one from scratch using the following template. No modifications to the template will be needed at this time. When satisfied, press *ESC* following by *:x* and *Return* to save your changes and exit the VI editor.
+As before, you can either view the contents of the manifest (if you cloned the Github repository earlier) or craft a new one from scratch using the following template. No modifications to the template will be needed at this time. When satisfied, press ```ESC``` following by ```:x``` and ```Return``` to save your changes and exit the VI editor.
 {% raw %}
 ```
 ---
@@ -161,7 +163,7 @@ You are now prepared to craft the Playbook that Ansible will use to automate the
 vi was.yml
 ```
 
-As before, you can either view the contents of the manifest (if you cloned the Github repository earlier) or craft a new one from scratch using the following template. If you are working from the cloned template, you may have noticed that the last line of the YAML file (*#- role: was*) has been commented out — leave this unchanged for now, as you will be returning to it shortly. For now we are only concerned with the successful execution of the jobs associated with the *aix* Role. The template for **was.yml** is as follows:
+As before, you can either view the contents of the manifest (if you cloned the Github repository earlier) or craft a new one from scratch using the following template. If you are working from the cloned template, you may have noticed that the last line of the YAML file (```#- role: was```) has been commented out — leave this unchanged for now, as you will be returning to it shortly. For now we are only concerned with the successful execution of the jobs associated with the *aix* Role. The template for **was.yml** is as follows:
 
 ![](_attachments/part3_figure2.png)
 
@@ -195,11 +197,11 @@ Ansible **facts** are variables that are automatically discovered by Ansible on 
 
 - The number of CPUs
 
-- The available or free memory
+- The available amount of free memory
 
-- The available disk space
+- The available amount of free disk space
 
-When satisfied, press *ESC* and then *:x* and *Return* to save and exit the file.
+When satisfied, press ```ESC``` and then ```:x``` and ```Return``` to save and exit the file.
 
 Time to test the Playbook and Roles defined so far. Use the following command to execute the Playbook:
 ```
@@ -208,4 +210,4 @@ ansible-playbook was.yml -v
 
 ![](_attachments/part3_figure3.png)
 
-After execution, the Playbook should report back with a summary of jobs successfully completed ("*ok*"), changes made to the environment (the count will be less on repeated runs of this job if a previous execution of the Playbook already committed the changes — Ansible won't waste cycles repeating work that has already been carried out, unless you request it to), jobs that have failed, and so on. If no jobs failed to execute, you are ready to proceed with the lab instructions; otherwise, return to the Roles definition and the Playbook YAML files to ensure that there are no errors within your scripts.
+After execution, the Playbook should report back with a summary of jobs successfully completed ("*ok*"), changes made to the environment, jobs that have failed, and so on. If no jobs failed to execute, you are ready to proceed with the lab instructions; otherwise, return to the Roles definition and the Playbook YAML files to ensure that there are no errors within your scripts.

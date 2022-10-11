@@ -18,7 +18,7 @@ vi clouds.yaml
 If you cloned the Git repository earlier, a template has already been crafted for you; otherwise, you will need to recreate it using the sample code below.
 
 !!! note "SELLERS AND TECH SELLERS"
-    Both job roles will need to modify the *cloud.yaml* template to specifications matching your ITZ credentials and environment. The value **idXXXXXXXX** must be replaced with the *username/ID* that was recorded from the Project Kit page.
+    Both job roles will need to modify the *cloud.yaml* template to specifications matching your ITZ credentials and environment. The value **idXXXXXXXX** must be replaced with the *username/ID* that was recorded from the Project Kit.
 
     The same holds true for other variables or fields that have been bolded below in the sample script: if it is highlighted in red text within the screenshot, you must modify the *clouds.yaml* script for those fields to your own specifications and then save the changes before moving on.
 
@@ -56,8 +56,6 @@ As before, adjust the template as necessary: you will need to substitute your ow
 - cloud
 
 - public_key_file
-
-- cloud
 
 - name
 
@@ -129,7 +127,7 @@ Save and exit the *mkvm.yaml* Playbook once satisfied. Let's take a moment, befo
 
 - **wait_for**: Ensures that the virtual machine has had time to boot up and the SSH port to be opened before re-enabling prompts from the terminal.
 
-Before we get started with execution of the Playbook, open a Web browser on your local machine and navigate to the PowerVC GUI URL (in the first row of the Project Kit table), supplying your *userID* and *password* from the same table when prompted to log in. This will load a dashboard overview of your PowerVC infrastructure which details all that is transpiring under the covers. Keep this tab open, as we can use it to track the progress of our virtual machine deployment over time.
+Before we get started with execution of the Playbook, open a Web browser on your local machine and navigate to the PowerVC GUI URL (in the first row of the Project Kit table), supplying your *userID* and *password* from the same table when prompted to log in. This will load a dashboard overview of your PowerVC infrastructure which details all that is transpiring under the covers. Keep this tab open, as we can use it to track the progress of the virtual machine deployment.
 
 ![](_attachments/part2_figure3.png)
 
@@ -137,14 +135,16 @@ You may encounter a *"Connection is not private"* warning when attempting to acc
 
 ![](_attachments/part2_figure4.png)
 
-Time to execute the Playbook! Return to your Terminal console and submit the following command:
+Time to execute the Playbook! Return to your Terminal console and submit the following:
 ```
 ansible-playbook mkvm.yaml -v
 ```
 
-If everything goes smoothly, a virtual machine will be deployed to PowerVC in a matter of minutes. If you encounter errors or things don't go as planned — don't panic. Ansible, as warned about previously, is quite particular about things like indentation. A misplaced whitespace or a slipped finger on the keyboard can create a typo that will throw the script into disarray (after all, Ansible will try to execute your instructions exactly as you have written.) Go back into the scripts mentioned previously and verify that everything is correct and that all necessary substitutions have been made, then try executing the ```ansible-playbook mkvm.yaml -v``` instruction a second time.
-
 While execution of the Playbook is underway, return to the PowerVC dashboard and click the VM List button from the taskbar on the left. Previously this tab would have displayed as empty. As the execution of the Playbook gets underway, a new virtual machine will be listed with the status of "*Building*;" once the virtual machine has been deployed, the status will be adjusted to "*Active*."
+
+If everything goes smoothly, a virtual machine will be deployed to PowerVC in a matter of minutes. If you encounter errors or things don't go as planned — don't panic. Ansible, as warned about previously, is quite particular about things like indentation. A misplaced whitespace or a slipped finger on the keyboard can create a typo that will throw the script into disarray (after all, Ansible will try to execute your instructions exactly as you have written.)
+
+Go back into the scripts mentioned previously and verify that everything is correct and that all necessary substitutions have been made, then try executing the ```ansible-playbook mkvm.yaml -v``` instruction a second time.
 
 ![](_attachments/part2_figure5.png)
 
