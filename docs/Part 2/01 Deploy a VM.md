@@ -1,6 +1,9 @@
 ![type:video](./_videos/Part 2a - Deploy a Virtual Machine - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales.mp4)
 !!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DC3cV2Vm8jFgV8227jV8M3BcGgCV" target="_blank">download the recording from Seismic</a>.
+!!! note "VI CHEAT SHEET"
+    Throughout this lab, you will make extensive use of the VI text editor. If you're not familiar with this editor, you can quickly get up to speed using the following cheat sheet: <a href="https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf" target="_blank">https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf</a> for reference.
+
 
 Ansible, and in particular **YAML** (Yet Another Markup Language), is very particular about indentation and formatting — something as trivial as an extra whitespace or an incorrectly-indented line of code can cause the interpreter to parse the instructions differently, resulting in outcomes you may not have intended.
 
@@ -27,16 +30,13 @@ ALL USERS: After the clone action has been completed, navigate to the newly-crea
 cd ansiblewas
 ```
 
-!!! note "VI CHEAT SHEET"
-    Throughout this lab, you will make extensive use of the VI text editor. If you're not familiar with this editor, you can quickly get up to speed using the following cheat sheet: <a href="https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf" target="_blank">https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf</a> for reference.
-
 As a quick primer on how to use the **VI** editor:
 
 - Navigate using the up/down and left/right arrows keys. Hover the blinking indicator over the point in the text you wish to modify.
 
-- To start adding or deleting text, first press the *I* (as in "indigo") key and then begin adding text as normal. You can also paste lines of code that you have copied to your clipboard using CTRL+V (useful for the code blocks peppered throughout this documentation) or delete text using *Backspace*.
+- To start adding or deleting text, first press the ```I``` (as in "indigo") key and then begin adding text as normal. You can also paste lines of code that you have copied to your clipboard using CTRL+V (useful for the code blocks peppered throughout this documentation) or delete text using ```Backspace```.
 
-- Save your changes and exit a file by first pressing the *ESC* key, then typing *:x* (the full colon must come first) and hitting *Return*. If you want to exit a file without saving changes, press *ESC* and type *:quit!* (with the exclamation point included at the end) followed by *Return*.
+- Save your changes and exit a file by first pressing the ```ESC``` key, then typing ```:x``` (the full colon must come first) and hitting ```Return```. If you want to exit a file without saving changes, press ```ESC``` and type ```:quit!``` (with the exclamation point included at the end) followed by ```Return```.
 
 - Other shortcuts and commands are detailed in the cheat sheet linked above.
 
@@ -53,9 +53,7 @@ The next order of business is configuring the Ansible controller node (to which 
 vi ansible.cfg
 ```
 
-
-
-The *ansible.cfg* definition is provided below. for Technical Sellers who are crafting these files from scratch (instead of using the cloned Git repository). Sellers **do not** need to make any modification to the *ansible.cfg* file. Use the *ESC + :quit!* command in the VI editor to exit the file without making changes.
+The *ansible.cfg* definition is provided below. for Technical Sellers who are crafting these files from scratch (instead of using the cloned Git repository). Sellers **do not** need to make any modification to the *ansible.cfg* file. Enter ```ESC``` followed by ```:quit!``` and ```Return``` in the VI editor to exit the file without making any changes to the code.
 
 ```
 [defaults]
@@ -64,10 +62,10 @@ remote_tmp = /tmp
 host_key_checking = False
 ```
 !!! warning "TECHNICAL SELLERS"
-    As you are crafting these files from scratch, you will need to copy the code *ansible.cfg* code block referenced above and save it by pressing *ESC* followed by *:x* and *Return*.
+    As you are crafting these files from scratch, you will need to copy the code *ansible.cfg* code block referenced above and save it by pressing ```ESC``` followed by ```:x``` and ```Return```.
 
 !!! tip "SELLERS"
-    As you are working from a cloned Git repository, the *ansible.cfg* file is already defined within your directory. You can inspect it using the ```vi ansible.cfg``` command mentioned above, but you do not need to modify or adjust the values inside the configuration file. Exit the VI editor without saving changes by pressing *ESC* followed by *:quit!* and *Return*.
+    As you are working from a cloned Git repository, the *ansible.cfg* file is already defined within your directory. You can inspect it using the ```vi ansible.cfg``` command mentioned above, but you do not need to modify or adjust the values inside the configuration file. Exit the VI editor without saving changes by pressing ```ESC``` followed by ```:quit!``` and ```Return```.
 
 
 We are now ready to install the Ansible OpenStack Python modules on to the Ansible controller node. The **openstacksdk** library is required in order for Ansible to be able to interact with the PowerVC infrastructure provisioned via the ITZ. The following command will take care of installing all of the necessary drivers and dependencies:
