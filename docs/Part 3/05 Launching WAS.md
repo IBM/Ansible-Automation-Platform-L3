@@ -10,7 +10,7 @@ Once again, edit the Playbook YAML manifest:
 vi roles/was/defaults/main.yml
 ```
 
-!!! tip "main.yml"
+!!! warning "main.yml"
     **Technical Sellers**: Extend the YAML file as you have done previously so that the final version matches the template documented below.
 
     **Sellers**: As you are working from a completed YAML file that was cloned from the Git repository, you do not need to make any modifications to the file.
