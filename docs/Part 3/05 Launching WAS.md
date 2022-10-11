@@ -10,12 +10,12 @@ Once again, edit the Playbook YAML manifest:
 vi roles/was/defaults/main.yml
 ```
 
-!!! warning "main.yml"
+!!! tip "main.yml"
     **Technical Sellers**: Extend the YAML file as you have done previously so that the final version matches the template documented below.
 
     **Sellers**: As you are working from a completed YAML file that was cloned from the Git repository, you do not need to make any modifications to the file.
 
-The finalized Playbook should exactly mirror the following template:
+The finalized *main.yml* Playbook should exactly mirror the following template:
 
 {% raw %}
 ```
@@ -68,12 +68,13 @@ The finalized Playbook should exactly mirror the following template:
 
 When satisfied, press ```ESC``` followed by ```:x``` and ```Return``` to save and exit the YAML file.
 
-Finally, execute the completed Playbook:
-!!! note "SELLERS AND TECHNICAL SELLERS"
-    This step must be performed by *both* **Sellers** and **Technical Sellers**.
+Finally, execute the following Playbook to kick off the end-to-end deployment of WebSphere Application Server:
+
 ```
 ansible-playbook was.yml -v
 ```
+!!! tip "SELLERS AND TECHNICAL SELLERS"
+    This step must be performed by *both* **Sellers** and **Technical Sellers**.
 
 Wait until the Playbook has finished executing and the "*PLAY RECAP*" has been printed to screen within the Terminal console. Successful execution of the full Playbook may take several minutes to complete. If all jobs have successfully been executed (with status as "*OK*"), then WebSphere Application Server should now be successfully installed on the AIX LPAR and the services now live for you to interact with!
 
@@ -101,4 +102,4 @@ You may input any *userID* that you wish (remember that we disabled authenticati
     Keep your browser window open to the WAS dashboard. The series of questions in <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/01%20Business%20Partner%20Accreditation/" target="_blank">Part 4</a> will be repeated on your **L3 accreditation quiz**. Use this time to investigate the various areas of the WAS dashboard so that you can prepare for the quiz and quickly certify your completion of this hands-on material.
 
 !!! warning "IBM SELLERS AND TECHNICAL SELLERS"
-    Begin planning how you wish to present and record your **Stand & Deliver**. Replicate the steps and lessons learned throughout this hands-on material and ensure that your recording meets all of the evaluation criteria outlined in the <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/02%20IBMer%20Accreditation/" target="_blank">Part 4 Stand & Deliver requirements</a>.
+    Begin planning how you wish to present and record your **Stand & Deliver**. Replicate the steps and lessons learned throughout this hands-on material and ensure that your recording meets all of the evaluation criteria outlined in the <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/02%20IBMer%20Accreditation/" target="_blank">Stand & Deliver requirements</a>.

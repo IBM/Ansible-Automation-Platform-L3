@@ -212,4 +212,4 @@ After execution, the Playbook should report back with a summary of jobs successf
 
 ![](_attachments/part3_figure3.png)
 
-If no jobs failed to execute, you are ready to proceed with the lab instructions; otherwise, return to the Roles definition and the Playbook YAML files to ensure that there are no errors within your scripts.
+If no jobs failed to execute, you are ready to proceed with the lab instructions; otherwise, return to the Roles definition and the Playbook YAML files to ensure that there are no scripting errors.

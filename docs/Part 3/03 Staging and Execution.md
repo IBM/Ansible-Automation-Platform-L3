@@ -15,7 +15,7 @@ The */tmp/im* directory will be the path designated for this purpose.
 Once the temporary directory has been created, the Installation Manager source files will be replicated to that endpoint. The ```creates:``` statement instructs Ansible to ignore the file upload request if the data is already replicated. This will be useful on repeat executions of the Playbook, as Ansible will not attempt to duplicate the download on subsequent (repeated) runs. The third job will execute the Installation Manager and accept the end-user license for use of the product.
 
 !!! tip "main.yml"
-    **Technical Sellers**: As you are defining the file from scratch, your YAML file will need to mirror the template provided below.
+    **Technical Sellers**: As you are defining the file from scratch, your YAML file will need to mirror the template below.
 
     **Sellers**: Since you are working from a Git-cloned repository, you will not need to modify the existing file. You may notice that there are additional lines of code beyond what is shown below — ignore those for now. We will gradually build up to this complete version of the YAML file as the lab work progresses.
 
