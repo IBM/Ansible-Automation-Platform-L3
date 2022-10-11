@@ -12,13 +12,7 @@ AAP has a number of modules that can be used to modify existing files. These inc
 
 Ansible uses the **Jinja2** templating system for template files. Ansible also uses Jinja2 syntax to reference variables in Playbooks, and as such it will look structurally similar to what you have seen previously with YAML-based Playbooks. A Jinja2 template is composed of multiple elements: data, variables, and expressions. Those variables and expressions are replaced with their values when the Jinja2 template is rendered. You will see an example of this shortly after we execute the Playbook and compare how the variables defined within the XML file are changed.
 
-Edit (or create) the XML response file by executing this command:
-
-```
-vi roles/was/templates/was90501.sdk8035.xml
-```
-
-The variables of note, specific to this environment, are highlighted in red text. You do not need to modify this template from how it is written — these variables are highlighted only to showcase what is different from the standard Installation Manager boilerplate. Your XML file must mirror the following template before continuing with the hands-on material.
+The variables of note, specific to this environment, are highlighted in the screenshot below with red text. You **do not** need to modify this template from how it is written — these variables are highlighted only to showcase what is different from the standard Installation Manager boilerplate. Your XML file must mirror the following template before continuing with the hands-on material.
 
 ![](_attachments/part3_figure6.png)
 
@@ -45,12 +39,20 @@ installLocation='/usr/IBM/WebSphere/AppServer'> <data key='cic.selector.arch' va
 ```
 {% endraw %}
 
-When satisfied, press *ESC* followed by *:x* and *Return* to save and edit the file.
+Edit (or create) the XML response file by executing the following command:
 
-Now you must set default variables for the WAS Roles, which will be used later when generating the response file for the Installation Manager. Edit (or create) the following YMAL template file:
 ```
-vi roles/was/defaults/main.yml
+vi roles/was/templates/was90501.sdk8035.xml
 ```
+
+!!! warning "was90501.sdk8035.xml"
+    **Technical Sellers**: Replicate the code template above and create the XML file.
+
+    **Sellers**: Leave the XML file unmodified.
+
+When satisfied, press ```ESC``` followed by ```:x``` and ```Return``` to save and edit the file.
+
+Now you must set default variables for the WAS Roles, which will be used later when generating the response file for the Installation Manager.
 
 The YAML file definition should mirror the following:
 {% raw %}
@@ -63,15 +65,16 @@ sdk_8035_source_dir: /files/aix/websphere/sdk/sdk8035/
 ```
 {% endraw %}
 
-You are now ready to make additional modifications to the primary Playbook, instructing Ansible to generate and upload the template for WAS. Instruct the VI editor to open the Playbook with the same command used before:
+Edit (or create) the following YAML template file:
 ```
-vi roles/was/tasks/main.yml
+vi roles/was/defaults/main.yml
 ```
+!!! warning "roles/was/defaults/main.yml"
+    **Technical Sellers**: Replicate the code template above and create the YAML file.
 
-!!! warning "main.yml"
-    **Technical Sellers**: Extend the Playbook to resemble the following template.
+    **Sellers**: Leave the YAML file unmodified.
 
-    **Sellers**: Leave the completed Playbook unmodified.
+You are now ready to make additional modifications to the primary Playbook, instructing Ansible to generate and upload the template for WAS. The extensions to the Playbook will create a directory **was_repo: /tmp/wasrepo/** and then instruct Ansible to upload WAS binaries to the target system.
 
 {% raw %}
 ```
@@ -111,11 +114,19 @@ vi roles/was/tasks/main.yml
 ```
 {% endraw %}
 
-The extensions to the Playbook will create a directory **was_repo: /tmp/wasrepo/** and then instruct Ansible to upload WAS binaries to the target system.
+Instruct the VI editor to open the Playbook with the same command used before:
+```
+vi roles/was/tasks/main.yml
+```
 
-Press *ESC* and then *:x* and *Return* to save and exit the Playbook.
+!!! warning "roles/was/tasks/main.yml"
+    **Technical Sellers**: Extend the Playbook to resemble the following template.
 
-Using **loops** saves administrators from having to write multiple tasks (repetitively and redundantly) to make use of the same module(s). For example, instead of writing five tasks to ensure five users exist, you can write one task that iterates over a list of five users to ensure they all exist. Ansible supports iterating a task over a set of items using the loop keyword. You can configure loops to repeat a task using each item in a list, the contents of each of the files in a list, a generated sequence of numbers, or using more complicated structures.
+    **Sellers**: Leave the completed Playbook unmodified.
+
+Press ```ESC``` followed by ```:x``` and ```Return``` to save and exit the Playbook.
+
+Using **loops** saves administrators from having to write multiple tasks (repetitively and redundantly) to make use of the same module(s). For example, instead of writing five tasks to ensure five users exist, you can write one task that iterates over a list of five users to ensure they all exist. Ansible supports iterating a task over a set of items using the *loop* keyword. You can configure loops to repeat a task using each item in a list, the contents of each of the files in a list, a generated sequence of numbers, or using more complicated structures.
 
 !!! warning "TECHNICAL SELLERS"
     As before, you can execute the Playbook at this stage to carry out the new modifications that have been added since the last execution.

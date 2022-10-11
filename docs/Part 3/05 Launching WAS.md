@@ -4,14 +4,16 @@
 
 Further modifications to the primary Playbook are required to complete the installation of WAS, generate the necessary profiles, and fully launch the software.
 
-Once again, edit the Playbook YAML manifest.
+Once again, edit the Playbook YAML manifest:
+
+```
+vi roles/was/defaults/main.yml
+```
+
 !!! warning "main.yml"
     **Technical Sellers**: Extend the YAML file as you have done previously so that the final version matches the template documented below.
 
     **Sellers**: As you are working from a completed YAML file that was cloned from the Git repository, you do not need to make any modifications to the file.
-```
-vi roles/was/defaults/main.yml
-```
 
 The finalized Playbook should exactly mirror the following template:
 
@@ -64,9 +66,9 @@ The finalized Playbook should exactly mirror the following template:
 ```
 {% endraw %}
 
-When satisfied, press *ESC* and *:x* and *Return* to save and exit the YAML file.
+When satisfied, press ```ESC``` followed by ```:x``` and ```Return``` to save and exit the YAML file.
 
-Finally, execute the completed Playbook.
+Finally, execute the completed Playbook:
 !!! note "SELLERS AND TECHNICAL SELLERS"
     This step must be performed by *both* **Sellers** and **Technical Sellers**.
 ```
@@ -86,17 +88,17 @@ http://10.3.XX.XX:9060/ibm/console
 {% endraw %}
 
 !!! tip "HOST ADDRESS"
-    Substitute the missing variables with the IP address of your AIX LPAR (this is the address summarized just below the PLAY RECAP in the screenshot above) — remember to use the address unique to *your* environment. Ensure that you are connected to OpenVPN tunnel used earlier before attempting to access the WAS service.
+    Substitute the missing variables with the IP address of your AIX LPAR (this is the address summarized just below the PLAY RECAP in the screenshot above) — remember to use the address unique to *your* environment. Ensure that you are still connected to the OpenVPN tunnel before attempting to access the WAS service.
 
 ![](_attachments/part3_figure8.png)
 
-You may input any *userID* that you wish and then click *Log In* (remember that we disabled authentication in an earlier step) to access the WAS dashboard.
+You may input any *userID* that you wish (remember that we disabled authentication in an earlier step) and then click *Log In* to access the WAS dashboard.
 
 #
 # **Congratulations** — you have successfully installed and deployed a WebSphere Application Server environment on PowerVC entirely using Red Hat Ansible Automation Platform!
 
 !!! note "BUSINESS PARTNERS"
-    Keep your browser window open to the WAS dashboard. The following series of questions will be repeated on your **L3 accreditation quiz**. Use this time to investigate the various areas of the WAS dashboard so that you can prepare for the quiz and quickly certify your completion of this hands-on material.
+    Keep your browser window open to the WAS dashboard. The series of questions in <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/01%20Business%20Partner%20Accreditation/" target="_blank">Part 4</a> will be repeated on your **L3 accreditation quiz**. Use this time to investigate the various areas of the WAS dashboard so that you can prepare for the quiz and quickly certify your completion of this hands-on material.
 
 !!! warning "IBM SELLERS AND TECHNICAL SELLERS"
-    Begin planning how you wish to present and record your **Stand & Deliver**. Replicate the steps and lessons learned throughout this hands-on material and ensure that your recording meets all of the evaluation criteria outlined in the Stand & Deliver requirements.
+    Begin planning how you wish to present and record your **Stand & Deliver**. Replicate the steps and lessons learned throughout this hands-on material and ensure that your recording meets all of the evaluation criteria outlined in the <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/02%20IBMer%20Accreditation/" target="_blank">Part 4 Stand & Deliver requirements</a>.

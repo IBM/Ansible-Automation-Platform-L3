@@ -7,7 +7,7 @@
 
 #
 # Business Partners must pass an **accreditation quiz** after completing the hands-on work.
-The quiz consists of multiple choice questions, with four possible responses (and only one correct answer) for each question.The quiz questions are based on elements of the WebSphere Application Server (WAS) web dashboard, which you will be asked to investigate and record specific details about.
+The quiz consists of multiple choice questions, with four possible responses (and only one correct answer) for each question. The quiz questions are based on elements of the WebSphere Application Server (WAS) web dashboard, which you will be asked to investigate and record specific details about.
 
 The WAS environment and dashboard will be available to you after you have successfully concluded the lab work — remaining online until your ITZ reservation has expired.
 

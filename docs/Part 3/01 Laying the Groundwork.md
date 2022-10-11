@@ -208,6 +208,8 @@ Time to test the Playbook and Roles defined so far. Use the following command to
 ansible-playbook was.yml -v
 ```
 
+After execution, the Playbook should report back with a summary of jobs successfully completed ("*ok*"), changes made to the environment, jobs that have failed, and so on.
+
 ![](_attachments/part3_figure3.png)
 
-After execution, the Playbook should report back with a summary of jobs successfully completed ("*ok*"), changes made to the environment, jobs that have failed, and so on. If no jobs failed to execute, you are ready to proceed with the lab instructions; otherwise, return to the Roles definition and the Playbook YAML files to ensure that there are no errors within your scripts.
+If no jobs failed to execute, you are ready to proceed with the lab instructions; otherwise, return to the Roles definition and the Playbook YAML files to ensure that there are no errors within your scripts.
