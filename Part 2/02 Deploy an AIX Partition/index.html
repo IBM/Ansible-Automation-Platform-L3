@@ -552,7 +552,7 @@
 <p>If you cloned the Git repository earlier, a template has already been crafted for you; otherwise, you will need to recreate it using the sample code below.</p>
 <div class="admonition note">
 <p class="admonition-title">SELLERS AND TECH SELLERS</p>
-<p>Both job roles will need to modify the <em>cloud.yaml</em> template to specifications matching your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the Project Kit page.</p>
+<p>Both job roles will need to modify the <em>cloud.yaml</em> template to specifications matching your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the Project Kit.</p>
 <p>The same holds true for other variables or fields that have been bolded below in the sample script: if it is highlighted in red text within the screenshot, you must modify the <em>clouds.yaml</em> script for those fields to your own specifications and then save the changes before moving on.</p>
 </div>
 <p>The <em>clouds.yaml</em> template should look like the following screenshot. Modify as necessary to match the specifications of your unique ITZ environment. Update the <em>userID</em>, <em>password</em>, <em>project name</em> (<code>ansiblewas</code>), and the <em>host address</em> (this address should match the PowerVC GUI address from the Project Kit).</p>
@@ -587,9 +587,6 @@
 </li>
 <li>
 <p>public_key_file</p>
-</li>
-<li>
-<p>cloud</p>
 </li>
 <li>
 <p>name</p>
@@ -666,15 +663,16 @@
 <p><strong>wait_for</strong>: Ensures that the virtual machine has had time to boot up and the SSH port to be opened before re-enabling prompts from the terminal.</p>
 </li>
 </ul>
-<p>Before we get started with execution of the Playbook, open a Web browser on your local machine and navigate to the PowerVC GUI URL (in the first row of the Project Kit table), supplying your <em>userID</em> and <em>password</em> from the same table when prompted to log in. This will load a dashboard overview of your PowerVC infrastructure which details all that is transpiring under the covers. Keep this tab open, as we can use it to track the progress of our virtual machine deployment over time.</p>
+<p>Before we get started with execution of the Playbook, open a Web browser on your local machine and navigate to the PowerVC GUI URL (in the first row of the Project Kit table), supplying your <em>userID</em> and <em>password</em> from the same table when prompted to log in. This will load a dashboard overview of your PowerVC infrastructure which details all that is transpiring under the covers. Keep this tab open, as we can use it to track the progress of the virtual machine deployment.</p>
 <p><img alt="" src="../_attachments/part2_figure3.png" /></p>
 <p>You may encounter a <em>"Connection is not private"</em> warning when attempting to access the website. Click <strong>"visit this website"</strong> at the bottom of the message (for Safari browsers), or ignore the warning if prompted to do so, and continue to the PowerVC GUI page. The dashboard will look similar to the one captured in the screenshot below.</p>
 <p><img alt="" src="../_attachments/part2_figure4.png" /></p>
-<p>Time to execute the Playbook! Return to your Terminal console and submit the following command:
+<p>Time to execute the Playbook! Return to your Terminal console and submit the following:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ansible-playbook mkvm.yaml -v
 </code></pre></div></p>
-<p>If everything goes smoothly, a virtual machine will be deployed to PowerVC in a matter of minutes. If you encounter errors or things don't go as planned — don't panic. Ansible, as warned about previously, is quite particular about things like indentation. A misplaced whitespace or a slipped finger on the keyboard can create a typo that will throw the script into disarray (after all, Ansible will try to execute your instructions exactly as you have written.) Go back into the scripts mentioned previously and verify that everything is correct and that all necessary substitutions have been made, then try executing the <code>ansible-playbook mkvm.yaml -v</code> instruction a second time.</p>
 <p>While execution of the Playbook is underway, return to the PowerVC dashboard and click the VM List button from the taskbar on the left. Previously this tab would have displayed as empty. As the execution of the Playbook gets underway, a new virtual machine will be listed with the status of "<em>Building</em>;" once the virtual machine has been deployed, the status will be adjusted to "<em>Active</em>."</p>
+<p>If everything goes smoothly, a virtual machine will be deployed to PowerVC in a matter of minutes. If you encounter errors or things don't go as planned — don't panic. Ansible, as warned about previously, is quite particular about things like indentation. A misplaced whitespace or a slipped finger on the keyboard can create a typo that will throw the script into disarray (after all, Ansible will try to execute your instructions exactly as you have written.)</p>
+<p>Go back into the scripts mentioned previously and verify that everything is correct and that all necessary substitutions have been made, then try executing the <code>ansible-playbook mkvm.yaml -v</code> instruction a second time.</p>
 <p><img alt="" src="../_attachments/part2_figure5.png" /></p>
 <p>Once the build task has completed and the status is set to "<em>Active</em>," the IP field of the table will be populated with the virtual machine's address. Record this information for later.</p>
 <p><img alt="" src="../_attachments/part2_figure6.png" /></p>
