@@ -539,85 +539,96 @@
 <p><img alt="" src="../_attachments/part3_figure5.png" /></p>
 <p>AAP has a number of modules that can be used to modify existing files. These include <strong>lineinfile</strong> and <strong>blockinfile</strong>, among others. However, they are not always easy to use effectively and correctly. A much more powerful way to manage files is to template them. With this method, you can write a template configuration file that is automatically customized for the managed host when the file is deployed, using Ansible <strong>variables</strong> and <strong>facts</strong>. This can be easier to control and is less error-prone.</p>
 <p>Ansible uses the <strong>Jinja2</strong> templating system for template files. Ansible also uses Jinja2 syntax to reference variables in Playbooks, and as such it will look structurally similar to what you have seen previously with YAML-based Playbooks. A Jinja2 template is composed of multiple elements: data, variables, and expressions. Those variables and expressions are replaced with their values when the Jinja2 template is rendered. You will see an example of this shortly after we execute the Playbook and compare how the variables defined within the XML file are changed.</p>
-<p>Edit (or create) the XML response file by executing this command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi roles/was/templates/was90501.sdk8035.xml
-</code></pre></div>
-<p>The variables of note, specific to this environment, are highlighted in red text. You do not need to modify this template from how it is written — these variables are highlighted only to showcase what is different from the standard Installation Manager boilerplate. Your XML file must mirror the following template before continuing with the hands-on material.</p>
+<p>The variables of note, specific to this environment, are highlighted in the screenshot below with red text. You <strong>do not</strong> need to modify this template from how it is written — these variables are highlighted only to showcase what is different from the standard Installation Manager boilerplate. Your XML file must mirror the following template before continuing with the hands-on material.</p>
 <p><img alt="" src="../_attachments/part3_figure6.png" /></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt; &lt;agent-input&gt;
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&lt;variables&gt;
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>&lt;variable name=&#39;sharedLocation&#39; value=&#39;/usr/IBM/IMShared&#39;/&gt;
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  &lt;/variables&gt;
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  &lt;server&gt;
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>&lt;repository location=&#39;{{was_repo}}{{was_90501_file}}&#39;/&gt;
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>&lt;repository location=&#39;{{was_repo}}{{sdk_8035_file}}&#39;/&gt; &lt;/server&gt;
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>&lt;profile id=&#39;IBM WebSphere Application Server V9.0&#39;
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>installLocation=&#39;/usr/IBM/WebSphere/AppServer&#39;&gt; &lt;data key=&#39;cic.selector.arch&#39; value=&#39;ppc64&#39;/&gt; &lt;data key=&#39;cic.selector.ws&#39; value=&#39;gtk&#39;/&gt;
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  &lt;/profile&gt;
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  &lt;install&gt;
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>&lt;!-- IBM WebSphere Application Server 9.0.5.1 --&gt;
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>&lt;offering profile=&#39;IBM WebSphere Application Server V9.0&#39; id=&#39;com.ibm.websphere.BASE.v90&#39; version=&#39;9.0.5001.20190828_0616&#39; features=&#39;core.feature,ejbdeploy,thinclient,embeddablecontainer&#39;/&gt;
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>&lt;!-- IBM SDK, Java Technology Edition, Version 8 8.0.5.35 --&gt;
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>&lt;offering profile=&#39;IBM WebSphere Application Server V9.0&#39; id=&#39;com.ibm.java.jdk.v8&#39; version=&#39;8.0.5035.20190422_0948&#39; features=&#39;com.ibm.sdk.8&#39;/&gt;
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>&lt;/install&gt;
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>&lt;preference name=&#39;com.ibm.cic.common.core.preferences.eclipseCache&#39; value=&#39;${sharedLocation}&#39;/&gt;
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>&lt;/agent-input&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt; &lt;agent-input&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&lt;variables&gt;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&lt;variable name=&#39;sharedLocation&#39; value=&#39;/usr/IBM/IMShared&#39;/&gt;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  &lt;/variables&gt;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  &lt;server&gt;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>&lt;repository location=&#39;{{was_repo}}{{was_90501_file}}&#39;/&gt;
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>&lt;repository location=&#39;{{was_repo}}{{sdk_8035_file}}&#39;/&gt; &lt;/server&gt;
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>&lt;profile id=&#39;IBM WebSphere Application Server V9.0&#39;
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>installLocation=&#39;/usr/IBM/WebSphere/AppServer&#39;&gt; &lt;data key=&#39;cic.selector.arch&#39; value=&#39;ppc64&#39;/&gt; &lt;data key=&#39;cic.selector.ws&#39; value=&#39;gtk&#39;/&gt;
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  &lt;/profile&gt;
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  &lt;install&gt;
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>&lt;!-- IBM WebSphere Application Server 9.0.5.1 --&gt;
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>&lt;offering profile=&#39;IBM WebSphere Application Server V9.0&#39; id=&#39;com.ibm.websphere.BASE.v90&#39; version=&#39;9.0.5001.20190828_0616&#39; features=&#39;core.feature,ejbdeploy,thinclient,embeddablecontainer&#39;/&gt;
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>&lt;!-- IBM SDK, Java Technology Edition, Version 8 8.0.5.35 --&gt;
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>&lt;offering profile=&#39;IBM WebSphere Application Server V9.0&#39; id=&#39;com.ibm.java.jdk.v8&#39; version=&#39;8.0.5035.20190422_0948&#39; features=&#39;com.ibm.sdk.8&#39;/&gt;
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>&lt;/install&gt;
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>&lt;preference name=&#39;com.ibm.cic.common.core.preferences.eclipseCache&#39; value=&#39;${sharedLocation}&#39;/&gt;
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>&lt;/agent-input&gt;
 </code></pre></div>
-<p>When satisfied, press <em>ESC</em> followed by <em>:x</em> and <em>Return</em> to save and edit the file.</p>
-<p>Now you must set default variables for the WAS Roles, which will be used later when generating the response file for the Installation Manager. Edit (or create) the following YMAL template file:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vi roles/was/defaults/main.yml
-</code></pre></div></p>
+<p>Edit (or create) the XML response file by executing the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vi roles/was/templates/was90501.sdk8035.xml
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">was90501.sdk8035.xml</p>
+<p><strong>Technical Sellers</strong>: Replicate the code template above and create the XML file.</p>
+<p><strong>Sellers</strong>: Leave the XML file unmodified.</p>
+</div>
+<p>When satisfied, press <code>ESC</code> followed by <code>:x</code> and <code>Return</code> to save and edit the file.</p>
+<p>Now you must set default variables for the WAS Roles, which will be used later when generating the response file for the Installation Manager.</p>
 <p>The YAML file definition should mirror the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>was_repo: /tmp/wasrepo/
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>was_90501_file: was.repo.90501.base.zip
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sdk_8035_file: sdk.repo.8035.java8.aix.zip
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>was_90501_source_dir: /files/aix/websphere/was/was9051/
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sdk_8035_source_dir: /files/aix/websphere/sdk/sdk8035/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>was_repo: /tmp/wasrepo/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>was_90501_file: was.repo.90501.base.zip
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sdk_8035_file: sdk.repo.8035.java8.aix.zip
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>was_90501_source_dir: /files/aix/websphere/was/was9051/
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sdk_8035_source_dir: /files/aix/websphere/sdk/sdk8035/
 </code></pre></div>
-<p>You are now ready to make additional modifications to the primary Playbook, instructing Ansible to generate and upload the template for WAS. Instruct the VI editor to open the Playbook with the same command used before:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vi roles/was/tasks/main.yml
+<p>Edit (or create) the following YAML template file:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vi roles/was/defaults/main.yml
 </code></pre></div></p>
 <div class="admonition warning">
-<p class="admonition-title">main.yml</p>
+<p class="admonition-title">roles/was/defaults/main.yml</p>
+<p><strong>Technical Sellers</strong>: Replicate the code template above and create the YAML file.</p>
+<p><strong>Sellers</strong>: Leave the YAML file unmodified.</p>
+</div>
+<p>You are now ready to make additional modifications to the primary Playbook, instructing Ansible to generate and upload the template for WAS. The extensions to the Playbook will create a directory <strong>was_repo: /tmp/wasrepo/</strong> and then instruct Ansible to upload WAS binaries to the target system.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>---
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>- name: Creating staging directory
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  file:
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    path: /tmp/im
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    state: directory
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>- name: copying IM source files
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  unarchive:
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    src: /files/aix/websphere/InstallationManager/1.8.9.4/aix.gtk.ppc_1.8.9004.20190423_2015.zip
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    dest: /tmp/im
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    creates: /tmp/im/userinstc.ini
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>- name: installing installation manager
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>  shell: /tmp/im/installc -log /tmp/im.lof -acceptLicense
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>- name: uploading was installation response file
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>  template:
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    src: templates/was90501.sdk8035.xml
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    dest: /tmp/was90501.sdk8035.xml
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>- name: Creating wasrepo directory
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>  file:
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    path: &quot;{{was_repo}}&quot;
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    state: directory
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>- name: copying binaries to wasrepo
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>  copy:
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>    src: &quot;{{item}}&quot;
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>    dest: &quot;{{was_repo}}&quot;
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>  loop:
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>    - &quot;{{was_90501_source_dir}}{{was_90501_file}}&quot;
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>    - &quot;{{sdk_8035_source_dir}}{{sdk_8035_file}}&quot;
+</code></pre></div>
+<p>Instruct the VI editor to open the Playbook with the same command used before:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>vi roles/was/tasks/main.yml
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">roles/was/tasks/main.yml</p>
 <p><strong>Technical Sellers</strong>: Extend the Playbook to resemble the following template.</p>
 <p><strong>Sellers</strong>: Leave the completed Playbook unmodified.</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>---
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>- name: Creating staging directory
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  file:
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    path: /tmp/im
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    state: directory
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>- name: copying IM source files
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  unarchive:
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    src: /files/aix/websphere/InstallationManager/1.8.9.4/aix.gtk.ppc_1.8.9004.20190423_2015.zip
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    dest: /tmp/im
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    creates: /tmp/im/userinstc.ini
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>- name: installing installation manager
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>  shell: /tmp/im/installc -log /tmp/im.lof -acceptLicense
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>- name: uploading was installation response file
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>  template:
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    src: templates/was90501.sdk8035.xml
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    dest: /tmp/was90501.sdk8035.xml
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>- name: Creating wasrepo directory
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>  file:
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    path: &quot;{{was_repo}}&quot;
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    state: directory
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>- name: copying binaries to wasrepo
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>  copy:
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>    src: &quot;{{item}}&quot;
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>    dest: &quot;{{was_repo}}&quot;
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>  loop:
-<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>    - &quot;{{was_90501_source_dir}}{{was_90501_file}}&quot;
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>    - &quot;{{sdk_8035_source_dir}}{{sdk_8035_file}}&quot;
-</code></pre></div>
-<p>The extensions to the Playbook will create a directory <strong>was_repo: /tmp/wasrepo/</strong> and then instruct Ansible to upload WAS binaries to the target system.</p>
-<p>Press <em>ESC</em> and then <em>:x</em> and <em>Return</em> to save and exit the Playbook.</p>
-<p>Using <strong>loops</strong> saves administrators from having to write multiple tasks (repetitively and redundantly) to make use of the same module(s). For example, instead of writing five tasks to ensure five users exist, you can write one task that iterates over a list of five users to ensure they all exist. Ansible supports iterating a task over a set of items using the loop keyword. You can configure loops to repeat a task using each item in a list, the contents of each of the files in a list, a generated sequence of numbers, or using more complicated structures.</p>
+<p>Press <code>ESC</code> followed by <code>:x</code> and <code>Return</code> to save and exit the Playbook.</p>
+<p>Using <strong>loops</strong> saves administrators from having to write multiple tasks (repetitively and redundantly) to make use of the same module(s). For example, instead of writing five tasks to ensure five users exist, you can write one task that iterates over a list of five users to ensure they all exist. Ansible supports iterating a task over a set of items using the <em>loop</em> keyword. You can configure loops to repeat a task using each item in a list, the contents of each of the files in a list, a generated sequence of numbers, or using more complicated structures.</p>
 <div class="admonition warning">
 <p class="admonition-title">TECHNICAL SELLERS</p>
 <p>As before, you can execute the Playbook at this stage to carry out the new modifications that have been added since the last execution.

@@ -534,7 +534,7 @@
 <p class="admonition-title">WAYS TO WATCH</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DC268DHWqdgD9GCMpXpD3Tp4Tq9j" target="_blank">download the recording from Seismic</a>.</p>
 </div>
-<p>As with the <strong>aix</strong> Roles previously, you will need to craft a workflow of automation tasks that WebSphere Application Server (WAS) will require for a full deployment, covering a variety of tasks: uploading and decompressing the WAS binaries, preparing the Installation Manager, the generation of WAS binaries, the installation of WAS itself, the creation of a WAS profile, and starting up the WAS services. All of these tasks will be defined once, and made repeatable and fully automated for the future, using the was Role that you will now define.</p>
+<p>As with the <strong>aix</strong> Roles previously, you will need to craft a workflow of automation tasks that WebSphere Application Server (WAS) will require for a full deployment, covering a variety of tasks: uploading and decompressing the WAS binaries, preparing the Installation Manager, the generation of WAS binaries, the installation of WAS itself, the creation of a WAS profile, and starting up the WAS services. All of these tasks will be defined once, and made repeatable and fully automated for the future, using the <em>was</em> Role that you will now define.</p>
 <p>The following Ansible Modules will be invoked as part of the sequence of jobs and tasks that the automation engine performs:</p>
 <ul>
 <li>
@@ -553,9 +553,9 @@
 <p>First, return to the <em>was.yml</em> Playbook that was defined earlier:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi was.yml
 </code></pre></div></p>
-<p>Recall that Git-cloned template had a commented-out line towards the end of the YAML definition: this line <strong>"- role: was"</strong> will link the new was Role (which you will define momentarily) to the litany of operations that the Ansible Playbook will perform and interact with.</p>
-<div class="admonition note">
-<p class="admonition-title">IF WORKING FROM A CLONED GIT REPOSITORY</p>
+<p>Sellers: recall that the Git-cloned template had a commented-out line towards the end of the YAML definition: this line <code>- role: was</code> will link the new <em>was</em> Role (which you will define momentarily) to the litany of operations that the Ansible Playbook will perform and interact with.</p>
+<div class="admonition tip">
+<p class="admonition-title">SELLERS</p>
 <p>If you cloned the Git template previously, un-comment the line by deleting the # symbol. Otherwise, if you crafted the YAML file from scratch, add the instruction to the end of your Playbook.</p>
 </div>
 <p>The final version of the Playbook should mirror the following template:</p>
@@ -570,7 +570,7 @@
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    - role: aix
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    - role: was
 </code></pre></div>
-<p>Press <em>ESC</em> and then <em>:x</em> and <em>Return</em> to save and exit the <strong>was.yml</strong> file.</p>
+<p>Press <code>ESC</code> and then <code>:x</code> and <code>Return</code> to save and exit the <em>was.yml</em> file.</p>
 <div class="admonition warning">
 <p class="admonition-title">ATTENTION</p>
 <p>In the instructions to follow, you will be asked to gradually add more automation jobs to the <strong>was</strong> Roles that you just defined. You have two options for how to proceed here:</p>
@@ -583,7 +583,7 @@
 </li>
 </ol>
 </div>
-<p>Either path is appropriate, so tailor it to your needs or interests. Good luck!</p>
+<p>Either path is appropriate, so tailor it to your job role or interests. Good luck!</p>
 
 
 

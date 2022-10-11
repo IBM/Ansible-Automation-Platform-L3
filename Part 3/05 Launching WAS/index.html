@@ -542,14 +542,14 @@
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCdhQRCMq9R4fG4MRdCgqFmPDPWG" target="_blank">download the recording from Seismic</a>.</p>
 </div>
 <p>Further modifications to the primary Playbook are required to complete the installation of WAS, generate the necessary profiles, and fully launch the software.</p>
-<p>Once again, edit the Playbook YAML manifest.</p>
+<p>Once again, edit the Playbook YAML manifest:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi roles/was/defaults/main.yml
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">main.yml</p>
 <p><strong>Technical Sellers</strong>: Extend the YAML file as you have done previously so that the final version matches the template documented below.</p>
 <p><strong>Sellers</strong>: As you are working from a completed YAML file that was cloned from the Git repository, you do not need to make any modifications to the file.</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi roles/was/defaults/main.yml
-</code></pre></div>
 <p>The finalized Playbook should exactly mirror the following template:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>---
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>- name: Creating staging directory
@@ -596,8 +596,8 @@
 <a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>  shell: /usr/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1
 <a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>  tags: template
 </code></pre></div>
-<p>When satisfied, press <em>ESC</em> and <em>:x</em> and <em>Return</em> to save and exit the YAML file.</p>
-<p>Finally, execute the completed Playbook.</p>
+<p>When satisfied, press <code>ESC</code> followed by <code>:x</code> and <code>Return</code> to save and exit the YAML file.</p>
+<p>Finally, execute the completed Playbook:</p>
 <div class="admonition note">
 <p class="admonition-title">SELLERS AND TECHNICAL SELLERS</p>
 <p>This step must be performed by <em>both</em> <strong>Sellers</strong> and <strong>Technical Sellers</strong>.</p>
@@ -611,19 +611,19 @@
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">HOST ADDRESS</p>
-<p>Substitute the missing variables with the IP address of your AIX LPAR (this is the address summarized just below the PLAY RECAP in the screenshot above) — remember to use the address unique to <em>your</em> environment. Ensure that you are connected to OpenVPN tunnel used earlier before attempting to access the WAS service.</p>
+<p>Substitute the missing variables with the IP address of your AIX LPAR (this is the address summarized just below the PLAY RECAP in the screenshot above) — remember to use the address unique to <em>your</em> environment. Ensure that you are still connected to the OpenVPN tunnel before attempting to access the WAS service.</p>
 </div>
 <p><img alt="" src="../_attachments/part3_figure8.png" /></p>
-<p>You may input any <em>userID</em> that you wish and then click <em>Log In</em> (remember that we disabled authentication in an earlier step) to access the WAS dashboard.</p>
+<p>You may input any <em>userID</em> that you wish (remember that we disabled authentication in an earlier step) and then click <em>Log In</em> to access the WAS dashboard.</p>
 <h1 id="_1"></h1>
 <h1 id="congratulations-you-have-successfully-installed-and-deployed-a-websphere-application-server-environment-on-powervc-entirely-using-red-hat-ansible-automation-platform"><strong>Congratulations</strong> — you have successfully installed and deployed a WebSphere Application Server environment on PowerVC entirely using Red Hat Ansible Automation Platform!</h1>
 <div class="admonition note">
 <p class="admonition-title">BUSINESS PARTNERS</p>
-<p>Keep your browser window open to the WAS dashboard. The following series of questions will be repeated on your <strong>L3 accreditation quiz</strong>. Use this time to investigate the various areas of the WAS dashboard so that you can prepare for the quiz and quickly certify your completion of this hands-on material.</p>
+<p>Keep your browser window open to the WAS dashboard. The series of questions in <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/01%20Business%20Partner%20Accreditation/" target="_blank">Part 4</a> will be repeated on your <strong>L3 accreditation quiz</strong>. Use this time to investigate the various areas of the WAS dashboard so that you can prepare for the quiz and quickly certify your completion of this hands-on material.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">IBM SELLERS AND TECHNICAL SELLERS</p>
-<p>Begin planning how you wish to present and record your <strong>Stand &amp; Deliver</strong>. Replicate the steps and lessons learned throughout this hands-on material and ensure that your recording meets all of the evaluation criteria outlined in the Stand &amp; Deliver requirements.</p>
+<p>Begin planning how you wish to present and record your <strong>Stand &amp; Deliver</strong>. Replicate the steps and lessons learned throughout this hands-on material and ensure that your recording meets all of the evaluation criteria outlined in the <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/02%20IBMer%20Accreditation/" target="_blank">Part 4 Stand &amp; Deliver requirements</a>.</p>
 </div>
 
 
