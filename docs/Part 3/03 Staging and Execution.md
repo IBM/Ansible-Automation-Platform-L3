@@ -1,6 +1,6 @@
 ![type:video](./_videos/Part 3c - Copying Source Files - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales.mp4)
 !!! tip "WAYS TO WATCH"
-    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
+    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCTGhq8B8dP4TGMPHQc3C8MdmDq8" target="_blank">download the recording from Seismic</a>.
 
 The first task that Ansible's automation will need to tackle is creation of a staging directory, where the **WAS Installation Manager binaries** can be downloaded and unpackaged. Begin by using the VI editor to create (or modify/examine) the *main.yml* Roles via the following command:
 

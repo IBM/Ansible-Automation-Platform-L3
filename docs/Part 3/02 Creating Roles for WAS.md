@@ -1,6 +1,6 @@
 ![type:video](./_videos/Part 3b - Creating Roles for WAS - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales.mp4)
 !!! tip "WAYS TO WATCH"
-    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
+    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DC268DHWqdgD9GCMpXpD3Tp4Tq9j" target="_blank">download the recording from Seismic</a>.
 
 As with the **aix** Roles previously, you will need to craft a workflow of automation tasks that WebSphere Application Server (WAS) will require for a full deployment, covering a variety of tasks: uploading and decompressing the WAS binaries, preparing the Installation Manager, the generation of WAS binaries, the installation of WAS itself, the creation of a WAS profile, and starting up the WAS services. All of these tasks will be defined once, and made repeatable and fully automated for the future, using the was Role that you will now define.
 

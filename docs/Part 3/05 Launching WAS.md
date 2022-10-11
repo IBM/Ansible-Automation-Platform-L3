@@ -1,6 +1,6 @@
 ![type:video](./_videos/Part 3e - Launching WAS - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales.mp4)
 !!! tip "WAYS TO WATCH"
-    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
+    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCdhQRCMq9R4fG4MRdCgqFmPDPWG" target="_blank">download the recording from Seismic</a>.
 
 Further modifications to the primary Playbook are required to complete the installation of WAS, generate the necessary profiles, and fully launch the software.
 

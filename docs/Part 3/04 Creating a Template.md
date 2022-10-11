@@ -1,6 +1,6 @@
 ![type:video](./_videos/Part 3d - Creation of a Template - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales.mp4)
 !!! tip "WAYS TO WATCH"
-    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
+    In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCJh6Jdm8C8gXG4R2WmT62hc42cB" target="_blank">download the recording from Seismic</a>.
 
 **WebSphere Installation Manager** requires an XML file (known as a **response file**) to detail where the installation should take place, the version of WAS to be installed, the versions of Java and other dependencies, and so on. The file must be located inside of the *roles/was/templates* directory and titled **was90501.sdk8035.xml** for the purposes of this lab.
 
