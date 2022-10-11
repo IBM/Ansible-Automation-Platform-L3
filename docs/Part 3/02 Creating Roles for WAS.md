@@ -1,4 +1,4 @@
-![type:video](./_videos/IBM Power Systems Virtual Server Level 3 - Introduction.mp4)
+![type:video](./_videos/Part 3b - Creating Roles for WAS - Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales.mp4)
 !!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCGdHJ7DMdqHD8cV7Wp8f4Rg9Bgd" target="_blank">download the recording from Seismic</a>.
 
