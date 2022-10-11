@@ -10,7 +10,7 @@ Alternatively, you can provision the environment by navigating to the following 
 
 ![](_attachments/part1_figure1.png)
 
-In order to complete your reservation of the PowerVC infrastructure with AAP pre-installed, you must fill out the following information:
+In order to complete your ITZ reservation of the PowerVC infrastructure with AAP pre-installed, you must supply the following information:
 
 - **Name**: Give your reservation a unique name.
 
@@ -20,16 +20,16 @@ In order to complete your reservation of the PowerVC infrastructure with AAP pre
 
 - **Preferred Geography**: *Montpellier, France*
 
-- **Start Date & Time**: Select the time and date for when you plan to complete the hands-on material.
+- **Start Date & Time**: Select the time and date for when you plan to begin work on the hands-on material.
 
-- **End Date & Time**: Select a time and date no more than 4 hours later than the Start Time. The environment has been capped at 4 hours, after which it will expire and de-provision.
+- **End Date & Time**: Select a time and date for when the reservation will expire. The environment has been capped at 4 hours duration, after which it will automatically expire and de-provision.
 
 !!! note "COMPLETION TIMES"
-    Four hours is more than enough time to complete the hands-on portion of the course work. Make sure you reserve for a period where you can give the lab 4 uninterrupted hours of your time — should you require additional time, you can reserve the lab again, but your progress from the previous attempt will be reset.
+    Four hours is more than enough time to complete the hands-on portion of the course work. Make sure you place your reservation for a period where you can give the lab 4 uninterrupted hours of your time — should you require additional time, you can reserve the lab again, but your progress from the previous attempt will be reset.
 
 When satisfied, click the **Check Availability** button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking **Submit**.
 
-Reservations take approximately 10-15 minutes to complete from the time that you click submit. If you navigate to the **My Reservations** tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation. Wait until the environment tile describes the instance as "*Ready*" — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.
+Reservations take approximately **2-3 hours** to complete from the time that you click submit (this will not impact your 4 hour time allotment.) If you navigate to the **My Reservations** tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation. Wait until the environment tile describes the instance as "*Ready*" — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.
 
 You will also receive a pair of emails to your inbox once the environment has successfully deployed, as shown here.
 
@@ -37,7 +37,7 @@ You will also receive a pair of emails to your inbox once the environment has su
 
 ![](_attachments/part1_figure3.png)
 
-The **"Demo Ready Notification"** email contains an important link **("Click Here")** for accessing your **Project Kit**, which will be needed to obtain information about your PowerVC environment — hostname, address, login information, and so on. Click that link now to load the Project Kit in your browser window.
+The **"Demo Ready Notification"** email contains an important link **("Click Here")** for accessing your **Project Kit**, which will be needed to obtain information about your PowerVC environment — hostname, address, login information, and so on. Click that link now to preload the Project Kit in your browser window.
 
 The second **"Demo VPN Ready Notification"** email is our next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.
 !!! warning "VPN ACCESS"
@@ -46,7 +46,7 @@ The second **"Demo VPN Ready Notification"** email is our next order of business
 From the **"Demo VPN Ready Notification"** email, locate the **"Click Here"** hyperlink to download your **OpenVPN certificate**, which is unique to your account and environment. This certificate will only need to be downloaded and set up once; in the event that you need to re-provision a new environment at a later time, it won't be necessary to repeat these steps.
 
 Further down in the email are three links for setting up OpenVPN, for each of the major operating systems: Windows, Linux, and MacOS.
-!!! note "SELECTING AN OpenVPN CLIENT"
+!!! note "CLIENT SELECTION"
     It is recommended that you use **Tunnelblick** if using running MacOS, but you have the option of using other OpenVPN clients if you prefer.
 
 Select the option that matches your machine's operating system. Follow the instructions to install OpenVPN on your machine and use the OpenVPN certificate (linked from the same email) to establish the connection.
@@ -57,7 +57,7 @@ Select the option that matches your machine's operating system. Follow the instr
 
 Once installed and setup, OpenVPN will allow you to establish a private VPN tunnel to your PowerVC environment. Click the **"Connect"** button (or similar — the screenshots provided here are for Tunnelblick on MacOS). You can disregard warnings or errors that the application may throw. After connecting, you will be able to access the PowerVC GUI and SSH remotely into your PowerVC environment, which we will cover next.
 
-After connecting to the VPN tunnel, return to the **"Demo Ready Notification"** email (or the *My Reservations* tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured here.
+After connecting to the VPN tunnel, return to the **"Demo Ready Notification"** email (or the *My Reservations* tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured in the screenshot below.
 
 ![](_attachments/part1_figure6.png)
 
@@ -65,7 +65,7 @@ The Project Kit summarizes all of the relevant connection information you will n
 
 ![](_attachments/part1_figure7.png)
 
-The table contains two relevant rows: the first row **"PowerVC GUI"** contains information on how to connect to the PowerVC infrastructure; the second row **"Ansible ssh console"** details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the *userID* and *password* values (they are identical across both environments).
+The table contains two relevant rows: the first row **"PowerVC GUI"** contains information on how to connect to the PowerVC infrastructure; the second row **"Ansible ssh console"** details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy for future reference the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the *userID* and *password* values (they are identical across both environments).
 
 Let's try connecting remotely over SSH to the Ansible environment. Make sure that your OpenVPN connection is active, otherwise the connection attempt will timeout. To connect via SSH, it is recommended that you use Terminal (MacOS) or <a href="https://www.putty.org" target="_blank">PuTTY</a> (Windows).
 !!! note "SSH and PuTTY - WINDOWS USERS"
