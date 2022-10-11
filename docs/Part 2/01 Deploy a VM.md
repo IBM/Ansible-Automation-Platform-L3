@@ -25,7 +25,7 @@ To streamline the lab as much as possible, a Git repository was created ahead of
     mkdir ansiblewas
     ```
 
-ALL USERS: After the clone action has been completed, navigate to the newly-created *ansiblewas* directory.
+ALL USERS: Navigate to the newly-created *ansiblewas* directory.
 ```
 cd ansiblewas
 ```
