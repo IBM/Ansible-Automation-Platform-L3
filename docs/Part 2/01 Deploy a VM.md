@@ -7,7 +7,7 @@
 
 Ansible, and in particular **YAML** (Yet Another Markup Language), is very particular about indentation and formatting — something as trivial as an extra whitespace or an incorrectly-indented line of code can cause the interpreter to parse the instructions differently, resulting in outcomes you may not have intended.
 
-To streamline the lab as much as possible, a Git repository was created ahead of time with large portions of the Ansible scripts and constructs prepared ahead of time. You will still need to edit elements in each of these files, and the instructions to follow will guide you step by step (as though you were creating these documents from scratch yourself), but it's worth noting that by cloning the Git repository you will be saving yourself a lot of extra typing (and potential debugging). Everything is documented for you— so you can go about creating all of these documents and scripts from scratch, if you wish.
+To streamline the lab as much as possible, a Git repository was created ahead of time with large portions of the Ansible scripts and constructs prepared ahead of time. You will still need to edit elements in each of these files, and the instructions to follow will guide you step by step (as though you were creating these documents from scratch yourself), but it's worth noting that by cloning the Git repository you will be saving yourself a lot of extra typing (and potential debugging). Everything is documented for you— so you can go about creating all of these documents and scripts from scratch, if you wish. Note that the cloned repository will be replicated to your ITZ virtual machine, not your local machine.
 
 #
 # If you are a **SELLER**, it is strongly recommended that you clone the Git repository, as it will save you time and keystrokes.
@@ -25,10 +25,11 @@ To streamline the lab as much as possible, a Git repository was created ahead of
     mkdir ansiblewas
     ```
 
-ALL USERS: Navigate to the newly-created *ansiblewas* directory.
-```
-cd ansiblewas
-```
+!!! note "ALL USERS"
+    Navigate to the newly-created *ansiblewas* directory.
+    ```
+    cd ansiblewas
+    ```
 
 As a quick primer on how to use the **VI** editor:
 
@@ -61,11 +62,11 @@ inventory       = ./hosts
 remote_tmp = /tmp
 host_key_checking = False
 ```
-!!! warning "TECHNICAL SELLERS"
-    As you are crafting these files from scratch, you will need to copy the code *ansible.cfg* code block referenced above and save it by pressing ```ESC``` followed by ```:x``` and ```Return```.
-
 !!! tip "SELLERS"
     As you are working from a cloned Git repository, the *ansible.cfg* file is already defined within your directory. You can inspect it using the ```vi ansible.cfg``` command mentioned above, but you do not need to modify or adjust the values inside the configuration file. Exit the VI editor without saving changes by pressing ```ESC``` followed by ```:quit!``` and ```Return```.
+
+!!! warning "TECHNICAL SELLERS"
+    As you are crafting these files from scratch, you will need to copy the code *ansible.cfg* code block referenced above and save it by pressing ```ESC``` followed by ```:x``` and ```Return```.
 
 
 We are now ready to install the Ansible OpenStack Python modules on to the Ansible controller node. The **openstacksdk** library is required in order for Ansible to be able to interact with the PowerVC infrastructure provisioned via the ITZ. The following command will take care of installing all of the necessary drivers and dependencies:

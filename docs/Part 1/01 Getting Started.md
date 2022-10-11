@@ -4,6 +4,9 @@
 
 You will require access to the **IBM Technology Zone (ITZ)** in order to reserve your environment and complete the hands-on training. If you do not yet have access or an account with the ITZ, you may register for one by visiting the following page: <a href="https://techzone.ibm.com" target="_blank">https://techzone.ibm.com</a>
 
+#
+# Reserving an environment
+
 The hands-on environment can be provisioned free-of-charge using the reservation portal: <a href="https://techzone.ibm.com/my/reservations/create/61aa2c69a5295f00185b77b2" target="_blank">https://techzone.ibm.com/my/reservations/create/61aa2c69a5295f00185b77b2</a>
 
 Alternatively, you can provision the environment by navigating to the following ITZ Collection (<a href="https://techzone.ibm.com/collection/ansible-hands-on-power" target="_blank">https://techzone.ibm.com/collection/ansible-hands-on-power</a>) and scrolling down until you locate the **Environments — "Click here to get your hands on lab"** tab. Clicking the blue "Reserve" tile will navigate your browser window to the same reservation panel as the link above.
@@ -39,6 +42,9 @@ You will also receive a pair of emails to your inbox once the environment has su
 
 The **"Demo Ready Notification"** email contains an important link **("Click Here")** for accessing your **Project Kit**, which will be needed to obtain information about your PowerVC environment — hostname, address, login information, and so on. Click that link now to preload the Project Kit in your browser window.
 
+#
+# Setting up a VPN
+
 The second **"Demo VPN Ready Notification"** email is our next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.
 !!! warning "VPN ACCESS"
     This is different from the VPN access you may be using to connect to the IBM intranet and network. All participants must follow the instructions outlined below in order to connect to the environment. Without the correct VPN setup, you will be unable to SSH or remotely connect to the PowerVC instance.
@@ -49,15 +55,37 @@ Further down in the email are three links for setting up OpenVPN, for each of th
 !!! note "CLIENT SELECTION"
     It is recommended that you use **Tunnelblick** if using running MacOS, but you have the option of using other OpenVPN clients if you prefer.
 
-Select the option that matches your machine's operating system. Follow the instructions to install OpenVPN on your machine and use the OpenVPN certificate (linked from the same email) to establish the connection.
+Download the latest Tunnelblick client (*v3.8.7a* or later) to your local machine and run the installer. Click **Continue** when prompted to do so, as shown below.
 
-![](_attachments/part1_figure4.png)
+![](_attachments/part1_figure8.png)
 
-![](_attachments/part1_figure5.png)
+![](_attachments/part1_figure9.png)
 
-Once installed and setup, OpenVPN will allow you to establish a private VPN tunnel to your PowerVC environment. Click the **"Connect"** button (or similar — the screenshots provided here are for Tunnelblick on MacOS). You can disregard warnings or errors that the application may throw. After connecting, you will be able to access the PowerVC GUI and SSH remotely into your PowerVC environment, which we will cover next.
+After the initial setup, Tunnelblick will prompt you to answer **"I have configuration files"** (or not). Select the first highlighted option as shown.
 
-After connecting to the VPN tunnel, return to the **"Demo Ready Notification"** email (or the *My Reservations* tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured in the screenshot below.
+![](_attachments/part1_figure10.png)
+
+Along the taskbar at the top of your desktop, an icon for Tunnelblick will now be visible. Click the icon to pull down a menu of options — select the **VPN Details...** button.
+
+![](_attachments/part1_figure11.png)
+
+The full Tunnelblick interface will open. Locate the **OpenVPN certificate** you downloaded earlier (it will have a filename similar to ```VPN_DcUser13097_20221011201513.psscopenvpn.ovpn```) and **DRAG** the certificate over the Tunnelblick interface (as shown). Alternatively, you can also drag it directly on top of the Tunnelblick icon located in the desktop taskbar. Release the certificate on top of the Tunnelblick app to add the OpenVPN certificate to configure Tunnelblick to use the connection certificate.
+
+![](_attachments/part1_figure12.png)
+
+You will be prompted to *"Install Configuration for All Users?"* to which you must select the **ALL USERS** option.
+
+![](_attachments/part1_figure13.png)
+
+The OpenVPN connection will now display among the list of configurations. In the bottom-right corner of the Tunnelblick interface, click the **Connect** button.
+
+![](_attachments/part1_figure14.png)
+
+Wait for the connection to be established. You may receive a pair of warnings — which you can safely ignore.
+
+![](_attachments/part1_figure15.png)
+
+After connecting, you will be able to access the PowerVC GUI and SSH remotely into your PowerVC environment. Return to the **"Demo Ready Notification"** email (or the *My Reservations* tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured in the screenshot below.
 
 ![](_attachments/part1_figure6.png)
 
