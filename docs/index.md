@@ -9,7 +9,7 @@ As environments change and operating systems advance over time, the automation j
 #
 #**Red Hat Ansible Automation Platform (AAP)** commodifies the automation of everything else that applications, services, and containers need to run upon.
 
-!!! tip "TERMINOLOGY"
+!!! note "TERMINOLOGY"
     Ansible and AAP may be used interchangeably — and will be throughout the course of this lab work.
 
 That may include infrastructure provisioning, server deployments, IoT edge devices, script execution, and lots of other things that operations teams spend their time doing to “keep the lights on.” AAP makes automation available to everyone with the lightest touch of human-readable snippets of code.
