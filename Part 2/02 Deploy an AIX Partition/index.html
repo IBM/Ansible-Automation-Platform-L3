@@ -534,7 +534,6 @@
 <p class="admonition-title">WAYS TO WATCH</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DC9B3JDG242PgGFFM6fQ2fRBqTpB" target="_blank">download the recording from Seismic</a>.</p>
 </div>
-<p><img alt="" src="../_attachments/intro_figure1.png" /></p>
 <p>The deployment of an AIX operating system partition on to the PowerVC infrastructure will be automated entirely via the AAP control (master) node. AAP will make use of:</p>
 <ul>
 <li>
@@ -547,11 +546,12 @@
 <p>Built-in Modules (which are part of AAP's engine) for carrying out those instructions.</p>
 </li>
 </ul>
+<p><img alt="" src="../_attachments/intro_figure1.png" /></p>
 <p><strong>Ansible OpenStack Modules</strong>— downloaded in the previous step —will allow AAP to create an LPAR (logical partition or host) on the PowerVC infrastructure where the AIX operating system can reside. Begin modification of the OpenStack configuration file (located within your home directory on the Ansible control node) using the following instruction:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vi clouds.yaml
 </code></pre></div></p>
 <p>If you cloned the Git repository earlier, a template has already been crafted for you; otherwise, you will need to recreate it using the sample code below.</p>
-<div class="admonition note">
+<div class="admonition warning">
 <p class="admonition-title">SELLERS AND TECH SELLERS</p>
 <p>Both job roles will need to modify the <em>cloud.yaml</em> template to specifications matching your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the Project Kit.</p>
 <p>The same holds true for other variables or fields that have been bolded below in the sample script: if it is highlighted in red text within the screenshot, you must modify the <em>clouds.yaml</em> script for those fields to your own specifications and then save the changes before moving on.</p>
@@ -568,7 +568,7 @@
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>      project_name: ansiblewas
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    verify: false
 </code></pre></div>
-<div class="admonition warning">
+<div class="admonition note">
 <p class="admonition-title">BE CAREFUL WITH INDENTATION</p>
 <p>AAP is very particular about indentation and nesting rules. In this example, every indentation level is denoted by two whitespaces. Also be sure to preserve the empty newline at the end of this example (the empty final line must be present within your YAML manifest.)</p>
 </div>
@@ -645,7 +645,7 @@
 <p class="admonition-title"><code>os_server: name</code></p>
 <p>For the '<em>name</em>' field (line 11) you must include both <code>vm</code> + <code>idXXXXXXXXX</code> ( do not forget to prefix with <code>vm</code>) in your manifest. The '<em>name</em>' variable will appear as <strong>BLANK</strong> when working from the Git repository clone — both sellers and technical sellers <strong>must complete</strong> this variable definition regardless of whether they are working from the Git repository clone or not.</p>
 </div>
-<div class="admonition note">
+<div class="admonition warning">
 <p class="admonition-title"><code>nics: net-name</code></p>
 <p>The '<em>net-name</em>' field must be set equal to <code>VLAN344</code>, if it hasn't already been by default.</p>
 </div>
@@ -674,10 +674,10 @@
 <p>While execution of the Playbook is underway, return to the PowerVC dashboard and click the VM List button from the taskbar on the left. Previously this tab would have displayed as empty. As the execution of the Playbook gets underway, a new virtual machine will be listed with the status of "<em>Building</em>;" once the virtual machine has been deployed, the status will be adjusted to "<em>Active</em>."</p>
 <p><img alt="" src="../_attachments/part2_figure5.png" /></p>
 <p>If everything goes smoothly, a virtual machine will be deployed to PowerVC in a matter of minutes. If you encounter errors or things don't go as planned — don't panic. AAP, as warned about previously, is quite particular about things like indentation. A misplaced whitespace or a slipped finger on the keyboard can create a typo that will throw the script into disarray (after all, Ansible will try to execute your instructions exactly as you have written.)</p>
-<p>Go back into the scripts mentioned previously and verify that everything is correct and that all necessary substitutions have been made, then try executing the <code>ansible-playbook mkvm.yaml -v</code> instruction a second time.</p>
+<p>Go back into the scripts mentioned previously and verify that everything is correct and that all necessary substitutions have been made, then execute the <code>ansible-playbook mkvm.yaml -v</code> instruction a second time.</p>
 <p><img alt="" src="../_attachments/part2_figure8.png" /></p>
 <div class="admonition note">
-<p class="admonition-title">'WARNING' STATUS</p>
+<p class="admonition-title">HEALTH STATUS</p>
 <p>While provisioning of the VM is underway, you may notice that the <em>State / Health</em> of the VM temporarily displays a <em>'Warning'</em> message. You can safely ignore the warning — but for those curious as to why: when you deploy a virtual machine, it remains in the Activating state until either Resource Monitoring and Control (RMC) becomes active or 20 minutes have passed. There are several reasons for the virtual machine to stay in the Activating state for 20 minutes and the health of the virtual machine shows that the RMC state is inactive. If you are using the activation engine or cloud-init activation packages, the most likely cause for RMC to be inactive is that the activation package did not configure the networking of the virtual machine.</p>
 </div>
 <p>Once the build task has completed and the status is set to "<em>Active</em>," the IP field of the table will be populated with the virtual machine's address. Record this information for later.</p>

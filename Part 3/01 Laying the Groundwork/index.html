@@ -649,84 +649,85 @@
 <p>Execute the following instructions via your SSH console, line by line, to create the directory structure needed for the Roles.</p>
 <div class="admonition warning">
 <p class="admonition-title">NAVIGATE TO THE CORRECT DIRECTORY <em>FIRST</em></p>
-<p>Make sure you are sitting in the <em>/ansiblewas</em> directory before creating the following subdirectories!
-<code>cd $HOME/ansiblewas</code></p>
+<p>Make sure you are sitting in the <em>/ansiblewas</em> directory before creating the following subdirectories!</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cd $HOME/ansiblewas
+</code></pre></div>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir -p roles/aix/tasks
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdir -p roles/aix/defaults
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>mkdir -p roles/aix/templates
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>mkdir -p roles/was/tasks
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>mkdir -p roles/was/defaults
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>mkdir -p roles/was/templates
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir -p roles/aix/tasks
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir -p roles/aix/defaults
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>mkdir -p roles/aix/templates
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>mkdir -p roles/was/tasks
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>mkdir -p roles/was/defaults
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>mkdir -p roles/was/templates
 </code></pre></div>
 <p>With AIX installed on the PowerVC LPAR (logical partition), you next need to modify root user settings associated with the virtual machine to increase the size of the filesystems available to it, as well as install additional dependencies and drivers needed for the environment. You will do so with modifications to the Roles associated with "<em>aix</em>" via the <strong>main.yml</strong> manifest file. Modify (or view) the YAML file using the following command:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vi roles/aix/tasks/main.yml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vi roles/aix/tasks/main.yml
 </code></pre></div></p>
 <p>As before, you can either view the contents of the manifest (if you cloned the Github repository earlier) or craft a new one from scratch using the following template. No modifications to the template will be needed at this time. When satisfied, press <code>ESC</code> following by <code>:x</code> and <code>Return</code> to save your changes and exit the VI editor.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>---
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>- name: modifying root capabilities
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  ibm.power_aix.user:
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    state: modify
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    name: root
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    attributes:
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>      fsize: -1
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>      cpu: -1
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>      data: -1
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>      stack: -1
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>      core: -1
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>      rss: -1
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>      nofiles: -1
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>      fsize_hard: -1
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>- name: Changes /tmp to 6G size
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>  aix_filesystem:
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    filesystem: /tmp
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    size: 6G
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    state: present
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>- name: Changes /var to 2G size
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  aix_filesystem:
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    filesystem: /var
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    size: 2G
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>    state: present
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>- name: Changes /opt to 4G size
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>  aix_filesystem:
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    filesystem: /opt
-<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>    size: 4G
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>    state: present
-<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
-<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>- name: Changes /usr to 6G
-<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>  aix_filesystem:
-<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>    filesystem: /usr
-<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>    size: 6G
-<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>    state: present
-<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>
-<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>- name: installing zip, unzip, GNUtar using yum
-<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>  yum:
-<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>    name: unzip, zip, tar-1.32-1
-<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>    state: latest
-<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>
-<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>- name: Creating staging directory
-<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>  file:
-<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>    path: /tmp/im
-<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>    state: directory
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>---
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>- name: modifying root capabilities
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  ibm.power_aix.user:
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    state: modify
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    name: root
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    attributes:
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>      fsize: -1
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>      cpu: -1
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>      data: -1
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>      stack: -1
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>      core: -1
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>      rss: -1
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>      nofiles: -1
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>      fsize_hard: -1
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>- name: Changes /tmp to 6G size
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>  aix_filesystem:
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    filesystem: /tmp
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    size: 6G
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    state: present
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>- name: Changes /var to 2G size
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>  aix_filesystem:
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    filesystem: /var
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    size: 2G
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    state: present
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>- name: Changes /opt to 4G size
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>  aix_filesystem:
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>    filesystem: /opt
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>    size: 4G
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>    state: present
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>- name: Changes /usr to 6G
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>  aix_filesystem:
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>    filesystem: /usr
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>    size: 6G
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>    state: present
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>- name: installing zip, unzip, GNUtar using yum
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>  yum:
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>    name: unzip, zip, tar-1.32-1
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>    state: latest
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>- name: Creating staging directory
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>  file:
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>    path: /tmp/im
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>    state: directory
 </code></pre></div>
 <p>You are now prepared to craft the Playbook that Ansible will use to automate the workflow just defined for the <em>aix</em> Role. Use the following command to edit (or create) the <em>was</em> Playbook for WebSphere Application Server:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vi was.yml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>vi was.yml
 </code></pre></div></p>
 <p>As before, you can either view the contents of the manifest (if you cloned the Github repository earlier) or craft a new one from scratch using the following template. If you are working from the cloned template, you may have noticed that the last line of the YAML file (<code>#- role: was</code>) has been commented out — leave this unchanged for now, as you will be returning to it shortly. For now we are only concerned with the successful execution of the jobs associated with the <em>aix</em> Role. The template for <strong>was.yml</strong> is as follows:</p>
 <p><img alt="" src="../_attachments/part3_figure2.png" /></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>---
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>- hosts: was
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  gather_facts: true
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  user: root
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  collections:
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    - ibm.power_aix
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  roles:
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    - role: aix
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    #- role: was
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>---
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>- hosts: was
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  gather_facts: true
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  user: root
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  collections:
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    - ibm.power_aix
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>  roles:
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    - role: aix
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    #- role: was
 </code></pre></div>
 <p>Ansible <strong>facts</strong> are variables that are automatically discovered by Ansible on a managed host. Facts contain host-specific information that can be used just like regular variables in plays, conditionals, loops, or any other statement that depends on a value collected from a managed host. Facts are a convenient way to retrieve the state of a managed host and to determine what action to take based on that state. Some of the facts gathered for a managed host might include:</p>
 <ul>
@@ -760,7 +761,7 @@
 </ul>
 <p>When satisfied, press <code>ESC</code> and then <code>:x</code> and <code>Return</code> to save and exit the file.</p>
 <p>Time to test the Playbook and Roles defined so far. Use the following command to execute the Playbook:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ansible-playbook was.yml -v
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ansible-playbook was.yml -v
 </code></pre></div></p>
 <p>After execution, the Playbook should report back with a summary of jobs successfully completed ("<em>ok</em>"), changes made to the environment, jobs that have failed, and so on.</p>
 <p><img alt="" src="../_attachments/part3_figure3.png" /></p>
