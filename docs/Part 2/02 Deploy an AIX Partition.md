@@ -2,15 +2,17 @@
 !!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DC9B3JDG242PgGFFM6fQ2fRBqTpB" target="_blank">download the recording from Seismic</a>.
 
-The deployment of an AIX operating system partition on to the PowerVC infrastructure will be automated entirely via the Ansible control (master) node. Ansible will make use of:
+![](_attachments/intro_figure1.png)
 
-- The inventory defined in the previous steps
+The deployment of an AIX operating system partition on to the PowerVC infrastructure will be automated entirely via the AAP control (master) node. AAP will make use of:
 
-- Playbooks that we will modify to paint the broad strokes for what automation Ansible is to perform
+- The ```.hosts``` definition created in the previous steps
 
-- Built-in Modules (which are part of Ansible's engine) for carrying out those instructions.
+- Playbooks that we will modify to paint the broad strokes for what automation AAP is to perform
 
-**Ansible OpenStack Modules**— downloaded in the previous step —will allow Ansible to create an LPAR (logical partition) on the PowerVC infrastructure where the AIX operating system can reside. Begin modification of the OpenStack configuration file (located within your home directory on the Ansible control node) using the following instruction:
+- Built-in Modules (which are part of AAP's engine) for carrying out those instructions.
+
+**Ansible OpenStack Modules**— downloaded in the previous step —will allow AAP to create an LPAR (logical partition or host) on the PowerVC infrastructure where the AIX operating system can reside. Begin modification of the OpenStack configuration file (located within your home directory on the Ansible control node) using the following instruction:
 ```
 vi clouds.yaml
 ```
@@ -40,7 +42,7 @@ clouds:
 ```
 
 !!! warning "BE CAREFUL WITH INDENTATION"
-    Ansible is very particular about indentation and nesting rules. In this example, every indentation level is denoted by two whitespaces. Also be sure to preserve the empty newline at the end of this example (the empty final line must be present within your YAML manifest.)
+    AAP is very particular about indentation and nesting rules. In this example, every indentation level is denoted by two whitespaces. Also be sure to preserve the empty newline at the end of this example (the empty final line must be present within your YAML manifest.)
 
 After modifying and saving the *clouds.yaml* manifest file, we need to define the Playbook which Ansible will execute against. Modify (or create) the Playbook for generating a virtual machine via the following:
 ```
@@ -111,11 +113,11 @@ The code template is available below for ease of copying and modifying your own 
 {% endraw %}
 
 
-!!! warning "LINE 11"
-    For the '*name*' field (line 11) you must include both *vm* + *idXXXXXXXXX* ( do not forget to prefix with *vm*) in your manifest. The '*name*' variable will appear as BLANK when working from the Git repository clone — both sellers and technical sellers **must complete** this variable definition regardless of whether they are working from the Git repository clone or not.
+!!! warning "```os_server: name```"
+    For the '*name*' field (line 11) you must include both ```vm``` + ```idXXXXXXXXX``` ( do not forget to prefix with ```vm```) in your manifest. The '*name*' variable will appear as **BLANK** when working from the Git repository clone — both sellers and technical sellers **must complete** this variable definition regardless of whether they are working from the Git repository clone or not.
 
-!!! note "LINE 16"
-    The '*net-name*' field (line 16) must be set equal to **VLAN344**, if it hasn't already been by default.
+!!! note "```nics: net-name```"
+    The '*net-name*' field must be set equal to ```VLAN344```, if it hasn't already been by default.
 
 Save and exit the *mkvm.yaml* Playbook once satisfied. Let's take a moment, before moving on, to parse out what some of these fields and modifications have done.
 
@@ -142,21 +144,25 @@ ansible-playbook mkvm.yaml -v
 
 While execution of the Playbook is underway, return to the PowerVC dashboard and click the VM List button from the taskbar on the left. Previously this tab would have displayed as empty. As the execution of the Playbook gets underway, a new virtual machine will be listed with the status of "*Building*;" once the virtual machine has been deployed, the status will be adjusted to "*Active*."
 
-If everything goes smoothly, a virtual machine will be deployed to PowerVC in a matter of minutes. If you encounter errors or things don't go as planned — don't panic. Ansible, as warned about previously, is quite particular about things like indentation. A misplaced whitespace or a slipped finger on the keyboard can create a typo that will throw the script into disarray (after all, Ansible will try to execute your instructions exactly as you have written.)
+![](_attachments/part2_figure5.png)
+
+If everything goes smoothly, a virtual machine will be deployed to PowerVC in a matter of minutes. If you encounter errors or things don't go as planned — don't panic. AAP, as warned about previously, is quite particular about things like indentation. A misplaced whitespace or a slipped finger on the keyboard can create a typo that will throw the script into disarray (after all, Ansible will try to execute your instructions exactly as you have written.)
 
 Go back into the scripts mentioned previously and verify that everything is correct and that all necessary substitutions have been made, then try executing the ```ansible-playbook mkvm.yaml -v``` instruction a second time.
 
-![](_attachments/part2_figure5.png)
+![](_attachments/part2_figure8.png)
+!!! note "'WARNING' STATUS"
+    While provisioning of the VM is underway, you may notice that the *State / Health* of the VM temporarily displays a *'Warning'* message. You can safely ignore the warning — but for those curious as to why: when you deploy a virtual machine, it remains in the Activating state until either Resource Monitoring and Control (RMC) becomes active or 20 minutes have passed. There are several reasons for the virtual machine to stay in the Activating state for 20 minutes and the health of the virtual machine shows that the RMC state is inactive. If you are using the activation engine or cloud-init activation packages, the most likely cause for RMC to be inactive is that the activation package did not configure the networking of the virtual machine.
 
 Once the build task has completed and the status is set to "*Active*," the IP field of the table will be populated with the virtual machine's address. Record this information for later.
 
 ![](_attachments/part2_figure6.png)
 
-Return to the Terminal console where you have SSH'd into the Ansible control node. Take note of the verbose logs that were returned for every stage of the Playbook execution. Within these logs you'll find details on various aspects of the virtual machine deployment, such as the Image ID (e.g. *AIX721-7022-300G-DEMO*) for the AIX partition. If you return to the PowerVC dashboard and drill down into the **Image List** tab, you can locate the matching Image ID and inspect it for additional details.
+Return to the Terminal console where you have SSH'd into the AAP control node. Take note of the verbose logs that were returned for every stage of the Playbook execution. Within these logs you'll find details on various aspects of the virtual machine deployment, such as the Image ID (e.g. *AIX721-7022-300G-DEMO*) for the AIX partition. If you return to the PowerVC dashboard and drill down into the **Image List** tab, you can locate the matching Image ID and inspect it for additional details.
 
 While you're on the dashboard, try exploring the **Network ID** (e.g. *VL344*) as well. Here you will find a table summarizing all of the networks defined with your PowerVC instance, including their VLAN IDs, Type, the number of VMs using that particular network connection, subnet masks, gateway IDs, and DNS server(s).
 
-Other areas of the PowerVC dashboard can also be explored, should you wish. When satisfied, we'll proceed with modifying the **hosts** file parameters on the Ansible control node using the newly-generated virtual machine IP address. The **hosts** file provides a list (an inventory, if you will) of the AIX partitions (the newly-generated virtual machine) where Ansible is to execute Playbook tasks.
+Other areas of the PowerVC dashboard can also be explored, should you wish. When satisfied, we'll proceed with modifying the **hosts** file parameters on the Ansible control node using the newly-generated virtual machine IP address. The **hosts** file provides a list (an inventory, if you will) of the AIX partitions (the newly-generated virtual machine) where AAP is to execute Playbook tasks.
 
 Edit the **hosts** file using the following statement:
 ```

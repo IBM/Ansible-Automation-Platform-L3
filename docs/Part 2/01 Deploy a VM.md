@@ -4,6 +4,7 @@
 !!! note "VI CHEAT SHEET"
     Throughout this lab, you will make extensive use of the VI text editor. If you're not familiar with this editor, you can quickly get up to speed using the following cheat sheet: <a href="https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf" target="_blank">https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf</a> for reference.
 
+![](_attachments/intro_figure1.png)
 
 Ansible, and in particular **YAML** (Yet Another Markup Language), is very particular about indentation and formatting — something as trivial as an extra whitespace or an incorrectly-indented line of code can cause the interpreter to parse the instructions differently, resulting in outcomes you may not have intended.
 

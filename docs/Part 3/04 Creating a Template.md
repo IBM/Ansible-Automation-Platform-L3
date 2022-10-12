@@ -45,7 +45,7 @@ Edit (or create) the XML response file by executing the following command:
 vi roles/was/templates/was90501.sdk8035.xml
 ```
 
-!!! tip "was90501.sdk8035.xml"
+!!! warning "was90501.sdk8035.xml"
     **Technical Sellers**: Replicate the code template above and create the XML file.
 
     **Sellers**: Leave the XML file unmodified.
@@ -69,7 +69,7 @@ Edit (or create) the following YAML template file:
 ```
 vi roles/was/defaults/main.yml
 ```
-!!! tip "roles/was/defaults/main.yml"
+!!! warning "roles/was/defaults/main.yml"
     **Technical Sellers**: Replicate the code template above and create the YAML file.
 
     **Sellers**: Leave the YAML file unmodified.
@@ -119,7 +119,7 @@ Instruct the VI editor to open the Playbook with the same command used before:
 vi roles/was/tasks/main.yml
 ```
 
-!!! tip "roles/was/tasks/main.yml"
+!!! warning "roles/was/tasks/main.yml"
     **Technical Sellers**: Extend the Playbook to resemble the following template.
 
     **Sellers**: Leave the completed Playbook unmodified.

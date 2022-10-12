@@ -73,7 +73,7 @@ Finally, execute the following Playbook to kick off the end-to-end deployment of
 ```
 ansible-playbook was.yml -v
 ```
-!!! tip "SELLERS AND TECHNICAL SELLERS"
+!!! warning "SELLERS AND TECHNICAL SELLERS"
     This step must be performed by *both* **Sellers** and **Technical Sellers**.
 
 Wait until the Playbook has finished executing and the "*PLAY RECAP*" has been printed to screen within the Terminal console. Successful execution of the full Playbook may take several minutes to complete. If all jobs have successfully been executed (with status as "*OK*"), then WebSphere Application Server should now be successfully installed on the AIX LPAR and the services now live for you to interact with!
@@ -98,7 +98,7 @@ You may input any *userID* that you wish (remember that we disabled authenticati
 #
 # **Congratulations** — you have successfully installed and deployed a WebSphere Application Server environment on PowerVC entirely using Red Hat Ansible Automation Platform!
 
-!!! note "BUSINESS PARTNERS"
+!!! tip "BUSINESS PARTNERS"
     Keep your browser window open to the WAS dashboard. The series of questions in <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/01%20Business%20Partner%20Accreditation/" target="_blank">Part 4</a> will be repeated on your **L3 accreditation quiz**. Use this time to investigate the various areas of the WAS dashboard so that you can prepare for the quiz and quickly certify your completion of this hands-on material.
 
 !!! warning "IBM SELLERS AND TECHNICAL SELLERS"

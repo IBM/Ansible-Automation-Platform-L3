@@ -2,9 +2,9 @@
 !!! tip "WAYS TO WATCH"
     In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCffVRBC9CP6m8WP8TCg8X76CJqd" target="_blank">download the recording from Seismic</a>.
 
-Preparations are complete and the groundwork has been set for a fully-automated installation and deployment of **WebSphere Application Server (WAS)** via AAP. At this stage, you have already used Ansible to deploy a virtual machine with an AIX partition atop of PowerVC infrastructure. Additional configurations will need to be made to that partition to prepare it for hosting a WAS deployment within it. These types of configuration changes are precisely the type of operational work that can be easily automated by Ansible, and a prime example of how businesses today are offloading administrative burdens through automation.
+Preparations are complete and the groundwork has been set for a fully-automated installation and deployment of **WebSphere Application Server (WAS)** via AAP. At this stage, you have already used AAP to deploy a virtual machine with an AIX partition atop of PowerVC infrastructure. Additional configurations will need to be made to that partition to prepare it for hosting a WAS deployment within it. These types of configuration changes are precisely the type of operational work that can be easily automated by AAP, and a prime example of how businesses today are offloading administrative burdens through automation.
 
-In the following steps, you will instruct Ansible to perform the following operations:
+In the following steps, you will instruct AAP to perform the following operations:
 
 - Change *root* user characteristics using the **power_aix Ansible modules**, downloaded via Ansible Galaxy.
 
@@ -28,7 +28,9 @@ In the following steps, you will instruct Ansible to perform the following opera
 
 - Start WAS
 
-To proceed, you will first need to download an *IBM Power Systems collection for AIX on Power* via the **Ansible Galaxy** repository. To install these on the Ansible control node, invoke the following command using your SSH console:
+To proceed, you will first need to download an *IBM Power Systems collection for AIX on Power* via the **Ansible Galaxy** repository. Roles are frequently published on the Ansible Galaxy community site (<a href="https://galaxy.ansible.com" target="_blank">https://galaxy.ansible.com</a>). Via communities such as Galaxy, thousands of Roles are available for AAP users to use within their own Playbooks.
+
+To install these on the AAP control node, invoke the following command using your SSH console:
 ```
 ansible-galaxy collection install ibm.power_aix
 ```
@@ -38,11 +40,11 @@ Installation of the drivers should take only a moment to complete.
 #
 #Another handy feature of AAP is its ability to simplify how code is shared amongst teams, which traditionally becomes challenging and cumbersome at scale in the absence of automation.
 
-Ansible employs a feature known as "**Roles**" which in essence allows a developer to define a common set of configuration steps that can then be re-used repeatedly across multiple environments. Instead of having to coordinate across teams and share duplicate instructions with different groups, the developer can take the "write once, run anywhere" approach of defining an automation job a single time and then making repeated use of that code (consistently) across multiple environments.
+AAP employs a feature known as "**Roles**" which allow a developer to define a common set of configuration steps that can then be re-used repeatedly across multiple environments. Instead of having to coordinate across teams and share duplicate instructions with different groups, the developer can take the "write once, run anywhere" approach of defining an automation job a single time and then making repeated use of that code (consistently) across multiple environments.
 
-In our case, we will define an Ansible Role comprised of a set of tasks needed to configure a host (our AIX partition) for a service (WebSphere Application Server). Roles, like many other aspects of Ansible, are defined using YAML files with a predefined directory structure.
+In our case, we will define an Ansible Role comprised of a set of tasks needed to configure a host (our AIX partition) for a service (WebSphere Application Server). Roles, like many other aspects of AAP, are defined using YAML files with a predefined directory structure.
 
-Roles provide a way for you to make it easier to reuse Ansible code generically. You can package, in a standardized directory structure, all the tasks, variables, files, templates, and other resources needed to provision infrastructure or deploy applications. Administrators may copy that role from project to project simply by replicating the directory. They can then simply *call* (invoke) that role from a Play to execute it. Roles convey a number of other benefits to developers and administrators:
+Roles provide a way for you to make it easier to reuse AAP code generically. You can package, in a standardized directory structure, all the tasks, variables, files, templates, and other resources needed to provision infrastructure or deploy applications. Administrators may copy that role from project to project simply by replicating the directory. They can then simply *call* (invoke) that role from a Play to execute it. Roles convey a number of other benefits to developers and administrators:
 
 - Roles help to group content, allowing easy sharing of code with others
 
@@ -52,7 +54,7 @@ Roles provide a way for you to make it easier to reuse Ansible code generically.
 
 - Roles can be developed in parallel by different administrators
 
-The directory structure of a Role contains directories such as defaults, vars, tasks, files, templates, meta, and handlers — these are all "expected" directories (we can make use of all of them or only a subset) that Ansible Roles must be patterned against. Each directory must contain a **main.yml** file which provides the relevant content needed by Ansible to execute a Playbook. Let's examine the purpose of each directory type, in turn:
+The directory structure of a Role contains directories such as defaults, vars, tasks, files, templates, meta, and handlers — these are all "expected" directories (we can make use of all of them or only a subset) that Ansible Roles must be patterned against. Each directory must contain a **main.yml** file which provides the relevant content needed by AAP to execute a Playbook. Let's examine the purpose of each directory type, in turn:
 
 - **defaults**: Contains default variables for the Role; variables by default have the lowest priority, so they are easy to override.
 
@@ -62,13 +64,13 @@ The directory structure of a Role contains directories such as defaults, vars, t
 
 - **files**: Contains files which must be copied over to the remote host.
 
-- **templates**: Contains file templates that support modifications from the Role; in our lab work, we will use the *Jinja2 templating language* for creating templates.
+- **templates**: Contains file templates that support modifications from the Role; in our lab work, we will use the <a href="https://jinja.palletsprojects.com/en/3.1.x/" target="_blank">*Jinja2 templating language*</a> for creating templates.
 
 - **meta**: Contains metadata for the Role, including the author, supported platforms, and dependencies.
 
 - **handlers**: Contains handlers which can be invoked by "notify" directives; these are associated with the service.
 
-Ansible supports **variables** that can be used to store values that can then be reused throughout files in an Ansible project. Variables provide a convenient way to manage dynamic values for a given environment in your Ansible project. This can simplify the creation and maintenance of a project, as well as mitigate the risk of errors introduced through typos or mislabeled items in your code. Variables might include:
+AAP supports **variables** that can be used to store values that can then be reused throughout files in an AAP project. Variables provide a convenient way to manage dynamic values for a given environment in your AAP project. This can simplify the creation and maintenance of a project, as well as mitigate the risk of errors introduced through typos or mislabeled items in your code. Variables might include:
 
 - Users to create
 
@@ -84,9 +86,10 @@ We have yet to define the directory structures needed by Ansible Roles for our p
 
 ![](_attachments/part3_figure1.png)
 
-Execute the following instructions via your SSH console, either one at a time or all as a single statement, to create the directory structure needed for the Roles.
+Execute the following instructions via your SSH console, line by line, to create the directory structure needed for the Roles.
 !!! warning "NAVIGATE TO THE CORRECT DIRECTORY *FIRST*"
     Make sure you are sitting in the */ansiblewas* directory before creating the following subdirectories!
+    ```cd $HOME/ansiblewas```
 
 ```
 mkdir -p roles/aix/tasks
