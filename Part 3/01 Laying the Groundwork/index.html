@@ -313,7 +313,7 @@
   
     <li class="md-nav__item">
       <a href="../../Part%202/02%20Deploy%20an%20AIX%20Partition/" class="md-nav__link">
-        Deploy an AIX Partition using PowerVC
+        Deploy an AIX Partition on PowerVC using Ansible
       </a>
     </li>
   
@@ -541,8 +541,8 @@
 <p class="admonition-title">WAYS TO WATCH</p>
 <p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCffVRBC9CP6m8WP8TCg8X76CJqd" target="_blank">download the recording from Seismic</a>.</p>
 </div>
-<p>Preparations are complete and the groundwork has been set for a fully-automated installation and deployment of <strong>WebSphere Application Server (WAS)</strong> via AAP. At this stage, you have already used Ansible to deploy a virtual machine with an AIX partition atop of PowerVC infrastructure. Additional configurations will need to be made to that partition to prepare it for hosting a WAS deployment within it. These types of configuration changes are precisely the type of operational work that can be easily automated by Ansible, and a prime example of how businesses today are offloading administrative burdens through automation.</p>
-<p>In the following steps, you will instruct Ansible to perform the following operations:</p>
+<p>Preparations are complete and the groundwork has been set for a fully-automated installation and deployment of <strong>WebSphere Application Server (WAS)</strong> via AAP. At this stage, you have already used AAP to deploy a virtual machine with an AIX partition atop of PowerVC infrastructure. Additional configurations will need to be made to that partition to prepare it for hosting a WAS deployment within it. These types of configuration changes are precisely the type of operational work that can be easily automated by AAP, and a prime example of how businesses today are offloading administrative burdens through automation.</p>
+<p>In the following steps, you will instruct AAP to perform the following operations:</p>
 <ul>
 <li>
 <p>Change <em>root</em> user characteristics using the <strong>power_aix Ansible modules</strong>, downloaded via Ansible Galaxy.</p>
@@ -578,15 +578,16 @@
 <p>Start WAS</p>
 </li>
 </ul>
-<p>To proceed, you will first need to download an <em>IBM Power Systems collection for AIX on Power</em> via the <strong>Ansible Galaxy</strong> repository. To install these on the Ansible control node, invoke the following command using your SSH console:
+<p>To proceed, you will first need to download an <em>IBM Power Systems collection for AIX on Power</em> via the <strong>Ansible Galaxy</strong> repository. Roles are frequently published on the Ansible Galaxy community site (<a href="https://galaxy.ansible.com" target="_blank">https://galaxy.ansible.com</a>). Via communities such as Galaxy, thousands of Roles are available for AAP users to use within their own Playbooks.</p>
+<p>To install these on the AAP control node, invoke the following command using your SSH console:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ansible-galaxy collection install ibm.power_aix
 </code></pre></div></p>
 <p>Installation of the drivers should take only a moment to complete.</p>
 <h1 id="_1"></h1>
 <h1 id="another-handy-feature-of-aap-is-its-ability-to-simplify-how-code-is-shared-amongst-teams-which-traditionally-becomes-challenging-and-cumbersome-at-scale-in-the-absence-of-automation">Another handy feature of AAP is its ability to simplify how code is shared amongst teams, which traditionally becomes challenging and cumbersome at scale in the absence of automation.</h1>
-<p>Ansible employs a feature known as "<strong>Roles</strong>" which in essence allows a developer to define a common set of configuration steps that can then be re-used repeatedly across multiple environments. Instead of having to coordinate across teams and share duplicate instructions with different groups, the developer can take the "write once, run anywhere" approach of defining an automation job a single time and then making repeated use of that code (consistently) across multiple environments.</p>
-<p>In our case, we will define an Ansible Role comprised of a set of tasks needed to configure a host (our AIX partition) for a service (WebSphere Application Server). Roles, like many other aspects of Ansible, are defined using YAML files with a predefined directory structure.</p>
-<p>Roles provide a way for you to make it easier to reuse Ansible code generically. You can package, in a standardized directory structure, all the tasks, variables, files, templates, and other resources needed to provision infrastructure or deploy applications. Administrators may copy that role from project to project simply by replicating the directory. They can then simply <em>call</em> (invoke) that role from a Play to execute it. Roles convey a number of other benefits to developers and administrators:</p>
+<p>AAP employs a feature known as "<strong>Roles</strong>" which allow a developer to define a common set of configuration steps that can then be re-used repeatedly across multiple environments. Instead of having to coordinate across teams and share duplicate instructions with different groups, the developer can take the "write once, run anywhere" approach of defining an automation job a single time and then making repeated use of that code (consistently) across multiple environments.</p>
+<p>In our case, we will define an Ansible Role comprised of a set of tasks needed to configure a host (our AIX partition) for a service (WebSphere Application Server). Roles, like many other aspects of AAP, are defined using YAML files with a predefined directory structure.</p>
+<p>Roles provide a way for you to make it easier to reuse AAP code generically. You can package, in a standardized directory structure, all the tasks, variables, files, templates, and other resources needed to provision infrastructure or deploy applications. Administrators may copy that role from project to project simply by replicating the directory. They can then simply <em>call</em> (invoke) that role from a Play to execute it. Roles convey a number of other benefits to developers and administrators:</p>
 <ul>
 <li>
 <p>Roles help to group content, allowing easy sharing of code with others</p>
@@ -601,7 +602,7 @@
 <p>Roles can be developed in parallel by different administrators</p>
 </li>
 </ul>
-<p>The directory structure of a Role contains directories such as defaults, vars, tasks, files, templates, meta, and handlers — these are all "expected" directories (we can make use of all of them or only a subset) that Ansible Roles must be patterned against. Each directory must contain a <strong>main.yml</strong> file which provides the relevant content needed by Ansible to execute a Playbook. Let's examine the purpose of each directory type, in turn:</p>
+<p>The directory structure of a Role contains directories such as defaults, vars, tasks, files, templates, meta, and handlers — these are all "expected" directories (we can make use of all of them or only a subset) that Ansible Roles must be patterned against. Each directory must contain a <strong>main.yml</strong> file which provides the relevant content needed by AAP to execute a Playbook. Let's examine the purpose of each directory type, in turn:</p>
 <ul>
 <li>
 <p><strong>defaults</strong>: Contains default variables for the Role; variables by default have the lowest priority, so they are easy to override.</p>
@@ -616,7 +617,7 @@
 <p><strong>files</strong>: Contains files which must be copied over to the remote host.</p>
 </li>
 <li>
-<p><strong>templates</strong>: Contains file templates that support modifications from the Role; in our lab work, we will use the <em>Jinja2 templating language</em> for creating templates.</p>
+<p><strong>templates</strong>: Contains file templates that support modifications from the Role; in our lab work, we will use the <a href="https://jinja.palletsprojects.com/en/3.1.x/" target="_blank"><em>Jinja2 templating language</em></a> for creating templates.</p>
 </li>
 <li>
 <p><strong>meta</strong>: Contains metadata for the Role, including the author, supported platforms, and dependencies.</p>
@@ -625,7 +626,7 @@
 <p><strong>handlers</strong>: Contains handlers which can be invoked by "notify" directives; these are associated with the service.</p>
 </li>
 </ul>
-<p>Ansible supports <strong>variables</strong> that can be used to store values that can then be reused throughout files in an Ansible project. Variables provide a convenient way to manage dynamic values for a given environment in your Ansible project. This can simplify the creation and maintenance of a project, as well as mitigate the risk of errors introduced through typos or mislabeled items in your code. Variables might include:</p>
+<p>AAP supports <strong>variables</strong> that can be used to store values that can then be reused throughout files in an AAP project. Variables provide a convenient way to manage dynamic values for a given environment in your AAP project. This can simplify the creation and maintenance of a project, as well as mitigate the risk of errors introduced through typos or mislabeled items in your code. Variables might include:</p>
 <ul>
 <li>
 <p>Users to create</p>
@@ -645,10 +646,11 @@
 </ul>
 <p>We have yet to define the directory structures needed by Ansible Roles for our project, so let's tackle that step next. The directory structure you are to define in the steps ahead will look similar to the following diagram, with two distinct Roles names (<em>aix</em> and <em>was</em>), and subdirectories nestled within those parents.</p>
 <p><img alt="" src="../_attachments/part3_figure1.png" /></p>
-<p>Execute the following instructions via your SSH console, either one at a time or all as a single statement, to create the directory structure needed for the Roles.</p>
+<p>Execute the following instructions via your SSH console, line by line, to create the directory structure needed for the Roles.</p>
 <div class="admonition warning">
 <p class="admonition-title">NAVIGATE TO THE CORRECT DIRECTORY <em>FIRST</em></p>
-<p>Make sure you are sitting in the <em>/ansiblewas</em> directory before creating the following subdirectories!</p>
+<p>Make sure you are sitting in the <em>/ansiblewas</em> directory before creating the following subdirectories!
+<code>cd $HOME/ansiblewas</code></p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir -p roles/aix/tasks
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdir -p roles/aix/defaults
@@ -781,7 +783,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../Part%202/02%20Deploy%20an%20AIX%20Partition/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploy an AIX Partition using PowerVC" rel="prev">
+        <a href="../../Part%202/02%20Deploy%20an%20AIX%20Partition/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploy an AIX Partition on PowerVC using Ansible" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -790,7 +792,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Deploy an AIX Partition using PowerVC
+              Deploy an AIX Partition on PowerVC using Ansible
             </div>
           </div>
         </a>

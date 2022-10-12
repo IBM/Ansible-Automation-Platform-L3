@@ -325,7 +325,7 @@
   
     <li class="md-nav__item">
       <a href="../../Part%202/02%20Deploy%20an%20AIX%20Partition/" class="md-nav__link">
-        Deploy an AIX Partition using PowerVC
+        Deploy an AIX Partition on PowerVC using Ansible
       </a>
     </li>
   
@@ -545,6 +545,7 @@
 <h1 id="_1"></h1>
 <h1 id="reserving-an-environment">Reserving an environment</h1>
 <p>The hands-on environment can be provisioned free-of-charge using the reservation portal: <a href="https://techzone.ibm.com/my/reservations/create/61aa2c69a5295f00185b77b2" target="_blank">https://techzone.ibm.com/my/reservations/create/61aa2c69a5295f00185b77b2</a></p>
+<p>Reservations take approximately <strong>15-20 minutes</strong> to provision and deploy.</p>
 <p>Alternatively, you can provision the environment by navigating to the following ITZ Collection (<a href="https://techzone.ibm.com/collection/ansible-hands-on-power" target="_blank">https://techzone.ibm.com/collection/ansible-hands-on-power</a>) and scrolling down until you locate the <strong>Environments — "Click here to get your hands on lab"</strong> tab. Clicking the blue "Reserve" tile will navigate your browser window to the same reservation panel as the link above.</p>
 <p><img alt="" src="../_attachments/part1_figure1.png" /></p>
 <p>In order to complete your ITZ reservation of the PowerVC infrastructure with AAP pre-installed, you must supply the following information:</p>
@@ -565,7 +566,7 @@
 <p><strong>Start Date &amp; Time</strong>: Select the time and date for when you plan to begin work on the hands-on material.</p>
 </li>
 <li>
-<p><strong>End Date &amp; Time</strong>: Select a time and date for when the reservation will expire. By default, Tech Zone will set the default duration to 2 hours. It is recommended you set your End Time to the maximum duration of 4 hours, after which it will automatically expire and de-provision. </p>
+<p><strong>End Date &amp; Time</strong>: Select a time and date for when the reservation will expire. By default, Tech Zone will set the default duration to 2 hours. It is recommended you set your End Time to the maximum duration of 4 hours, after which it will automatically expire and de-provision.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -573,23 +574,27 @@
 <p>Four hours is more than enough time to complete the hands-on portion of the course work. Make sure you place your reservation for a period where you can give the lab 4 uninterrupted hours of your time — should you require additional time, you can reserve the lab again, but your progress from the previous attempt will be reset.</p>
 </div>
 <p>When satisfied, click the <strong>Check Availability</strong> button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking <strong>Submit</strong>.</p>
-<p>Reservations take approximately <strong>15-20 minutes</strong> to complete from the time that you click submit (this will not impact your 4 hour time allotment.) If you navigate to the <strong>My Reservations</strong> tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation. Wait until the environment tile describes the instance as "<em>Ready</em>" — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.</p>
+<p>As a reminder, reservations take approximately <strong>15-20 minutes</strong> to complete from the time that you click submit (this will not impact your 4 hour time allotment.) If you navigate to the <strong>My Reservations</strong> tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation.</p>
+<div class="admonition warning">
+<p class="admonition-title">WAIT UNTIL READY</p>
+<p>Wait for the Tech Zone reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.</p>
+</div>
 <p>You will also receive a pair of emails to your inbox once the environment has successfully deployed, as shown here.</p>
 <p><img alt="" src="../_attachments/part1_figure2.png" /></p>
 <p><img alt="" src="../_attachments/part1_figure3.png" /></p>
 <p>The <strong>"Demo Ready Notification"</strong> email contains an important link <strong>("Click Here")</strong> for accessing your <strong>Project Kit</strong>, which will be needed to obtain information about your PowerVC environment — hostname, address, login information, and so on. Click that link now to preload the Project Kit in your browser window.</p>
 <h1 id="_2"></h1>
 <h1 id="setting-up-a-vpn">Setting up a VPN</h1>
-<p>The second <strong>"Demo VPN Ready Notification"</strong> email is our next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.</p>
+<p>The second <strong>"Demo VPN Ready Notification"</strong> email is the next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.</p>
 <div class="admonition warning">
 <p class="admonition-title">VPN ACCESS</p>
 <p>This is different from the VPN access you may be using to connect to the IBM intranet and network. All participants must follow the instructions outlined below in order to connect to the environment. Without the correct VPN setup, you will be unable to SSH or remotely connect to the PowerVC instance.</p>
 </div>
 <p>From the <strong>"Demo VPN Ready Notification"</strong> email, locate the <strong>"Click Here"</strong> hyperlink to download your <strong>OpenVPN certificate</strong>, which is unique to your account and environment. This certificate will only need to be downloaded and set up once; in the event that you need to re-provision a new environment at a later time, it won't be necessary to repeat these steps.</p>
-<p>Further down in the email are three links for setting up OpenVPN, for each of the major operating systems: Windows, Linux, and MacOS.</p>
+<p>Further down in the email are three links for setting up OpenVPN for each of the major operating systems: Windows, Linux, and MacOS.</p>
 <div class="admonition note">
 <p class="admonition-title">CLIENT SELECTION</p>
-<p>It is recommended that you use <strong>Tunnelblick</strong> if using running MacOS, but you have the option of using other OpenVPN clients if you prefer.</p>
+<p>It is recommended that you use <strong>Tunnelblick</strong> if using running MacOS, but you have the option of selecting from other OpenVPN clients if you prefer.</p>
 </div>
 <p>Download the <a href="https://tunnelblick.net" target="_blank">latest Tunnelblick client</a> (<em>v3.8.7a</em> or later) to your local machine and run the installer. Click <strong>Continue</strong> when prompted to do so, as shown below.</p>
 <p><img alt="" src="../_attachments/part1_figure8.png" /></p>
@@ -621,6 +626,10 @@
 </code></pre></div>
 <p>Replace the <em>userID</em> value with the one in the third column of the Project Kit table. Replace the <em>ansibleURL</em> with the URL in the second row + second column of the Project Kit table (for example, 10.3.44.171 in the screenshot provided— <strong>use the value unique to your project</strong>).</p>
 <p>You will be prompted to provide a <em>password</em>: supply the value with the fourth column of the Project Kit table. Hit <em>Return</em> and wait for the connection to complete. If successful, your console will now be connected directly to the Ansible controller node!</p>
+<div class="admonition tip">
+<p class="admonition-title">SSH CONNECTION PROMPTS</p>
+<p>If prompted during login, enter <code>yes</code> and <code>Return</code> into the console.</p>
+</div>
 <p>Test out the connection with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pwd
 </code></pre></div>
