@@ -4,8 +4,6 @@
 !!! note "VI CHEAT SHEET"
     Throughout this lab, you will make extensive use of the VI text editor. If you're not familiar with this editor, you can quickly get up to speed using the following cheat sheet: <a href="https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf" target="_blank">https://www.cse.scu.edu/~yfang/coen11/vi-CheatSheet.pdf</a> for reference.
 
-![](_attachments/intro_figure1.png)
-
 Ansible, and in particular **YAML** (Yet Another Markup Language), is very particular about indentation and formatting — something as trivial as an extra whitespace or an incorrectly-indented line of code can cause the interpreter to parse the instructions differently, resulting in outcomes you may not have intended.
 
 To streamline the lab as much as possible, a Git repository was created ahead of time with large portions of the Ansible scripts and constructs prepared ahead of time. You will still need to edit elements in each of these files, and the instructions to follow will guide you step by step (as though you were creating these documents from scratch yourself), but it's worth noting that by cloning the Git repository you will be saving yourself a lot of extra typing (and potential debugging). Everything is documented for you— so you can go about creating all of these documents and scripts from scratch, if you wish. Note that the cloned repository will be replicated to your ITZ virtual machine, not your local machine.
