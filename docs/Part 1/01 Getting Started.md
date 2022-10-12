@@ -25,14 +25,14 @@ In order to complete your ITZ reservation of the PowerVC infrastructure with AAP
 
 - **Start Date & Time**: Select the time and date for when you plan to begin work on the hands-on material.
 
-- **End Date & Time**: Select a time and date for when the reservation will expire. The environment has been capped at 4 hours duration, after which it will automatically expire and de-provision.
+- **End Date & Time**: Select a time and date for when the reservation will expire. By default, Tech Zone will set the default duration to 2 hours. It is recommended you set your End Time to the maximum duration of 4 hours, after which it will automatically expire and de-provision. 
 
 !!! note "COMPLETION TIMES"
     Four hours is more than enough time to complete the hands-on portion of the course work. Make sure you place your reservation for a period where you can give the lab 4 uninterrupted hours of your time — should you require additional time, you can reserve the lab again, but your progress from the previous attempt will be reset.
 
 When satisfied, click the **Check Availability** button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking **Submit**.
 
-Reservations take approximately **2-3 hours** to complete from the time that you click submit (this will not impact your 4 hour time allotment.) If you navigate to the **My Reservations** tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation. Wait until the environment tile describes the instance as "*Ready*" — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.
+Reservations take approximately **15-20 minutes** to complete from the time that you click submit (this will not impact your 4 hour time allotment.) If you navigate to the **My Reservations** tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation. Wait until the environment tile describes the instance as "*Ready*" — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.
 
 You will also receive a pair of emails to your inbox once the environment has successfully deployed, as shown here.
 

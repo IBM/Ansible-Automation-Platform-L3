@@ -30,6 +30,8 @@ The series of hands-on tutorials and learning modules embedded in this Level 3 c
 
 Throughout **Red Hat Ansible Automation Platform Level 3 for Sales and Technical Sales**, you will utilize AAP in conjunction with IBM Power Systems infrastructure (PowerVC) to generate an IBM AIX-based virtual machine; subsequently, Ansible automation will be used to install and deploy a live WebSphere Application Server instance inside of the virtual machine. The various ways in which Ansible's automation can also be applied to operational and administrative tasks— such as modifying root user characteristics, setting filesystem sizes, installing pre-requisites drivers and libraries, as well as software deployments —will also be explored.
 
+![](_attachments/intro_figure1.png)
+
 All modules are accompanied by recordings and narrated instructions, delivered by your team of authors. It is strongly recommended that IBM Sellers and Technical Sellers watch these recordings, as they will be useful for you as you go about creating and recording your own Stand & Deliver presentations for Level 3 accreditation.
 
 !!! note "LEVEL 3 ACCREDITATION"
