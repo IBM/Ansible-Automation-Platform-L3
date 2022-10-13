@@ -15,7 +15,7 @@ nav:
   - Introduction: 'index.md'
   - Part 1 - Prerequisites and Provisioning:
     - 'Getting Started': 'Part 1/01 Getting Started.md'
-  - Part 2 - Deploying a Virtual Machine via Ansible Automation Platform:
+  - Part 2 - Deploy a Virtual Machine via Ansible Automation Platform:
     - 'Deploy a Virtual Machine': 'Part 2/01 Deploy a VM.md'
     - 'Deploy an AIX Partition on PowerVC using Ansible': 'Part 2/02 Deploy an AIX Partition.md'
   - Part 3 - Deploy a WebSphere Application Server using Ansible Automation Platform:
