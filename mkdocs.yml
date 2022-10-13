@@ -18,7 +18,7 @@ nav:
   - Part 2 - Deploy a Virtual Machine via Ansible Automation Platform:
     - 'Deploy a Virtual Machine': 'Part 2/01 Deploy a VM.md'
     - 'Deploy an AIX Partition on PowerVC using Ansible': 'Part 2/02 Deploy an AIX Partition.md'
-  - Part 3 - Deploy a WebSphere Application Server using Ansible Automation Platform:
+  - Part 3 - Deploy a WebSphere Application Server instance via Ansible Automation Platform:
     - 'Laying the Groundwork': 'Part 3/01 Laying the Groundwork.md'
     - 'Creating Roles for WAS': 'Part 3/02 Creating Roles for WAS.md'
     - 'Creating the Staging Directory for WAS, Copying Source Files, and Executing the Installer': 'Part 3/03 Staging and Execution.md'
