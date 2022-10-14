@@ -45,3 +45,10 @@ All modules are accompanied by recordings and narrated instructions, delivered b
 **IBM Sales and Technical Sales** must develop and record a Stand & Deliver presentation. This video is intended to simulate your delivery of a “live” demo in front of a client — on camera. IBMers will have flexibility in defining a hypothetical client, the pain points that customer has, and the goals they aspire to achieve. The recording must cover the seller’s hands-on demonstration and pitch to the client of the value of the IBM solution using the environments and techniques covered in this lab.
 
 Specific criteria that must be demonstrated as part of the Stand & Deliver recordings is <a href="https://ibm.github.io/Ansible-Automation-Platform-L3/Part%204/01%20Business%20Partner%20Accreditation/" target="_blank">provided within the documentation that accompanies the Level 3 course</a>.
+
+!!! tip "LOOKING FOR COURSEWORK?"
+    The material covered in this hands-on lab is part of accredited learning and badging for IBMers and business partners. Shortcuts to the respective learning plans are available below:
+
+    *IBM* | <a href="https://yourlearning.ibm.com/activity/PLAN-4F862361240F" target="_blank">Sellers</a> | <a href="https://yourlearning.ibm.com/activity/PLAN-670B279B8786" target="_blank">Technical Sellers</a>
+
+    *Business Partners* | Sellers | Technical Sellers
