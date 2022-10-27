@@ -51,4 +51,4 @@ Specific criteria that must be demonstrated as part of the Stand & Deliver recor
 
     *IBM* | <a href="https://yourlearning.ibm.com/activity/PLAN-4F862361240F" target="_blank">Sellers</a> | <a href="https://yourlearning.ibm.com/activity/PLAN-670B279B8786" target="_blank">Technical Sellers</a>
 
-    *Business Partners* | Sellers | Technical Sellers
+    *Business Partners* | <a href="https://learn.ibm.com/course/view.php?id=12076" target="_blank">Sellers</a> | <a href="https://learn.ibm.com/course/view.php?id=12077" target="_blank">Technical Sellers</a>
