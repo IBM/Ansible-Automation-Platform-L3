@@ -575,8 +575,8 @@
 <p><img alt="" src="../_attachments/part1_figure1c.png" /></p>
 <p>When satisfied, click the <strong>Check Availability</strong> button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking <strong>Submit</strong>.</p>
 <h1 id="_2"></h1>
-<h1 id="connecting-to-the-environment">Connecting to the environment</h1>
-<p>As a reminder, reservations take approximately <strong>15-20 minutes</strong> to complete from the time that you click submit (this will not impact your 4 hour time allotment.) If you navigate to the <strong>My Reservations</strong> tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation.</p>
+<h1 id="access-your-itz-reservation">Access your ITZ reservation</h1>
+<p>As a reminder, reservations take approximately <strong>15-20 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong>My Reservations</strong> tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation.</p>
 <div class="admonition warning">
 <p class="admonition-title">WAIT UNTIL READY</p>
 <p>Wait for the Tech Zone reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.</p>
@@ -605,12 +605,29 @@
 </ul>
 <p>The three virtual machines (VMs) will correspond to the Ansible AIX host and server nodes once Ansible has been installed and deployed across the cluster.</p>
 <h1 id="_3"></h1>
-<h1 id="setting-up-a-vpn">Setting up a VPN</h1>
-<p>The second <strong>"Demo VPN Ready Notification"</strong> email is the next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.</p>
+<h1 id="connecting-to-the-environment-over-ssh">Connecting to the environment over SSH</h1>
 <div class="admonition warning">
 <p class="admonition-title">VPN ACCESS</p>
-<p>This is different from the VPN access you may be using to connect to the IBM intranet and network. All participants must follow the instructions outlined below in order to connect to the environment. Without the correct VPN setup, you will be unable to SSH or remotely connect to the PowerVC instance.</p>
+<p>IBM employees and business partners will need to be connected to the IBM intranet via VPN in order to remotely SSH into the PowerVC cluster. If you are not connected via VPN, the connection attempt will time out.</p>
 </div>
+<p>You now have all the necessary information to remotely connect over SSH to the PowerVC cluster. To connect via SSH, it is recommended that you use Terminal (MacOS) or <a href="https://www.putty.org" target="_blank">PuTTY</a> (Windows).</p>
+<div class="admonition note">
+<p class="admonition-title">SSH and PuTTY - WINDOWS USERS</p>
+<p>For detailed instructions on how to connect with PuTTY on Windows, <a href="https://ibm.box.com/s/d71tn63hutdxrjwh21qdzralrsxlcspe" target="_blank">reference the linked material.</a></p>
+</div>
+<p>Connect via SSH using the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh UserAccount@VM1IPAddress
+</code></pre></div>
+<p>Replace the <em>UserAccount</em> with the User Account (<code>cecuser</code>) recorded earlier. Similarly, replace the <em>VM1IPAddress</em> field with the IP address of VM 1 recorded earlier — <strong>use the value unique to your ITZ reservation</strong>).</p>
+<p>Press return and wait until you are prompted to provide a <em>password</em>: supply the <em>User Password</em> value recorded earlier. Hit <em>Return</em> and wait for the connection to complete. If successful, your console will now be connected directly to the PowerVC cluster.</p>
+<div class="admonition note">
+<p class="admonition-title">SSH CONNECTION PROMPTS</p>
+<p>If prompted during login, enter <code>yes</code> and <code>Return</code> into the console.</p>
+</div>
+<p><img alt="" src="_attachments/part1_v2_figure3.png" /></p>
+<h1 id="_4"></h1>
+<h1 id="setting-up-a-vpn">Setting up a VPN</h1>
+<p>The second <strong>"Demo VPN Ready Notification"</strong> email is the next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.</p>
 <p>From the <strong>"Demo VPN Ready Notification"</strong> email, locate the <strong>"Click Here"</strong> hyperlink to download your <strong>OpenVPN certificate</strong>, which is unique to your account and environment. This certificate will only need to be downloaded and set up once; in the event that you need to re-provision a new environment at a later time, it won't be necessary to repeat these steps.</p>
 <p>Further down in the email are three links for setting up OpenVPN for each of the major operating systems: Windows, Linux, and MacOS.</p>
 <div class="admonition note">
@@ -637,21 +654,6 @@
 <p>The Project Kit summarizes all of the relevant connection information you will need to access your PowerVC and Ansible environment. Scroll down the page until you reach the <strong>Usage Instructions</strong> table near the bottom of the page.</p>
 <p><img alt="" src="../_attachments/part1_figure7.png" /></p>
 <p>The table contains two relevant rows: the first row <strong>"PowerVC GUI"</strong> contains information on how to connect to the PowerVC infrastructure; the second row <strong>"Ansible ssh console"</strong> details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy for future reference the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the <em>userID</em> and <em>password</em> values (they are identical across both environments).</p>
-<p>Let's try connecting remotely over SSH to the Ansible environment. Make sure that your OpenVPN connection is active, otherwise the connection attempt will timeout. To connect via SSH, it is recommended that you use Terminal (MacOS) or <a href="https://www.putty.org" target="_blank">PuTTY</a> (Windows).</p>
-<div class="admonition note">
-<p class="admonition-title">SSH and PuTTY - WINDOWS USERS</p>
-<p>For detailed instructions on how to connect with PuTTY on Windows, <a href="https://ibm.box.com/s/d71tn63hutdxrjwh21qdzralrsxlcspe" target="_blank">reference the linked material.</a></p>
-</div>
-<p>Connect via SSH using the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh userID@ansibleURL
-</code></pre></div>
-<p>Replace the <em>userID</em> value with the one in the third column of the Project Kit table. Replace the <em>ansibleURL</em> with the URL in the second row + second column of the Project Kit table (for example, 10.3.44.171 in the screenshot provided— <strong>use the value unique to your project</strong>).</p>
-<p>You will be prompted to provide a <em>password</em>: supply the value with the fourth column of the Project Kit table. Hit <em>Return</em> and wait for the connection to complete. If successful, your console will now be connected directly to the Ansible controller node!</p>
-<div class="admonition note">
-<p class="admonition-title">SSH CONNECTION PROMPTS</p>
-<p>If prompted during login, enter <code>yes</code> and <code>Return</code> into the console.</p>
-</div>
-<p>Test out the connection with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pwd
 </code></pre></div>
 <p>Then check to see which version of Ansible the controller node is currently running:</p>
