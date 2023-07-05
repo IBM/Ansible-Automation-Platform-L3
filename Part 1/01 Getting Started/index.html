@@ -536,24 +536,22 @@
                 
 
 
-<p><div class="video-container"><iframe src="../_videos/Part%201%20-%20Getting%20Started%20-%20Red%20Hat%20Ansible%20Automation%20Platform%20Level%203%20for%20Sales%20and%20Technical%20Sales.mp4" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
-<div class="admonition tip">
-<p class="admonition-title">WAYS TO WATCH</p>
-<p>In addition to the embedded video, IBMers and Business Partners can also <a href="https://ibm.seismic.com/Link/Content/DCFGW2RT6jVGm82VTDMJ6TdDJC4V" target="_blank">download the recording from Seismic</a>.</p>
-</div>
-<p>You will require access to the <strong>IBM Technology Zone (ITZ)</strong> in order to reserve your environment and complete the hands-on training. If you do not yet have access or an account with the ITZ, you may register for one by visiting the following page: <a href="https://techzone.ibm.com" target="_blank">https://techzone.ibm.com</a></p>
 <h1 id="_1"></h1>
 <h1 id="reserving-an-environment">Reserving an environment</h1>
+<div class="admonition tip">
+<p class="admonition-title">IBM TECHNOLOGY ZONE</p>
+<p>You will require access to the <strong>IBM Technology Zone (ITZ)</strong> in order to reserve your environment and complete the hands-on training. If you do not yet have access or an account with the ITZ, you may register for one by visiting the following page: <a href="https://techzone.ibm.com" target="_blank">https://techzone.ibm.com</a></p>
+</div>
 <p>The hands-on environment can be provisioned free-of-charge using the reservation portal: <a href="https://techzone.ibm.com/collection/deploying-red-hat-ansible-on-ibm-power-with-aix/environments" target="_blank">https://techzone.ibm.com/collection/deploying-red-hat-ansible-on-ibm-power-with-aix/environments</a></p>
 <p>Reservations take approximately <strong>15-20 minutes</strong> to provision and deploy.</p>
-<p><img alt="" src="../_attachments/part1_figure1a.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">MULTIPLE ENVIRONMENT TEMPLATES</p>
 <p>IBM Technology Zone may display multiple configurations to choose from. Select the template that matches the screenshot above and continue with the reservation steps as documented.</p>
 </div>
+<p><img alt="" src="../_attachments/part1_figure1a.png" /></p>
 <p>You may select the option to <em>Reserve now</em> (recommended) or <em>Schedule for later</em>.</p>
 <p><img alt="" src="../_attachments/part1_figure1b.png" /></p>
-<p>In order to complete your ITZ reservation of the PowerVC infrastructure with AAP pre-installed, you must supply the following information:</p>
+<p>In order to complete your ITZ reservation of the PowerVC infrastructure, you must supply the following information:</p>
 <ul>
 <li>
 <p><strong>Name</strong>: Give your reservation a unique name.</p>
@@ -575,21 +573,38 @@
 </li>
 </ul>
 <p><img alt="" src="../_attachments/part1_figure1c.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">COMPLETION TIMES</p>
-<p>Four hours is more than enough time to complete the hands-on portion of the course work. Make sure you place your reservation for a period where you can give the lab 4 uninterrupted hours of your time — should you require additional time, you can reserve the lab again, but your progress from the previous attempt will be reset.</p>
-</div>
 <p>When satisfied, click the <strong>Check Availability</strong> button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking <strong>Submit</strong>.</p>
+<h1 id="_2"></h1>
+<h1 id="connecting-to-the-environment">Connecting to the environment</h1>
 <p>As a reminder, reservations take approximately <strong>15-20 minutes</strong> to complete from the time that you click submit (this will not impact your 4 hour time allotment.) If you navigate to the <strong>My Reservations</strong> tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation.</p>
 <div class="admonition warning">
 <p class="admonition-title">WAIT UNTIL READY</p>
 <p>Wait for the Tech Zone reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the PowerVC instance.</p>
 </div>
-<p>You will also receive a pair of emails to your inbox once the environment has successfully deployed, as shown here.</p>
-<p><img alt="" src="../_attachments/part1_figure2.png" /></p>
-<p><img alt="" src="../_attachments/part1_figure3.png" /></p>
-<p>The <strong>"Demo Ready Notification"</strong> email contains an important link <strong>("Click Here")</strong> for accessing your <strong>Project Kit</strong>, which will be needed to obtain information about your PowerVC environment — hostname, address, login information, and so on. Click that link now to preload the Project Kit in your browser window.</p>
-<h1 id="_2"></h1>
+<p>You will also receive an email to your inbox once the environment has successfully deployed, as shown here.</p>
+<p><img alt="" src="_attachments/part1_v2_figure1.png" /></p>
+<p>The <strong>"Your environment is ready"</strong> email contains links back to the <a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a> tab, which now is populated with all of the details needed to access your PowerVC environment — hostnames, addresses, login information, and so on. Navigate to the page, which should look similar to the following screenshot. Note that <em>your</em> environment's details will differ.</p>
+<p><img alt="" src="_attachments/part1_v2_figure2.png" /></p>
+<p>There are several critical pieces of information that you should <strong>record</strong> at this time, as they will be referenced again repeatedly in the steps to come. Save these values (unique to your environment) to a notepad:</p>
+<ul>
+<li>
+<p><strong>User Account</strong>: This will be <code>cecuser</code> for all environments.</p>
+</li>
+<li>
+<p><strong>User Password</strong>: Unique to your environment. Use the clipboard icon to copy.</p>
+</li>
+<li>
+<p><strong>VM 1 IP Address</strong></p>
+</li>
+<li>
+<p><strong>VM 2 IP Address</strong></p>
+</li>
+<li>
+<p><strong>VM 3 IP Address</strong></p>
+</li>
+</ul>
+<p>The three virtual machines (VMs) will correspond to the Ansible AIX host and server nodes once Ansible has been installed and deployed across the cluster.</p>
+<h1 id="_3"></h1>
 <h1 id="setting-up-a-vpn">Setting up a VPN</h1>
 <p>The second <strong>"Demo VPN Ready Notification"</strong> email is the next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.</p>
 <div class="admonition warning">
