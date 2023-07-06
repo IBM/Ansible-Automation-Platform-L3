@@ -629,7 +629,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo dnf update
 </code></pre></div>
 Indicate <code>y</code> when prompted to continue updating the 73 packages.</p>
-<p>Next, use DNF to install Ansible. One of the remarkable features of Ansible’s automation is how elegant and simple it makes even complex tasks like installing software across a cluster. Do so by executing the following:
+<p>Next, use <strong>DNF to install Ansible</strong>. One of the remarkable features of Ansible’s automation is how elegant and simple it makes even complex tasks like installing software across a cluster. Do so by executing the following:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo dnf install ansible
 </code></pre></div>
 It's as simple as executing the following command and pressing <code>y</code> when prompted. Easy!</p>
@@ -638,15 +638,44 @@ It's as simple as executing the following command and pressing <code>y</code> wh
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ansible --version
 </code></pre></div></p>
 <p><img alt="" src="../_attachments/part1_v2_figure6.png" /></p>
+<p>Next, we need to edit the <code>/OPT/FREEWARE/ETC/ANSIBLE/ANSIBLE.CFG</code> file in order to disable <code>host_key_checking</code> and to use Python as the default interpreter. Disabling <code>host_key_checking</code> will save you having to re-enter your password throughout the lab.</p>
+<p>Open the config file with the following:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo vi /opt/freeware/etc/ansible/ansible.cfg
+</code></pre></div></p>
+<p>Add the following two lines after the <code>[Defaults]</code> header:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>host_key_checking = False
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>interpreter_python = /usr/bin/python
+</code></pre></div>
+Your configuration file should closely resemble the one in the following screenshot.</p>
+<p><img alt="" src="../_attachments/part1_v2_figure7.png" /></p>
+<p>When satisfied, save and exit (<code>:x</code>) the configuration file.</p>
+<p>Create a new <code>/ANSIBLE-SCRIPTS</code> directory:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo mkdir $HOME/ansible-scripts
+</code></pre></div></p>
+<p>In the Ansible <code>HOSTS</code> file, we will next need to supply the three IP addresses for the PowerVC cluster that were recorded earlier. One PowerVC virtual machine (<code>VM 1</code>) will serve as the <code>aixserver</code> and the two other virtual machines (<code>VM 2</code> and <code>VM 3</code>) will act as the <code>aixclients</code>.</p>
+<p>You need to put the IP address of each of your servers in this <code>HOSTS</code> file. Ansible supports hostname too, but this will not work here due to lack of a DNS-updated date on our test AIX servers.</p>
+<p>Execute the following statement to enter the <strong>vi</strong> editor:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo vi /opt/freeware/etc/ansible/hosts
+</code></pre></div></p>
+<p>At the top of the file, add the following <strong>to the top of the <code>HOSTS</code> configuration file.</strong> Modify the IP values to match the the VM addresses recorded earlier. <strong>Remember</strong> — the <code>aixserver</code> corresponds to VM1 and <code>aixclients</code> corresponds to VM2 and VM2.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[aixservers]
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>129.40.yyy.xxx
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>[aixclients]
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>129.40.yyy.xxx
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>129.40.yyy.xxx
+</code></pre></div></p>
+<p>Your <code>HOSTS</code> file should closely resemble the following — using the IP addresses unique to <em>your</em> PowerVC cluster.</p>
+<p><img alt="" src="_attachments/part1_v2_figure8.png" /></p>
+<p>When satisfied, save and exit (<code>:x</code>) the editor.</p>
 <p>After connecting, you will be able to access the PowerVC GUI and SSH remotely into your PowerVC environment. Return to the <strong>"Demo Ready Notification"</strong> email (or the <em>My Reservations</em> tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured in the screenshot below.</p>
 <p><img alt="" src="../_attachments/part1_figure6.png" /></p>
 <p>The Project Kit summarizes all of the relevant connection information you will need to access your PowerVC and Ansible environment. Scroll down the page until you reach the <strong>Usage Instructions</strong> table near the bottom of the page.</p>
 <p><img alt="" src="../_attachments/part1_figure7.png" /></p>
 <p>The table contains two relevant rows: the first row <strong>"PowerVC GUI"</strong> contains information on how to connect to the PowerVC infrastructure; the second row <strong>"Ansible ssh console"</strong> details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy for future reference the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the <em>userID</em> and <em>password</em> values (they are identical across both environments).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pwd
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pwd
 </code></pre></div>
 <p>Then check to see which version of Ansible the controller node is currently running:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ansible --version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ansible --version
 </code></pre></div>
 <p>Everything's now set and in good shape for you to get to work on deploying your first virtual machine via Ansible on to the PowerVC infrastructure.</p>
 
