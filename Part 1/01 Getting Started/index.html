@@ -629,40 +629,44 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo dnf update
 </code></pre></div>
 Indicate <code>y</code> when prompted to continue updating the 73 packages.</p>
+<p>You will also need to install <strong>Git</strong> in anticipation of some later modules in this course. Do so by executing the following command:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo dnf install git
+</code></pre></div></p>
+<p>Indicate <code>y</code> when prompted to continue installing the 7 packages.</p>
 <p>Next, use <strong>DNF to install Ansible</strong>. One of the remarkable features of Ansible’s automation is how elegant and simple it makes even complex tasks like installing software across a cluster. Do so by executing the following:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo dnf install ansible
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo dnf install ansible
 </code></pre></div>
 It's as simple as executing the following command and pressing <code>y</code> when prompted. Easy!</p>
 <p><img alt="" src="../_attachments/part1_v2_figure5.png" /></p>
 <p>Verify the integrity of your Ansible installation:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ansible --version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ansible --version
 </code></pre></div></p>
 <p><img alt="" src="../_attachments/part1_v2_figure6.png" /></p>
 <p>Next, we need to edit the <code>/OPT/FREEWARE/ETC/ANSIBLE/ANSIBLE.CFG</code> file in order to disable <code>host_key_checking</code> and to use Python as the default interpreter. Disabling <code>host_key_checking</code> will save you having to re-enter your password throughout the lab.</p>
 <p>Open the config file with the following:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo vi /opt/freeware/etc/ansible/ansible.cfg
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo vi /opt/freeware/etc/ansible/ansible.cfg
 </code></pre></div></p>
 <p>Add the following two lines after the <code>[Defaults]</code> header:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>host_key_checking = False
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>interpreter_python = /usr/bin/python
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>host_key_checking = False
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>interpreter_python = /usr/bin/python
 </code></pre></div>
 Your configuration file should closely resemble the one in the following screenshot.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure7.png" /></p>
 <p>When satisfied, save and exit (<code>:x</code>) the configuration file.</p>
 <p>Create a new <code>/ANSIBLE-SCRIPTS</code> directory:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo mkdir $HOME/ansible-scripts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo mkdir $HOME/ansible-scripts
 </code></pre></div></p>
 <p>In the Ansible <code>HOSTS</code> file, we will next need to supply the three IP addresses for the PowerVC cluster that were recorded earlier. One PowerVC virtual machine (<code>VM 1</code>) will serve as the <code>aixserver</code> and the two other virtual machines (<code>VM 2</code> and <code>VM 3</code>) will act as the <code>aixclients</code>.</p>
 <p>You need to put the IP address of each of your servers in this <code>HOSTS</code> file. Ansible supports hostname too, but this will not work here due to lack of a DNS-updated date on our test AIX servers.</p>
 <p>Execute the following statement to enter the <strong>vi</strong> editor:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo vi /opt/freeware/etc/ansible/hosts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo vi /opt/freeware/etc/ansible/hosts
 </code></pre></div></p>
 <p>At the top of the file, add the following to the <strong>top</strong> of the <code>HOSTS</code> configuration file.<strong> Modify the IP values to match the the VM addresses recorded earlier. </strong>Remember** — the <code>aixserver</code> corresponds to VM1 and <code>aixclients</code> corresponds to VM2 and VM2.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[aixservers]
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>129.40.yy.xxx
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>[aixclients]
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>129.40.yy.xxx
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>129.40.yy.xxx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>[aixservers]
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>129.40.yy.xxx
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>[aixclients]
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>129.40.yy.xxx
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>129.40.yy.xxx
 </code></pre></div></p>
 <p>Your <code>HOSTS</code> file should closely resemble the following — using the IP addresses unique to <em>your</em> PowerVC cluster.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure8.png" /></p>
@@ -672,42 +676,42 @@ Your configuration file should closely resemble the one in the following screens
 <p>A comment on generating SSH keys for <code>cecuser</code> (and Ansible clusters in general). Ansible is an <em>agentless</em> tool and it relies on SSH to connect to its targets. SSH is an open source secure connection used worldwide. <strong>Ansible supports both userID/password or password-free SSH connections.</strong> The environment you will be using to conduct this lab (provided by the ITZ) has taken care of SSH key generation ahead of time. No additional work is needed on your part in creating these keys.</p>
 </div>
 <p>Let’s verify the cluster’s connectivity to the Ansible client endpoints you just defined.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ansible aixclients -m ping
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ansible aixclients -m ping
 </code></pre></div></p>
 <p>This will ping the clients defined in the <code>/HOSTS/</code> directory earlier.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure9.png" /></p>
 <p>You should receive a response from both of the <code>aixclients</code>, indicating that you can run commands against this AIX LPAR without needing to provide a password each time.</p>
 <p>Next, we need to run the <code>setup</code> module to view the characteristics for each target (<code>aixclient</code>):
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ansible aixclients -m setup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ansible aixclients -m setup
 </code></pre></div></p>
 <p>This module provides very extensive information in JSON format about each of your AIX clients. This information is essentially an <strong>Inventory</strong> of all your server’s hardware and software.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure10.png" /></p>
 <p>The information provided in the output can all be referenced inside an Ansible <strong>Playbook</strong> to customize your tasks. This is a more advanced feature of Ansible which we will cover later in the lab.</p>
 <p>Next, identify the hostnames for each of the <code>aixclients</code> group members using the <code>command</code> module — which is used for executing OS level commands on Ansible client endpoints.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ansible aixclients -m command -a &#39;hostname’
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ansible aixclients -m command -a &#39;hostname’
 </code></pre></div></p>
 <p>The hostname will be the first value returned in the string.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure11.png" /></p>
 <p>Finally, before moving on to the lab proper, let's do a quick test against the host and clients using a simple script.</p>
 <p>Navigate back to the <code>/ANSIBLE-SCRIPTS</code> directory to begin:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cd $HOME/ansible-scripts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cd $HOME/ansible-scripts
 </code></pre></div></p>
 <p>Create a local script called <code>testscript.sh</code> using the following:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo vi testscript.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo vi testscript.sh
 </code></pre></div></p>
 <p>Add the following instructions to your Shell script definition:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>echo &quot;Executing my testscript with parameter $1&quot; hostname
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>date
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>uptime
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>oslevel -s
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>exit
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>echo &quot;Executing my testscript with parameter $1&quot; hostname
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>date
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>uptime
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>oslevel -s
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>exit
 </code></pre></div></p>
 <p>When satisfied, save and exit (<code>:x</code>) the Shell script file.</p>
 <p>Change the permissions on the script file to make it executable:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo chmod +x testscript.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo chmod +x testscript.sh
 </code></pre></div></p>
 <p>Lastly, execute the script across both clients:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ansible aixclients -m script -a &#39;testscript.sh awesome&#39;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ansible aixclients -m script -a &#39;testscript.sh awesome&#39;
 </code></pre></div></p>
 <p>The output return to console should closely resemble the following screenshot.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure13.png" /></p>
