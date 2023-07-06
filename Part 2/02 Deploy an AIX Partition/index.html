@@ -540,10 +540,10 @@
 <p>The <code>.hosts</code> definition created in the previous steps</p>
 </li>
 <li>
-<p>Playbooks that we will modify to paint the broad strokes for what automation AAP is to perform</p>
+<p>Playbooks to define the operations that AAP is to carry out</p>
 </li>
 <li>
-<p>Built-in Modules (which are part of AAP's engine) for carrying out those instructions.</p>
+<p>Built-in Modules (which are part of AAP's engine) for carrying out those instructions</p>
 </li>
 </ul>
 <p><img alt="" src="../_attachments/intro_figure1.png" /></p>
@@ -553,10 +553,10 @@
 <p>If you cloned the Git repository earlier, a template has already been crafted for you; otherwise, you will need to recreate it using the sample code below.</p>
 <div class="admonition warning">
 <p class="admonition-title">SELLERS AND TECH SELLERS</p>
-<p>Both job roles will need to modify the <em>cloud.yaml</em> template to specifications matching your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the Project Kit.</p>
+<p>Both job roles will need to modify the <em>cloud.yaml</em> template to specifications matching your ITZ credentials and environment. The value <strong>idXXXXXXXX</strong> must be replaced with the <em>username/ID</em> that was recorded from the ITZ Reservations page.</p>
 <p>The same holds true for other variables or fields that have been bolded below in the sample script: if it is highlighted in red text within the screenshot, you must modify the <em>clouds.yaml</em> script for those fields to your own specifications and then save the changes before moving on.</p>
 </div>
-<p>The <em>clouds.yaml</em> template should look like the following screenshot. Modify as necessary to match the specifications of your unique ITZ environment. Update the <em>userID</em>, <em>password</em>, <em>project name</em> (<code>ansiblewas</code>), and the <em>host address</em> (this address should match the PowerVC GUI address from the Project Kit).</p>
+<p>The <em>clouds.yaml</em> template should look like the following screenshot. Modify as necessary to match the specifications of your unique ITZ environment. Update the <em>userID</em>, <em>password</em>, <em>project name</em> (<code>ansiblewas</code>), and the <em>host address</em> (this address should match the PowerVC <strong>VM1</strong> IP address from the ITZ Reservations page).</p>
 <p><img alt="" src="../_attachments/part2_figure1.png" /></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>clouds:
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  idXXXXXXXX:
@@ -682,7 +682,7 @@
 </div>
 <p>Once the build task has completed and the status is set to "<em>Active</em>," the IP field of the table will be populated with the virtual machine's address. Record this information for later.</p>
 <p><img alt="" src="../_attachments/part2_figure6.png" /></p>
-<p>Return to the Terminal console where you have SSH'd into the AAP control node. Take note of the verbose logs that were returned for every stage of the Playbook execution. Within these logs you'll find details on various aspects of the virtual machine deployment, such as the Image ID (e.g. <em>AIX721-7022-300G-DEMO</em>) for the AIX partition. If you return to the PowerVC dashboard and drill down into the <strong>Image List</strong> tab, you can locate the matching Image ID and inspect it for additional details.</p>
+<p>Return to the Terminal console where you have SSH'd into the AAP controller node. Take note of the verbose logs that were returned for every stage of the Playbook execution. Within these logs you'll find details on various aspects of the virtual machine deployment, such as the Image ID (e.g. <em>AIX721-7022-300G-DEMO</em>) for the AIX partition. If you return to the PowerVC dashboard and drill down into the <strong>Image List</strong> tab, you can locate the matching Image ID and inspect it for additional details.</p>
 <p>While you're on the dashboard, try exploring the <strong>Network ID</strong> (e.g. <em>VL344</em>) as well. Here you will find a table summarizing all of the networks defined with your PowerVC instance, including their VLAN IDs, Type, the number of VMs using that particular network connection, subnet masks, gateway IDs, and DNS server(s).</p>
 <p>Other areas of the PowerVC dashboard can also be explored, should you wish. When satisfied, we'll proceed with modifying the <strong>hosts</strong> file parameters on the Ansible control node using the newly-generated virtual machine IP address. The <strong>hosts</strong> file provides a list (an inventory, if you will) of the AIX partitions (the newly-generated virtual machine) where AAP is to execute Playbook tasks.</p>
 <p>Edit the <strong>hosts</strong> file using the following statement:

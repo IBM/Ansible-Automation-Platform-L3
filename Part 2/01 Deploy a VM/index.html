@@ -615,6 +615,8 @@
 <p>We are now ready to install the Ansible OpenStack Python modules on to the Ansible controller node. The <strong>openstacksdk</strong> library is required in order for Ansible to be able to interact with the PowerVC infrastructure provisioned via the ITZ. The following command will take care of installing all of the necessary drivers and dependencies:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip3 install --user &quot;openstacksdk==0.51.0&quot; &quot;python-openstackclient==5.4.0&quot; dnspython dig
 </code></pre></div></p>
+<p>You may encounter some error warnings during the install process (shown below). These can be safely ignored.</p>
+<p><img alt="" src="../_attachments/part2_figure9.png" /></p>
 <p>With the dependencies taken care of, we're now ready to begin deployment of an AIX operating system partition atop of the PowerVC infrastructure provisioned earlier.</p>
 
 
