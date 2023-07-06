@@ -661,6 +661,10 @@ Your configuration file should closely resemble the one in the following screens
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo mkdir $HOME/ansible-scripts
 </code></pre></div></p>
 <p>In the Ansible <code>HOSTS</code> file, we will next need to supply the three IP addresses for the PowerVC cluster that were recorded earlier. One PowerVC virtual machine (<code>VM 1</code>) will serve as the <code>aixserver</code> and the two other virtual machines (<code>VM 2</code> and <code>VM 3</code>) will act as the <code>aixclients</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">ANSIBLE CONTROLLER NODE</p>
+<p>PowerVC Virtual Machine (VM) 1 in this environment has been designated in this step as the <code>aixserver</code> within the Ansible <code>HOSTS</code> file. This VM will also be referred to in subsequent sections as the <strong>Ansible Controller Node</strong>, as it serves the same purpose (as a server, controller, master, and so on) for Ansible automation as well.</p>
+</div>
 <p>You need to put the IP address of each of your servers in this <code>HOSTS</code> file. Ansible supports hostname too, but this will not work here due to lack of a DNS-updated date on our test AIX servers.</p>
 <p>Execute the following statement to enter the <strong>vi</strong> editor:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo vi /opt/freeware/etc/ansible/hosts
