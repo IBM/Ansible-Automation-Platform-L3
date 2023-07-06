@@ -679,7 +679,7 @@ Your configuration file should closely resemble the one in the following screens
 <p class="admonition-title">SSH CONNECTIONS AND ANSIBLE</p>
 <p>A comment on generating SSH keys for <code>cecuser</code> (and Ansible clusters in general). Ansible is an <em>agentless</em> tool and it relies on SSH to connect to its targets. SSH is an open source secure connection used worldwide. <strong>Ansible supports both userID/password or password-free SSH connections.</strong> The environment you will be using to conduct this lab (provided by the ITZ) has taken care of SSH key generation ahead of time. No additional work is needed on your part in creating these keys.</p>
 </div>
-<p>Let’s verify the cluster’s connectivity to the Ansible client endpoints you just defined.
+<p>Let’s verify the cluster’s connectivity to the Ansible client endpoints you just defined. Execute the following while connected to VM1 (which you should be already at this stage):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ansible aixclients -m ping
 </code></pre></div></p>
 <p>This will ping the clients defined in the <code>/HOSTS/</code> directory earlier.</p>
@@ -692,7 +692,7 @@ Your configuration file should closely resemble the one in the following screens
 <p><img alt="" src="../_attachments/part1_v2_figure10.png" /></p>
 <p>The information provided in the output can all be referenced inside an Ansible <strong>Playbook</strong> to customize your tasks. This is a more advanced feature of Ansible which we will cover later in the lab.</p>
 <p>Next, identify the hostnames for each of the <code>aixclients</code> group members using the <code>command</code> module — which is used for executing OS level commands on Ansible client endpoints.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ansible aixclients -m command -a &#39;hostname’
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ansible aixclients -m command -a &#39;hostname&#39;
 </code></pre></div></p>
 <p>The hostname will be the first value returned in the string.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure11.png" /></p>
