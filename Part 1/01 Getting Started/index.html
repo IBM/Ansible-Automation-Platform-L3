@@ -563,7 +563,7 @@
 <p><strong>Purpose Description</strong>: Provide a brief summary of how the environment will be used.</p>
 </li>
 <li>
-<p><strong>Preferred Geography</strong>: <em>Montpellier, France</em></p>
+<p><strong>Preferred Geography</strong>: *USA</p>
 </li>
 <li>
 <p><strong>Start Date &amp; Time</strong>: Select the time and date for when you plan to begin work on the hands-on material.</p>
@@ -659,24 +659,59 @@ Your configuration file should closely resemble the one in the following screens
 </code></pre></div></p>
 <p>At the top of the file, add the following to the <strong>top</strong> of the <code>HOSTS</code> configuration file.<strong> Modify the IP values to match the the VM addresses recorded earlier. </strong>Remember** — the <code>aixserver</code> corresponds to VM1 and <code>aixclients</code> corresponds to VM2 and VM2.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[aixservers]
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>129.40.yyy.xxx
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>129.40.yy.xxx
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>[aixclients]
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>129.40.yyy.xxx
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>129.40.yyy.xxx
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>129.40.yy.xxx
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>129.40.yy.xxx
 </code></pre></div></p>
 <p>Your <code>HOSTS</code> file should closely resemble the following — using the IP addresses unique to <em>your</em> PowerVC cluster.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure8.png" /></p>
 <p>When satisfied, save and exit (<code>:x</code>) the editor.</p>
-<p>After connecting, you will be able to access the PowerVC GUI and SSH remotely into your PowerVC environment. Return to the <strong>"Demo Ready Notification"</strong> email (or the <em>My Reservations</em> tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured in the screenshot below.</p>
-<p><img alt="" src="../_attachments/part1_figure6.png" /></p>
-<p>The Project Kit summarizes all of the relevant connection information you will need to access your PowerVC and Ansible environment. Scroll down the page until you reach the <strong>Usage Instructions</strong> table near the bottom of the page.</p>
-<p><img alt="" src="../_attachments/part1_figure7.png" /></p>
-<p>The table contains two relevant rows: the first row <strong>"PowerVC GUI"</strong> contains information on how to connect to the PowerVC infrastructure; the second row <strong>"Ansible ssh console"</strong> details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy for future reference the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the <em>userID</em> and <em>password</em> values (they are identical across both environments).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pwd
-</code></pre></div>
-<p>Then check to see which version of Ansible the controller node is currently running:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ansible --version
-</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">SSH CONNECTIONS AND ANSIBLE</p>
+<p>A comment on generating SSH keys for <code>cecuser</code> (and Ansible clusters in general). Ansible is an <em>agentless</em> tool and it relies on SSH to connect to its targets. SSH is an open source secure connection used worldwide. <strong>Ansible supports both userID/password or password-free SSH connections.</strong> The environment you will be using to conduct this lab (provided by the ITZ) has taken care of SSH key generation ahead of time. No additional work is needed on your part in creating these keys.</p>
+</div>
+<p>Let’s verify the cluster’s connectivity to the Ansible client endpoints you just defined.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ansible aixclients -m ping
+</code></pre></div></p>
+<p>This will ping the clients defined in the <code>/HOSTS/</code> directory earlier.</p>
+<p><img alt="" src="../_attachments/part1_v2_figure9.png" /></p>
+<p>You should receive a response from both of the <code>aixclients</code>, indicating that you can run commands against this AIX LPAR without needing to provide a password each time.</p>
+<p>Next, we need to run the <code>setup</code> module to view the characteristics for each target (<code>aixclient</code>):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ansible aixclients -m setup
+</code></pre></div></p>
+<p>This module provides very extensive information in JSON format about each of your AIX clients. This information is essentially an <strong>Inventory</strong> of all your server’s hardware and software.</p>
+<p><img alt="" src="../_attachments/part1_v2_figure10.png" /></p>
+<p>The information provided in the output can all be referenced inside an Ansible <strong>Playbook</strong> to customize your tasks. This is a more advanced feature of Ansible which we will cover later in the lab.</p>
+<p>Next, identify the hostnames for each of the <code>aixclients</code> group members using the <code>command</code> module — which is used for executing OS level commands on Ansible client endpoints.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ansible aixclients -m command -a &#39;hostname’
+</code></pre></div></p>
+<p>The hostname will be the first value returned in the string.</p>
+<p><img alt="" src="../_attachments/part1_v2_figure11.png" /></p>
+<p>Finally, before moving on to the lab proper, let's do a quick test against the host and clients using a simple script.</p>
+<p>Navigate back to the <code>/ANSIBLE-SCRIPTS</code> directory to begin:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cd $HOME/ansible-scripts
+</code></pre></div></p>
+<p>Create a local script called <code>testscript.sh</code> using the following:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo vi testscript.sh
+</code></pre></div></p>
+<p>Add the following instructions to your Shell script definition:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>echo &quot;Executing my testscript with parameter $1&quot; hostname
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>date
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>uptime
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>oslevel -s
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>exit
+</code></pre></div></p>
+<p>When satisfied, save and exit (<code>:x</code>) the Shell script file.</p>
+<p><img alt="" src="../_attachments/part1_v2_figure12.png" /></p>
+<p>Change the permissions on the script file to make it executable:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo chmod +x testscript.sh
+</code></pre></div></p>
+<p>Lastly, execute the script across both clients:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ansible aixclients -m script -a &#39;testscript.sh awesome&#39;
+</code></pre></div></p>
+<p>The output return to console should closely resemble the following screenshot.</p>
+<p><img alt="" src="../_attachments/part1_v2_figure13.png" /></p>
 <p>Everything's now set and in good shape for you to get to work on deploying your first virtual machine via Ansible on to the PowerVC infrastructure.</p>
 
 
