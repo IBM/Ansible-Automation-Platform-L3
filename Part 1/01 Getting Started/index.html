@@ -575,7 +575,7 @@
 <p><img alt="" src="../_attachments/part1_figure1c.png" /></p>
 <p>When satisfied, click the <strong>Check Availability</strong> button at the bottom of the page to verify that resources are available for your requested time slot. If the check passes, you can finalize your reservation request by clicking <strong>Submit</strong>.</p>
 <h1 id="_2"></h1>
-<h1 id="access-your-itz-reservation">Access your ITZ reservation</h1>
+<h1 id="accessing-your-itz-reservation">Accessing your ITZ reservation</h1>
 <p>As a reminder, reservations take approximately <strong>15-20 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong>My Reservations</strong> tab of the ITZ ( <a href="https://techzone.ibm.com/my/reservations" target="_blank">https://techzone.ibm.com/my/reservations</a> ), you can monitor the progress of your reservation.</p>
 <div class="admonition warning">
 <p class="admonition-title">WAIT UNTIL READY</p>
@@ -616,44 +616,37 @@
 </div>
 <p>You now have all the necessary information to remotely connect over SSH to the PowerVC cluster. To connect via SSH, it is recommended that you use Terminal (MacOS) or <a href="https://www.putty.org" target="_blank">PuTTY</a> (Windows).</p>
 <p>Connect via SSH using the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh UserAccount@VM1IPAddress
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh UserAccount@VM_1_IPAddress
 </code></pre></div>
-<p>Replace the <em>UserAccount</em> with the User Account (<code>cecuser</code>) recorded earlier. Similarly, replace the <em>VM1IPAddress</em> field with the IP address of VM 1 recorded earlier — <strong>use the value unique to your ITZ reservation</strong>).</p>
+<p>Replace the <em>UserAccount</em> with the User Account (<code>cecuser</code>) recorded earlier. Similarly, replace the <em>VM_1_IPAddress</em> field with the IP address of VM 1 recorded earlier — <strong>use the value unique to your ITZ reservation</strong>.</p>
 <p>Press return and wait until you are prompted to provide a <em>password</em>: supply the <em>User Password</em> value recorded earlier. Hit <em>Return</em> and wait for the connection to complete. If successful, your console will now be connected directly to the PowerVC cluster.</p>
 <p><img alt="" src="../_attachments/part1_v2_figure3.png" /></p>
 <h1 id="_4"></h1>
-<h1 id="setting-up-a-vpn">Setting up a VPN</h1>
-<p>The second <strong>"Demo VPN Ready Notification"</strong> email is the next order of business. You will need to configure a special VPN tunnel in order to connect to the demo PowerVC environment.</p>
-<p>From the <strong>"Demo VPN Ready Notification"</strong> email, locate the <strong>"Click Here"</strong> hyperlink to download your <strong>OpenVPN certificate</strong>, which is unique to your account and environment. This certificate will only need to be downloaded and set up once; in the event that you need to re-provision a new environment at a later time, it won't be necessary to repeat these steps.</p>
-<p>Further down in the email are three links for setting up OpenVPN for each of the major operating systems: Windows, Linux, and MacOS.</p>
-<div class="admonition note">
-<p class="admonition-title">CLIENT SELECTION</p>
-<p>It is recommended that you use <strong>Tunnelblick</strong> if using running MacOS, but you have the option of selecting from other OpenVPN clients if you prefer.</p>
-</div>
-<p>Download the <a href="https://tunnelblick.net" target="_blank">latest Tunnelblick client</a> (<em>v3.8.7a</em> or later) to your local machine and run the installer. Click <strong>Continue</strong> when prompted to do so, as shown below.</p>
-<p><img alt="" src="../_attachments/part1_figure8.png" /></p>
-<p><img alt="" src="../_attachments/part1_figure9.png" /></p>
-<p>After the initial setup, Tunnelblick will prompt you to answer <strong>"I have configuration files"</strong> (or not). Select the first highlighted option as shown.</p>
-<p><img alt="" src="../_attachments/part1_figure10.png" /></p>
-<p>Along the taskbar at the top of your desktop, an icon for Tunnelblick will now be visible. Click the icon to pull down a menu of options — select the <strong>VPN Details...</strong> button.</p>
-<p><img alt="" src="../_attachments/part1_figure11.png" /></p>
-<p>The full Tunnelblick interface will open. Locate the <strong>OpenVPN certificate</strong> you downloaded earlier (it will have a filename similar to <code>VPN_DcUser13097_20221011201513.psscopenvpn.ovpn</code>) and <strong>DRAG</strong> the certificate over the Tunnelblick interface (as shown). Alternatively, you can also drag it directly on top of the Tunnelblick icon located in the desktop taskbar. Release the certificate on top of the Tunnelblick app to add the OpenVPN certificate to configure Tunnelblick to use the connection.</p>
-<p><img alt="" src="../_attachments/part1_figure12.png" /></p>
-<p>You will be prompted to <em>"Install Configuration for All Users?"</em> to which you must select the <strong>ALL USERS</strong> option.</p>
-<p><img alt="" src="../_attachments/part1_figure13.png" /></p>
-<p>The OpenVPN connection will now display among the list of configurations. In the bottom-right corner of the Tunnelblick interface, click the <strong>Connect</strong> button.</p>
-<p><img alt="" src="../_attachments/part1_figure14.png" /></p>
-<p>Wait for the connection to be established. You may receive a pair of warnings — which you can safely ignore.</p>
-<p><img alt="" src="../_attachments/part1_figure15.png" /></p>
+<h1 id="installing-ansible-on-powervc">Installing Ansible on PowerVC</h1>
+<p>The next order of business is deploying Ansible to the three nodes of the ITZ-provisioned PowerVC cluster. Before we can do this, we need to make some preparations to the environment.</p>
+<p>First, update the Dandified Yum (<code>DNF</code>) installer — which is now the officially supported software package manager for IBM Technology Zone, replacing <code>yum</code> and other alternatives.</p>
+<p>The following will update DNF to the latest version:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo dnf update
+</code></pre></div>
+Indicate <code>y</code> when prompted to continue updating the 73 packages.</p>
+<p>Next, use DNF to install Ansible. One of the remarkable features of Ansible’s automation is how elegant and simple it makes even complex tasks like installing software across a cluster. Do so by executing the following:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo dnf install ansible
+</code></pre></div>
+It's as simple as executing the following command and pressing <code>y</code> when prompted. Easy!</p>
+<p><img alt="" src="../_attachments/part1_v2_figure5.png" /></p>
+<p>Verify the integrity of your Ansible installation:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ansible --version
+</code></pre></div></p>
+<p><img alt="" src="../_attachments/part1_v2_figure6.png" /></p>
 <p>After connecting, you will be able to access the PowerVC GUI and SSH remotely into your PowerVC environment. Return to the <strong>"Demo Ready Notification"</strong> email (or the <em>My Reservations</em> tab on the ITZ) and follow the URL to your unique Project Kit page, similar to the one captured in the screenshot below.</p>
 <p><img alt="" src="../_attachments/part1_figure6.png" /></p>
 <p>The Project Kit summarizes all of the relevant connection information you will need to access your PowerVC and Ansible environment. Scroll down the page until you reach the <strong>Usage Instructions</strong> table near the bottom of the page.</p>
 <p><img alt="" src="../_attachments/part1_figure7.png" /></p>
 <p>The table contains two relevant rows: the first row <strong>"PowerVC GUI"</strong> contains information on how to connect to the PowerVC infrastructure; the second row <strong>"Ansible ssh console"</strong> details how to remotely connect to Ansible via SSH. You will be making use of both endpoints throughout the lab. As such, it's recommended that you copy for future reference the URLs for both the GUI and Ansible endpoints (note that they have different host addresses), as well as the <em>userID</em> and <em>password</em> values (they are identical across both environments).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pwd
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pwd
 </code></pre></div>
 <p>Then check to see which version of Ansible the controller node is currently running:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ansible --version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ansible --version
 </code></pre></div>
 <p>Everything's now set and in good shape for you to get to work on deploying your first virtual machine via Ansible on to the PowerVC infrastructure.</p>
 
